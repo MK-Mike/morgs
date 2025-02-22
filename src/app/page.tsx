@@ -1,37 +1,46 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
-            </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
-        </div>
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background">
+      {/* Animated vector waves */}
+      <div className="absolute inset-0 z-0">
+        <div className="wave wave1"></div>
+        <div className="wave wave2"></div>
+        <div className="wave wave3"></div>
       </div>
-    </main>
+
+      {/* Content */}
+      <main className="relative z-10 flex w-full flex-grow flex-col items-center justify-center px-4 text-center">
+        <h1 className="mb-6 text-4xl font-bold md:text-6xl">
+          Morgans Bay Climbing
+        </h1>
+        <p className="mb-8 text-xl text-muted-foreground">
+          Discover the best climbing routes at Morgans Bay
+        </p>
+
+        {/* Search Bar */}
+        <div className="relative mb-8 w-full max-w-md">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
+          <Input
+            type="search"
+            placeholder="Search routes..."
+            className="bg-secondary pl-10"
+          />
+        </div>
+
+        <div className="space-x-4">
+          <Button asChild>
+            <Link href="/sectors">Find a Climb</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/partners">Find a Partner</Link>
+          </Button>
+        </div>
+      </main>
+    </div>
   );
 }

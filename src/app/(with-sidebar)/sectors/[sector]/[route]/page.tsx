@@ -1,0 +1,84 @@
+"use client";
+
+import { useState } from "react";
+import { useParams } from "next/navigation";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import Breadcrumbs from "~/components/Breadcrumbs";
+import { Skeleton } from "~/components/ui/skeleton";
+import routesData from "~/data/routes.json";
+import { Star } from "lucide-react";
+import type { Route } from "~/types/routes";
+
+export default function RoutePage() {
+  const { sector: sectorSlug, route: routeSlug } = useParams();
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Find the route in the nested data structure
+  const route = routesData.headlands
+    .flatMap((headland) => headland.sectors)
+    .find((s) => s.slug === sectorSlug)
+    ?.routes.find((r) => r.slug === routeSlug) as Route | undefined;
+
+  if (!route) {
+    notFound();
+  }
+
+  return (
+    <div className="container mx-auto py-8">
+      <Breadcrumbs />
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div>
+          <h1 className="mb-6 text-3xl font-bold">{route.name}</h1>
+          <div className="space-y-4">
+            <p>
+              <strong>Grade:</strong> {route.grade}
+            </p>
+            <p>
+              <strong>Stars:</strong>{" "}
+              {route.stars ? (
+                <span className="flex">
+                  {[...Array(route.stars)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-4 w-4 fill-yellow-400 text-yellow-400"
+                    />
+                  ))}
+                </span>
+              ) : (
+                "Not rated"
+              )}
+            </p>
+            <p>
+              <strong>Type:</strong> {route.info}
+            </p>
+            <p>
+              <strong>Description:</strong> {route.description}
+            </p>
+            <p>
+              <strong>First Ascent:</strong> {route.first_ascent}
+            </p>
+            <p>
+              <strong>Date:</strong> {route.date}
+            </p>
+          </div>
+        </div>
+        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-muted">
+          <Image
+            src="/placeholder.svg?height=600&width=450"
+            alt={`${route.name} route`}
+            layout="fill"
+            objectFit="cover"
+            className={`transition-opacity duration-500 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+            onLoad={() => setImageLoaded(true)}
+          />
+          {!imageLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Skeleton className="h-[80%] w-[90%]" />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
