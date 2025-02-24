@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import SearchBar from "~/components/searchbar";
 
 export default function Home() {
   return (
@@ -24,12 +25,7 @@ export default function Home() {
 
         {/* Search Bar */}
         <div className="relative mb-8 w-full max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Search routes..."
-            className="bg-secondary pl-10"
-          />
+          <SearchBar className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
         </div>
 
         <div className="space-x-4">
