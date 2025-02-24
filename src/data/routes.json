@@ -2698,6 +2698,1702 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "headland-5",
+      "name": "5th Headland",
+      "description": "On the road to Double Mouth, take the second track. Follow the track that trends in the DM direction. Park on the last headland or head land closest to DM.",
+      "sectors": [
+        {
+          "slug": "diffusion",
+          "name": "Diffusion",
+          "description": "This is the line of crags along the top of the Morgan Bay side of the 5th Headland. To reach them, find the scramble, which leads to Linear Ledge, follow the grassy slope inland, to the Diffusion Wall. Eager Beaver stands above a dense thicket of strelitzias further to the R. This is the rampy rocks land ward of the walk in to Linear Ledge, 10m R of the prominent open book, Midnight Sun.",
+          "routes": [
+            {
+              "slug": "banana-fl",
+              "name": "Banana FL",
+              "routeNumber": 1,
+              "grade": 13,
+              "stars": null,
+              "description": "Climb the broken stepped ramp. Then R past roof.",
+              "first_ascent": "Craig Bester & Derek Marshall",
+              "date": "2003",
+              "info": "(T)"
+            },
+            {
+              "slug": "broken-banana",
+              "name": "Broken Banana",
+              "routeNumber": 2,
+              "grade": 12,
+              "stars": null,
+              "description": "Climb the easy ramp. Top out to the R.\nA perfect open book on the LH side, indicates the start of Diffusion Wall.",
+              "first_ascent": "Craig Bester & Derek Marshall",
+              "date": "2003",
+              "info": "(T)"
+            },
+            {
+              "slug": "midnight-sun",
+              "name": "Midnight Sun",
+              "routeNumber": 3,
+              "grade": 21,
+              "stars": "",
+              "description": "This is the short, but perfect open book on the L of the crag.",
+              "first_ascent": "Derek Marshall &  Craig Bester",
+              "date": "2003",
+              "info": "(T)"
+            },
+            {
+              "slug": "kontiki",
+              "name": "Kontiki",
+              "routeNumber": 4,
+              "grade": 18,
+              "stars": "",
+              "description": "3m R of open book. Up vertical crack system then onto veg ledge. Up the small sea facing face to gain spacious belay ledge.",
+              "first_ascent": "Derek Marshall &  Kendyl Kunhardt",
+              "date": "2001",
+              "info": "(T)"
+            },
+            {
+              "slug": "ra",
+              "name": "Ra",
+              "routeNumber": 5,
+              "grade": 17,
+              "stars": null,
+              "description": "5.5m R of open book. Up horizontal cracks for 4m, then up L curving crack to gain veg ledge. Up the small sea facing face to gain spacious belay ledge.",
+              "first_ascent": "Derek Marshall & Kendyl Kunhardt",
+              "date": "2001",
+              "info": "(T)"
+            },
+            {
+              "slug": "tai-ki",
+              "name": "Tai Ki",
+              "routeNumber": 6,
+              "grade": 17,
+              "stars": null,
+              "description": "6m R of open book. Climb the of width, moving into the off width on the L. Traverse L along a ledge to gain the veg ledge. Up the small sea facing face to gain spacious belay ledge.",
+              "first_ascent": "Derek Marshall & Kendyl Kunhardt",
+              "date": "2001",
+              "info": "(T)"
+            },
+            {
+              "slug": "diffusion-project",
+              "name": "Diffusion",
+              "routeNumber": 8,
+              "grade": 17,
+              "stars": null,
+              "description": "Start under small roofs a few metres L of the blocky steps of Fu Snag. Pass the roof on the R to reach a sharp flake. Easy moves to the top.",
+              "first_ascent": "Bugs Sprouse & Gavin Peckham",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "fu-sang",
+              "name": "Fu Sang",
+              "routeNumber": 9,
+              "grade": 10,
+              "stars": null,
+              "description": "Follow crack up blocky steps.",
+              "first_ascent": "Kendyl Kunhardt & Derek Marshall",
+              "date": "2001",
+              "info": "(T)"
+            },
+            {
+              "slug": "walk-out",
+              "name": "Walk Out",
+              "routeNumber": 10,
+              "grade": 8,
+              "stars": null,
+              "description": "Stepped scramble.",
+              "first_ascent": "Craig Bester",
+              "date": "2003",
+              "info": "(S)"
+            },
+            {
+              "slug": "vesectomy-vision",
+              "name": "Vesectomy Vision",
+              "routeNumber": 11,
+              "grade": 17,
+              "stars": null,
+              "description": "About 6m R of Walk Out, climb the openbook hand crack. Avoid the loose rock., top out on the grass slope. There is nothing to belay from exept grass tufts….unless you have been smart enough to park your car near to the edge.",
+              "first_ascent": "Derek Marshall & Craig Bester",
+              "date": "2003",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "eager-beaver",
+          "name": "Eager Beaver",
+          "description": "Find your way through the strelitzias to the wall.",
+          "routes": [
+            {
+              "slug": "eager-beaver",
+              "name": "Eager Beaver",
+              "routeNumber": 12,
+              "grade": 12,
+              "stars": "",
+              "description": "3m R of where the base of the wall drops sharply. Climb onto a small ledge to gain a short off width. Then climb the R tending slab, which leads to a good crack up the next slab. This route is better than it looks.",
+              "first_ascent": "Gavin Peckham & Derek Marshall",
+              "date": "02/07/2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "elephants-asshole",
+              "name": "Elephants Asshole",
+              "routeNumber": 13,
+              "grade": 14,
+              "stars": "-2",
+              "description": "About 5m R of Eager Beaver is a nasty, dirty gully, which runs under a huge chock stone. Climb the gully into the cave and behind the chock stone. Wriggle through a small orifice. Do not repeat this route as there is a danger of becoming stuck in the orifice. When this happens, you will feel like an elephant sized asshole. Gavin Peckham refused to second.",
+              "first_ascent": "Derek Marshall & Gavin Peckham",
+              "date": "02/07/2002",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "linear-ledge",
+          "name": "Linear Ledge",
+          "description": "On the side of the headland that faces Morgan Bay find the steep decent gully. This area is where a large majority of climbing takes place at Morgan Bay.",
+          "routes": [
+            {
+              "slug": "easy-livin",
+              "name": "Easy Livin",
+              "routeNumber": 1,
+              "grade": 12,
+              "stars": null,
+              "description": "Start 2m L of descent scramble. Climb stepped easy face to grassy ledge. Move L into open book. Take easiest line to the top.",
+              "first_ascent": "Derek Marshall",
+              "date": "2001 (Solo)",
+              "info": "(Solo)"
+            },
+            {
+              "slug": "pins-and-needles",
+              "name": "Pins and Needles",
+              "routeNumber": 2,
+              "grade": 16,
+              "stars": null,
+              "description": "Climb the crack line to the L of Easy Livin.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "04/08/2004",
+              "info": "(T)"
+            },
+            {
+              "slug": "blue-swede-shoes",
+              "name": "Blue Swede Shoes",
+              "routeNumber": 3,
+              "grade": 19,
+              "stars": null,
+              "description": "Just R of Old Fashioned Book, up the off width, onto ledge. Move R and up.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "04/08/2004",
+              "info": "(T)"
+            },
+            {
+              "slug": "old-fashioned-book",
+              "name": "Old Fashioned Book",
+              "routeNumber": 4,
+              "grade": 16,
+              "stars": "",
+              "description": "Off width open book into chimney.",
+              "first_ascent": "Dave & Babara Freer",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "worm-on-a-hook",
+              "name": "Worm on a Hook",
+              "routeNumber": 5,
+              "grade": 20,
+              "stars": "",
+              "description": "2m L of Old Fashioned Book, climb the vertical crack. Break slightly L to a ledge, then continue up crack to the top.",
+              "first_ascent": "Dave & Babara Freer",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "alien-away",
+              "name": "Alien Away",
+              "routeNumber": 6,
+              "grade": 19,
+              "stars": "",
+              "description": "4m L of Old Fashioned Book, climb a short, slightly overhanging crack line to the same ledge as on Worm on a Hook. Continue straight up awkward double crack to the top.",
+              "first_ascent": "Dave & Babara Freer",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "drunk-in-the-midnight-choir",
+              "name": "Drunk In The Midnight Choir",
+              "routeNumber": 7,
+              "grade": 22,
+              "stars": "",
+              "description": "1m R of Burning Bush, climb the crack using poor pinch grips. A tricky traverse 8m up, leads to another crack. Protection is sparse, but good.",
+              "first_ascent": "Dave & Babara Freer",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "burning-bush",
+              "name": "Burning Bush",
+              "routeNumber": 8,
+              "grade": 15,
+              "stars": "",
+              "description": "This is the grungy looking recess just R of Linear Accelerator.",
+              "first_ascent": "Dave Freer & Rex Quick",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "linear-accelerator",
+              "name": "Linear Accelerator",
+              "routeNumber": 9,
+              "grade": 17,
+              "stars": "",
+              "description": "Climb the cracks into prominent open book ramp.",
+              "first_ascent": "Dave, Babara Freer & Pete Hawkes",
+              "date": "1983",
+              "info": "(T)"
+            },
+            {
+              "slug": "bannana-boy",
+              "name": "Bannana Boy",
+              "routeNumber": 10,
+              "grade": 22,
+              "stars": "",
+              "description": "Start just L of Linear Accelerator. Climb face trending L. Traverse 1m R on horizontal rail, then up thin crack to ledge.",
+              "first_ascent": "Andrew Forsyth & Clee Roy",
+              "date": "02/06/1985",
+              "info": "(T)"
+            },
+            {
+              "slug": "all-my-sins-remembered",
+              "name": "All My Sins Remembered",
+              "routeNumber": 11,
+              "grade": 20,
+              "stars": "",
+              "description": "Step off inverted ‘V’ rock, then streight up.",
+              "first_ascent": "Stuart Middlemiss & B.Slater",
+              "date": "1986",
+              "info": "(T)"
+            },
+            {
+              "slug": "no-pain-no-strain-no-brain",
+              "name": "No Pain, No Strain, No Brain",
+              "routeNumber": 12,
+              "grade": 20,
+              "stars": "",
+              "description": "Step off inverted ‘V’. Break L.",
+              "first_ascent": "Stuart Middlemiss",
+              "date": "1986",
+              "info": "(T)"
+            },
+            {
+              "slug": "friendly-thief",
+              "name": "Friendly Thief",
+              "routeNumber": 13,
+              "grade": 19,
+              "stars": null,
+              "description": "Open book through small roof.",
+              "first_ascent": "Steve Cooke & Babara Freer",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "bird-on-a-wire",
+              "name": "Bird On a Wire",
+              "routeNumber": 14,
+              "grade": 19,
+              "stars": "",
+              "description": "Arête L of All My Sins Remembered.",
+              "first_ascent": "Dave & Babara Freer",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "teenage-punks",
+              "name": "Teenage Punks",
+              "routeNumber": 15,
+              "grade": 24,
+              "stars": "",
+              "description": "Bolted by Derek Marshall.  These bolts are old & dangerous.",
+              "first_ascent": "Morne van der Mescht & Derek Marshall",
+              "date": "2001",
+              "info": "(5B&C)"
+            },
+            {
+              "slug": "fiddlers-green",
+              "name": "Fiddler's Green",
+              "routeNumber": 16,
+              "grade": 18,
+              "stars": "",
+              "description": "P1 – 15 Start as for Heels of a Soft Prayer Whispered. 4m up Traverse L. Climb the RH crack system. P2 – 18 Perfect crack. Tiny R facing open book crack.",
+              "first_ascent": "Dave & Babara Freer",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "brave-brave-mouse",
+              "name": "Brave, Brave Mouse",
+              "routeNumber": 17,
+              "grade": 17,
+              "stars": "",
+              "description": "P1 – 17 Start 6m L of where the platform drops into the sea. Up short, steep crack to gain stepped face bearing L. Traverse the loose slat of rock (1m long). Up thin crack. Step R to avoid trouble then onto Linear Ledge. P2 – 14 Climb the obvious crack to the R of the open book. Move L at the top to avoid poor rock.",
+              "first_ascent": "Dave & Babara Freer",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "the-razors-edge",
+              "name": "The Razor's Edge",
+              "routeNumber": 18,
+              "grade": 14,
+              "stars": null,
+              "description": "Broken open book.",
+              "first_ascent": "Dave & Babara Freer",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "sinister-mouse",
+              "name": "Sinister Mouse",
+              "routeNumber": 19,
+              "grade": 15,
+              "stars": "",
+              "description": "The climb to the L of Brave, Brave Mouse 2nd pitch, on the extreme L of the Linear Ledge.",
+              "first_ascent": "Hugo Vaughan & Cecily Roos",
+              "date": "07/07/2005",
+              "info": "(T)"
+            },
+            {
+              "slug": "the-peanut-line",
+              "name": "The Peanut Line",
+              "routeNumber": 20,
+              "grade": 12,
+              "stars": null,
+              "description": "Short open book.",
+              "first_ascent": "Craig Bester & Mark Luck",
+              "date": "04/09/2004",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "sweet-surrender",
+          "name": "Sweet Surrender",
+          "description": "Easiest walk-in is via Whale Bone, under Needle Wall & then past Carnival is Over. The scramble with care to the grassy terrace under Sweet Surrender. There are 2 scurry holes that lead to tricky scrambles. You can also access by abseil off your tow bar (70m rope required).",
+          "routes": [
+            {
+              "slug": "war-doctor",
+              "name": "War Doctor",
+              "routeNumber": 1,
+              "grade": 14,
+              "stars": null,
+              "description": "Up L facing open book, over ledge & into further open book. Over block & up R trending ramp. Belay on ledge at the start of the scurry hole.",
+              "first_ascent": "Derek Marshall & Tyson Baars",
+              "date": "21/03/2017",
+              "info": "(T)"
+            },
+            {
+              "slug": "forsaking-fate",
+              "name": "Forsaking Fate",
+              "routeNumber": 2,
+              "grade": 13,
+              "stars": null,
+              "description": "Up slab into R facing open book. Step L accrss ledge & up perfect hand crack. An easy scramble gets you down.",
+              "first_ascent": "Derek Marshall & Tyson Baars",
+              "date": "21/03/2017",
+              "info": "(T)"
+            },
+            {
+              "slug": "loosing-the-balance",
+              "name": "Loosing the Balance",
+              "routeNumber": 3,
+              "grade": 14,
+              "stars": null,
+              "description": "Up ramp & into hand crack. Then directly up to belay ledge.",
+              "first_ascent": "Derek Marshall & Ruben Snyman",
+              "date": "20/03/2017",
+              "info": "(T)"
+            },
+            {
+              "slug": "eat-my-veggie",
+              "name": "Eat My Veggie",
+              "routeNumber": 4,
+              "grade": 14,
+              "stars": null,
+              "description": "Start in R facting open book notch, up ramp into off width & into R facing fist open book.",
+              "first_ascent": "Ruben Snyman & Derek Marshall",
+              "date": "20/03/2017",
+              "info": "(T)"
+            },
+            {
+              "slug": "the-closed-eyes-of-paradise",
+              "name": "The Closed Eyes of Paradise",
+              "routeNumber": 5,
+              "grade": 14,
+              "stars": null,
+              "description": "Start on jugs, up onto slab. Stay L of open book. Onto ledge, step R into L facing off width open book. Up grassu slope & into R facing chimney open book.",
+              "first_ascent": "Derek Marshall & Tyson Baars",
+              "date": "21/03/2017",
+              "info": "(T)"
+            },
+            {
+              "slug": "spare-me-your-judgment",
+              "name": "Spare Me Your Judgment",
+              "routeNumber": 6,
+              "grade": 17,
+              "stars": "",
+              "description": "Up bear hug style blunt arete. Over easing ramp to belay on grassy ledge above.",
+              "first_ascent": "Derek Marshall & Ruben Snyman",
+              "date": "20/03/2017",
+              "info": "(T)"
+            },
+            {
+              "slug": "war-hammer",
+              "name": "War Hammer",
+              "routeNumber": 7,
+              "grade": 19,
+              "stars": "",
+              "description": "Prominent crack.",
+              "first_ascent": "Derek Marshall & Ruben Snyman",
+              "date": "20/03/2017",
+              "info": "(T)"
+            },
+            {
+              "slug": "metal-machine",
+              "name": "Metal Machine",
+              "routeNumber": 8,
+              "grade": 20,
+              "stars": "",
+              "description": "R facing, R trending open book. Through a small overhang to belay from the ledge above.",
+              "first_ascent": "Derek Marshall & Ruben Snyman",
+              "date": "20/03/2017",
+              "info": "(T)"
+            },
+            {
+              "slug": "cliff-warfare",
+              "name": "Cliff Warfare",
+              "routeNumber": 9,
+              "grade": 18,
+              "stars": null,
+              "description": "Up ramp onto ledge. Then L into chimney.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "2001",
+              "info": "(T)"
+            },
+            {
+              "slug": "gannet-view",
+              "name": "Gannet View",
+              "routeNumber": 10,
+              "grade": 12,
+              "stars": null,
+              "description": "Slab into chimney.",
+              "first_ascent": "Dave Freer & Pete Hawkes",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "sinus",
+              "name": "Sinus",
+              "routeNumber": 11,
+              "grade": 17,
+              "stars": null,
+              "description": "Up short slab to a ledge. Up using the arete to reach the overhangs. Through the RH overhang.",
+              "first_ascent": "n/a",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "sweet-surrender",
+              "name": "Sweet Surrender",
+              "routeNumber": 12,
+              "grade": 18,
+              "stars": "",
+              "description": "Slab to ledge, open book, below roof break right.",
+              "first_ascent": "Dave Freer & Carl van der Lingend",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "double-sensce",
+              "name": "Double Sensce",
+              "routeNumber": 13,
+              "grade": 17,
+              "stars": null,
+              "description": "Slab into stair way.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "2001",
+              "info": "(T)"
+            },
+            {
+              "slug": "no-cam-fit",
+              "name": "No Cam Fit",
+              "routeNumber": 14,
+              "grade": 19,
+              "stars": null,
+              "description": "Up Slab, into off width open book.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "2001",
+              "info": "(T)"
+            },
+            {
+              "slug": "old-man",
+              "name": "Old Man",
+              "routeNumber": 15,
+              "grade": 14,
+              "stars": null,
+              "description": "Easy slab, onto perfect hand crack, then face.",
+              "first_ascent": "Dave & Babara Freer & Gordon Bosch",
+              "date": "n/a",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "dunkirk",
+          "name": "Dunkirk",
+          "description": "From Sweet Surrender abseil 45m to the wave cut platform, 2m above the sea. This area can only be climbed on a calm day at very low tide. Most routes are about 40m or more and many are covered in bird shit.",
+          "routes": [
+            {
+              "slug": "dive-bombers",
+              "name": "Dive Bombers",
+              "routeNumber": 1,
+              "grade": 13,
+              "stars": null,
+              "description": "Traverse out above the wave cut platform to a stance. Up easy ramp, steps, ledges & over easy ground to the top.",
+              "first_ascent": "Derek Marshall & Allen Luck",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "crack-a-doey",
+              "name": "Crack a Doey",
+              "routeNumber": 2,
+              "grade": 15,
+              "stars": null,
+              "description": "Traverse out above the wave cut platform to a stance. Up easy ramp, steps, ledges & up a short open book to a ledge. Step R a few metres. Up easy ground to the top.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "goeden-morgan",
+              "name": "Goeden Morgan",
+              "routeNumber": 3,
+              "grade": 16,
+              "stars": null,
+              "description": "Up broken ramp & steps. Up to grassy ledge.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "the-snow-goose",
+              "name": "The Snow Goose",
+              "routeNumber": 4,
+              "grade": 14,
+              "stars": null,
+              "description": "Stepped slab to ledge, up broken arête to grass ledge.",
+              "first_ascent": "Derek Marshall & Allen Luck",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "good-morning-morgan",
+              "name": "Good Morning Morgan",
+              "routeNumber": 5,
+              "grade": 17,
+              "stars": null,
+              "description": "Broken steps to ledge.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "three-steps-to-the-left",
+              "name": "Three Steps to the Left",
+              "routeNumber": 6,
+              "grade": 15,
+              "stars": null,
+              "description": "Up stepper rails to the L, into crack break, then easy ledges to the top.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "evacuation",
+              "name": "Evacuation",
+              "routeNumber": 7,
+              "grade": 15,
+              "stars": null,
+              "description": "Broken open book into chimney.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "baby-elephant-walk",
+              "name": "Baby Elephant Walk",
+              "routeNumber": 8,
+              "grade": 18,
+              "stars": null,
+              "description": "L up ramp, into open book, up to Sweet Surrender ledge.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "stuka",
+              "name": "Stuka",
+              "routeNumber": 9,
+              "grade": 17,
+              "stars": null,
+              "description": "Medium hand crack.",
+              "first_ascent": "Derek Marshall & Allen Luck",
+              "date": "2001",
+              "info": "(T)"
+            },
+            {
+              "slug": "his-eyes-are-bigger-than-his-balls",
+              "name": "His Eyes are Bigger Than His Balls",
+              "routeNumber": 10,
+              "grade": 19,
+              "stars": null,
+              "description": "Up ledges, into open book, onto face to the top.",
+              "first_ascent": "Derek Marshall & Allen Luck",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "just-up-allens-alley",
+              "name": "Just Up Allen's Alley",
+              "routeNumber": 11,
+              "grade": 17,
+              "stars": "",
+              "description": "Hand crack into V shaped chimney, finish up chimney to L.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "steel-tormentor",
+              "name": "Steel Tormentor",
+              "routeNumber": 12,
+              "grade": 18,
+              "stars": "",
+              "description": "Off width into perfect finger crack.",
+              "first_ascent": "Derek Marshall & Allen Luck",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "spitfire",
+              "name": "Spitfire",
+              "routeNumber": 13,
+              "grade": 17,
+              "stars": null,
+              "description": "Start on platform, broken open book onto lower ramp.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "wafens-ss",
+              "name": "Wafens SS",
+              "routeNumber": 14,
+              "grade": 16,
+              "stars": null,
+              "description": "Climb the awkward off width open book 2,5m R of Train Hard…Fight Easy! Find the easiest way to the top across steps and ledges.",
+              "first_ascent": "Derek Marshall & Craig Bester",
+              "date": "21/02/2004",
+              "info": "(T)"
+            },
+            {
+              "slug": "train-hard-fight-easy",
+              "name": "Train Hard…Fight Easy!",
+              "routeNumber": 15,
+              "grade": 15,
+              "stars": null,
+              "description": "Up short, but good chimney. Find the easiest way to the top across steps and ledges.",
+              "first_ascent": "Derek Marshall & Craig Bester",
+              "date": "21/02/2004",
+              "info": "(T)"
+            },
+            {
+              "slug": "desolation-angel",
+              "name": "Desolation Angel",
+              "routeNumber": 16,
+              "grade": 18,
+              "stars": "",
+              "description": "Up seemingly short open book. Then up arête directly above. Pass roof to the L.",
+              "first_ascent": "Derek Marshall & Craig Bester",
+              "date": "21/02/2004",
+              "info": "(T)"
+            },
+            {
+              "slug": "all-fired-up",
+              "name": "All Fired Up",
+              "routeNumber": 17,
+              "grade": 17,
+              "stars": "",
+              "description": "Up awful steps to L most open book, which is on the R. Up to L of small roof.",
+              "first_ascent": "Derek Marshall & Craig Bester",
+              "date": "21/02/2004",
+              "info": "(T)"
+            },
+            {
+              "slug": "dunkirks-toilet",
+              "name": "Dunkirk’s Toilet",
+              "routeNumber": 18,
+              "grade": 11,
+              "stars": null,
+              "description": "Up awful steps into awful gully. Traverse R just before the grass.",
+              "first_ascent": "Craig Bester & Derek Marshall",
+              "date": "21/02/2004",
+              "info": "(T)"
+            },
+            {
+              "slug": "rudely-hewn-grandeur",
+              "name": "Rudely-Hewn Grandeur",
+              "routeNumber": 19,
+              "grade": 18,
+              "stars": "",
+              "description": "Start 7m R of huge dark chimney. Climb the serrated open book. Move L onto large ledge. Up very nasty unprotected chimney to top of the pillar. Continue up ramps to top out.",
+              "first_ascent": "Derek Marshall & Craig Bester",
+              "date": "21/02/2004",
+              "info": "(T)"
+            },
+            {
+              "slug": "ticklish-cauliflower",
+              "name": "Ticklish Cauliflower",
+              "routeNumber": 20,
+              "grade": 19,
+              "stars": "",
+              "description": "Start 2m R of huge dark chimney. Climb the absolutely perfect hand crack to the big ledge. Move R across ledge to climb the very nasty unprotected chimney to top of the pillar. Continue up ramps to top out.",
+              "first_ascent": "Derek Marshall & Craig Bester",
+              "date": "21/02/2004",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "carnival-is-over",
+          "name": "Carnival is Over",
+          "description": "This sector is identified by the large boulder which forms a 'bridge' between the grassy cliff top and the top of the free-standing pillar known as Carnival is Over. The bridge creates 'The Eye'. The easiest & safest walk in is to the DM side of CiO Pillar then follow the path below Whale Bone in the direction of DM. Descend on easy ground to below Needle Wall.",
+          "routes": [
+            {
+              "slug": "teddy-bear",
+              "name": "Teddy Bear",
+              "routeNumber": 1,
+              "grade": 18,
+              "stars": null,
+              "description": "This is the line on the DM side of the Flycatcher slab.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "June 2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "flycatcher",
+              "name": "Flycatcher",
+              "routeNumber": 2,
+              "grade": 18,
+              "stars": "",
+              "description": "This is the awesome looking slab on the DM side of the Pillar.",
+              "first_ascent": "Pete Hawkes, D.Venter & Peter Lazarus",
+              "date": "06/07/1986",
+              "info": "(T)"
+            },
+            {
+              "slug": "lekker-lekker",
+              "name": "Lekker – Lekker!",
+              "routeNumber": 3,
+              "grade": 17,
+              "stars": null,
+              "description": "Start under the arch formed by the Fly Catcher slabs leaning against the main pillar. Climb past a giant chock stone, then L under the arch to gain a loverly lay back.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "the-carnival-is-over",
+              "name": "The Carnival is Over",
+              "routeNumber": 4,
+              "grade": 18,
+              "stars": "",
+              "description": "Start by climbing the vertical crack in the middle of the seaward face. Trend R to gain the awesome hand crack which widens into an off width.",
+              "first_ascent": "Dave & Babara Freer",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "watching-the-ocean",
+              "name": "Watching the Ocean",
+              "routeNumber": 5,
+              "grade": 19,
+              "stars": "",
+              "description": "Start at the R of the huge flake at the base of seaward face. Climb the thin crack to below a large protruding block. Move L of it and onto small ledge above. Climb the arete, finishing through the ‘V’-notch.",
+              "first_ascent": "Russ Dodding & P.Greenfield",
+              "date": "19/04/1987",
+              "info": "(T)"
+            },
+            {
+              "slug": "yellow-jester",
+              "name": "Yellow Jester",
+              "routeNumber": 6,
+              "grade": 22,
+              "stars": "",
+              "description": "Climb the MB side of CiO pillar.",
+              "first_ascent": "Kevin Smith",
+              "date": "1985",
+              "info": "(T)"
+            },
+            {
+              "slug": "power-finger",
+              "name": "Power Finger",
+              "routeNumber": 7,
+              "grade": 19,
+              "stars": null,
+              "description": "This route climbs the Carnival is Over Pillar on the MB side of the large block which forms The Bridge. This is the sea facing wall on the landward side, below The Eye.",
+              "first_ascent": "Dave Freer & Gordon Bosch",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "elan-audacity",
+              "name": "Èlan Audacity",
+              "routeNumber": 8,
+              "grade": 18,
+              "stars": "",
+              "description": "Up crack, step R onto ledge. Up steps into base of open book. Step down & R into layaway formed by huge flake.",
+              "first_ascent": "Derek Marshall & Craig Bester",
+              "date": "16/12/2016",
+              "info": "(T)"
+            },
+            {
+              "slug": "s-bend",
+              "name": "\"S\" Bend",
+              "routeNumber": 9,
+              "grade": 23,
+              "stars": "",
+              "description": "This is the zig-zag crack system 2nd to the L of the Full Value arete.",
+              "first_ascent": "Jeremy Colenzo",
+              "date": "1986",
+              "info": "(T)"
+            },
+            {
+              "slug": "breaking-the-law",
+              "name": "Breaking the Law",
+              "routeNumber": 10,
+              "grade": 25,
+              "stars": null,
+              "description": "First crack to L of the Full Value arete.",
+              "first_ascent": "Mike Cartright, Kevin Smith & Stuart Middlemiss",
+              "date": "1987",
+              "info": "(T)"
+            },
+            {
+              "slug": "full-value",
+              "name": "Full Value",
+              "routeNumber": 11,
+              "grade": 22,
+              "stars": "",
+              "description": "Cracks just R of arête, using arête. Face round the corner to the R.",
+              "first_ascent": "Stuart Middlemiss & Clive Cursens",
+              "date": "1987",
+              "info": "(T)"
+            },
+            {
+              "slug": "one-white-duck-on-your-wall",
+              "name": "One White Duck on Your Wall = 0º = Nothing at All",
+              "routeNumber": 12,
+              "grade": 21,
+              "stars": "",
+              "description": "Strange, slightly over hanging, break R of top over hangs.",
+              "first_ascent": "Dave & Babara Freer & Steve Cooke",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "haze-on-the-sky-line",
+              "name": "Haze on the Sky Line",
+              "routeNumber": 14,
+              "grade": 18,
+              "stars": null,
+              "description": "Start up perfect open book, then up prominent crack system.",
+              "first_ascent": "Dave & Babara Freer & PhillipTurnbull",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "rise-to-the-sky",
+              "name": "Rise To The Sky",
+              "routeNumber": 15,
+              "grade": 17,
+              "stars": null,
+              "description": "Up the ‘V’ groove, rail R onto a ledge, then up to the R to gain the top of the block. Step R to a good belay.",
+              "first_ascent": "Patrick Brown & Derek Marshall",
+              "date": "16/12/2016",
+              "info": "(T)"
+            },
+            {
+              "slug": "inside-joke",
+              "name": "Inside Joke",
+              "routeNumber": 16,
+              "grade": 13,
+              "stars": "",
+              "description": "R facing open book behind boulders.",
+              "first_ascent": "Ruben Snyman & Terence Trevaskes",
+              "date": "21/03/2016",
+              "info": "(T)"
+            },
+            {
+              "slug": "ma",
+              "name": "Ma",
+              "routeNumber": 17,
+              "grade": 14,
+              "stars": null,
+              "description": "L facing open book behind boulders.",
+              "first_ascent": "Terence Trevaskes & Ruben Snyman",
+              "date": "21/03/2016",
+              "info": "(T)"
+            },
+            {
+              "slug": "pa",
+              "name": "Pa",
+              "routeNumber": 18,
+              "grade": 15,
+              "stars": null,
+              "description": "‘V’ groove.",
+              "first_ascent": "Terence Trevaskes & Ruben Snyman",
+              "date": "21/03/2016",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "strandlooper-buttress",
+          "name": "Strandlooper Buttress",
+          "description": "This buttress is below Carnival is Over in the seaward direction. Abseil from the large boulders about 10m from Carnival is Over or look for the scramble down on the DM side of the buttress. Routes are recorded from MB to DM.",
+          "routes": [
+            {
+              "slug": "swem-jannie-swem",
+              "name": "Swem Jannie! Swem!",
+              "routeNumber": 1,
+              "grade": 19,
+              "stars": "",
+              "description": "Climb the obvious chimney. This is a really cool chimney. Totally recommended. Especially if you enjoy dark, damp, slippery and awkward routes. Take a 5 & 6 Friend as well as two No.4 Big Bro. The belayer should ideally have some diving experience. Derek was half way up when a freak big wave came in. Water splashed into the chimney. Belayer was washed off his feet.",
+              "first_ascent": "Derek Marshall & Allen Luck",
+              "date": "21/03/2004",
+              "info": "(T)"
+            },
+            {
+              "slug": "muscle-cracker",
+              "name": "Muscle Cracker",
+              "routeNumber": 2,
+              "grade": 17,
+              "stars": null,
+              "description": "Start in small open book, up obvious crack.",
+              "first_ascent": "Derek Marshall & Allen Luck",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "storm-walker",
+              "name": "Storm Walker",
+              "routeNumber": 3,
+              "grade": 18,
+              "stars": null,
+              "description": "Up steps to awkward chimney. Climb the off width.",
+              "first_ascent": "Derek Marshall & Allen Luck",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "vuga-vuga",
+              "name": "Vuga Vuga",
+              "routeNumber": 4,
+              "grade": 16,
+              "stars": null,
+              "description": "Up loose, groove to top.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "needle-wall",
+          "name": "Needle Wall",
+          "description": "Easiest access is to find a break on the MB side of Whale Bone. Follow the path at the base of Whale Bone towards the DM side. Descend about 15m. Needle Wall runs for about 40m almost to CiO.",
+          "routes": [
+            {
+              "slug": "chicken-noodle-do",
+              "name": "Chicken Noodle Do",
+              "routeNumber": 1,
+              "grade": 12,
+              "stars": null,
+              "description": "Easy short line on DM face.",
+              "first_ascent": "Craig Bester & Allen Luck",
+              "date": "2001",
+              "info": "(T)"
+            },
+            {
+              "slug": "no-chicken-noodles",
+              "name": "No Chicken Noodles",
+              "routeNumber": 2,
+              "grade": 18,
+              "stars": null,
+              "description": "Easy short line on DM face.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "2001",
+              "info": "(T)"
+            },
+            {
+              "slug": "mine-mine-mine",
+              "name": "Mine! Mine! Mine!",
+              "routeNumber": 3,
+              "grade": 18,
+              "stars": null,
+              "description": "Climb the arête.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "rain-drops",
+              "name": "Rain Drops",
+              "routeNumber": 4,
+              "grade": 19,
+              "stars": null,
+              "description": "Left of cammed boulder.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "2001",
+              "info": "(T)"
+            },
+            {
+              "slug": "stone-age-cam",
+              "name": "Stone Age Cam",
+              "routeNumber": 5,
+              "grade": 17,
+              "stars": null,
+              "description": "Right of cammed boulder.",
+              "first_ascent": "Derek Marshall & Craig Bester",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "heros-of-bangui",
+              "name": "Heros of Bangui",
+              "routeNumber": 6,
+              "grade": 20,
+              "stars": null,
+              "description": "16m; Short off width open book.",
+              "first_ascent": "Derek Marshall & Pat Brown",
+              "date": "16/12/2016",
+              "info": "(T)"
+            },
+            {
+              "slug": "mine-kamf",
+              "name": "Mine Kamf",
+              "routeNumber": 7,
+              "grade": 18,
+              "stars": null,
+              "description": "Short off Width.",
+              "first_ascent": "Derek Marshall & Craig Bester",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "lucky-pet",
+              "name": "Lucky Pet",
+              "routeNumber": 8,
+              "grade": 20,
+              "stars": null,
+              "description": "Past veg, up twin cracks.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "lucky",
+              "name": "Lucky",
+              "routeNumber": 9,
+              "grade": 15,
+              "stars": null,
+              "description": "Chimney.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "fallen-in-war",
+              "name": "Fallen in War",
+              "routeNumber": 10,
+              "grade": 16,
+              "stars": null,
+              "description": "22m; Up slab onto ledge. Stay on slab L of L facing open book. Then rail L up short off width section to ledge.",
+              "first_ascent": "Derek Marshall & Pat Brown",
+              "date": "16/12/2016",
+              "info": "(T)"
+            },
+            {
+              "slug": "the-cast-pit",
+              "name": "The Cast Pit",
+              "routeNumber": 11,
+              "grade": 14,
+              "stars": null,
+              "description": "Up shallow recess, onto ledge into left into open book, top out.",
+              "first_ascent": "Derek Marshall & Allen Luck",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "alexcor",
+              "name": "Alexcor",
+              "routeNumber": 12,
+              "grade": 17,
+              "stars": null,
+              "description": "Start in LH dirty recess, joining Mine Shaft towards top. Stay outside the “mine shaft” chimney.",
+              "first_ascent": "Derek Marshall & Allen Luck",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "mine-shaft",
+              "name": "Mine Shaft",
+              "routeNumber": 13,
+              "grade": 17,
+              "stars": "",
+              "description": "Start in dirty RH resess. Up most prominent line. Stay outside the “mine shaft” chimney.",
+              "first_ascent": "Dave & Babara Freer & Steve Cooke",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "birth-canal",
+              "name": "Birth Canal",
+              "routeNumber": 14,
+              "grade": 17,
+              "stars": null,
+              "description": "Start in dirty RH resess which is Mine Shaft. Near the top go into the Mine Shaft chimney. Exit on the landward side of the chimney through a scurry hole.",
+              "first_ascent": "Tyson Baars & Ruben Snyman",
+              "date": "16/12/2016",
+              "info": "(T)"
+            },
+            {
+              "slug": "good-to-go",
+              "name": "Good to Go",
+              "routeNumber": 15,
+              "grade": 14,
+              "stars": null,
+              "description": "Up blocks, steps & most prominent open book.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "hair-of-my-chiny-chin-chin",
+              "name": "Hair of My Chiny, Chin, Chin",
+              "routeNumber": 16,
+              "grade": 13,
+              "stars": null,
+              "description": "Up ledges and blocks to the top.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "like-a-schnaffeling-snake",
+              "name": "Like a Schnaffeling Snake",
+              "routeNumber": 17,
+              "grade": 16,
+              "stars": null,
+              "description": "Up blocky steps onto slabs, step L into open book.",
+              "first_ascent": "Ruben Snyman & Terence Trevaskes",
+              "date": "21/03/2016",
+              "info": "(T)"
+            },
+            {
+              "slug": "follow-on",
+              "name": "Follow On",
+              "routeNumber": 18,
+              "grade": 16,
+              "stars": null,
+              "description": "Short off width.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "step-by-step",
+              "name": "Step by Step",
+              "routeNumber": 19,
+              "grade": 15,
+              "stars": null,
+              "description": "Easy chimney.",
+              "first_ascent": "Allen Luck",
+              "date": "2001",
+              "info": "(S)"
+            },
+            {
+              "slug": "bring-me-to-life",
+              "name": "Bring Me to Life",
+              "routeNumber": 20,
+              "grade": 22,
+              "stars": "",
+              "description": "16m; Up the LH arête. Start is hard. Gear is very marginal. Near the top, break out L into thin crack.",
+              "first_ascent": "Derek Marshall & Pat Brown",
+              "date": "16/12/2016",
+              "info": "(T)"
+            },
+            {
+              "slug": "chosen-not-forsaken",
+              "name": "Chosen Not Forsaken",
+              "routeNumber": 21,
+              "grade": 21,
+              "stars": "",
+              "description": "Start up on unlikely jug that looks like it will peal off. Into small open book roof. Move slightly L onto arête, then back R & directly up. Rail a bit R, then back L onto the line.",
+              "first_ascent": "Derek Marshall, Ruben Snyman & Tyson Baars",
+              "date": "16/12/2017",
+              "info": "(4RB&T)"
+            },
+            {
+              "slug": "the-needle-and-the-damage-done",
+              "name": "The Needle and the Damage Done",
+              "routeNumber": 22,
+              "grade": 19,
+              "stars": null,
+              "description": "Open book, right through the roof, left up thin crack.",
+              "first_ascent": "Dave & Babara Freer & Gordon Bosch",
+              "date": "n/a",
+              "info": "(T)"
+            },
+            {
+              "slug": "better-than-sex",
+              "name": "Better Than Sex",
+              "routeNumber": 23,
+              "grade": 17,
+              "stars": null,
+              "description": "Start a few meters R of The Needle and the Damage Done. Directly below the RH end of the rarrow roof at the top of the face.",
+              "first_ascent": "Gavin Raubienheimer & Gavin Peckham",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "sex",
+              "name": "Sex",
+              "routeNumber": 24,
+              "grade": 16,
+              "stars": null,
+              "description": "Climb the arete.",
+              "first_ascent": "Gavin Raubienheimer & Gavin Peckham",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "in-trance",
+              "name": "In Trance",
+              "routeNumber": 25,
+              "grade": 18,
+              "stars": null,
+              "description": "Start in open book.",
+              "first_ascent": "Derek Marshall & Allen Luck",
+              "date": "2001",
+              "info": "(T)"
+            },
+            {
+              "slug": "stitch-by-stitch",
+              "name": "Stitch by Stitch",
+              "routeNumber": 26,
+              "grade": 16,
+              "stars": null,
+              "description": "Large chimney.",
+              "first_ascent": "Allen Luck",
+              "date": "2001",
+              "info": "(S)"
+            },
+            {
+              "slug": "old-age",
+              "name": "Old Age",
+              "routeNumber": 27,
+              "grade": 13,
+              "stars": null,
+              "description": "Easy short off width chimney.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "2002",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "made-to-fit",
+          "name": "Made to Fit",
+          "description": "This sector runs discontinuously between Lower Slippery When Wet and Pivotal Motion. There is potential for a few more hard bolted routes.",
+          "routes": [
+            {
+              "slug": "made-to-fit",
+              "name": "Made to Fit",
+              "routeNumber": 1,
+              "grade": 17,
+              "stars": null,
+              "description": "Climb blocky open book steps on land ward side.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "project-26",
+              "name": "PROJECT",
+              "routeNumber": 2,
+              "grade": 26,
+              "stars": null,
+              "description": "Derek Marshall (8B&C)\n Bolted in about 2003. These bolts are old & dangerous.",
+              "first_ascent": "Derek Marshall",
+              "date": "2003",
+              "info": "(8B&C)"
+            },
+            {
+              "slug": "project-27",
+              "name": "PROJECT",
+              "routeNumber": 3,
+              "grade": 27,
+              "stars": null,
+              "description": "Derek Marshall (C only)\nTo the R of (2). Only top chains at this stage.\n Bolted in about 2003. These bolts are old & dangerous.",
+              "first_ascent": "Derek Marshall",
+              "date": "2003",
+              "info": "(C only)"
+            },
+            {
+              "slug": "fit-as-a-fiddle",
+              "name": "Fit as a Fiddle",
+              "routeNumber": 4,
+              "grade": 14,
+              "stars": null,
+              "description": "Easy crack L of open book.",
+              "first_ascent": "Craig Bester & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "fit-as-a-porksta",
+              "name": "Fit as a Porksta",
+              "routeNumber": 5,
+              "grade": 12,
+              "stars": null,
+              "description": "Big open book.",
+              "first_ascent": "Craig Bester & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "porksta-endurance",
+              "name": "Porksta Endurance",
+              "routeNumber": 6,
+              "grade": 16,
+              "stars": null,
+              "description": "Fist crack open book, into off width.",
+              "first_ascent": "Craig Bester & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "exact-a-mondo",
+              "name": "Exact a Mondo",
+              "routeNumber": 7,
+              "grade": 14,
+              "stars": null,
+              "description": "Diagonal crack system through easy ramp.",
+              "first_ascent": "Derek Marshall & Craig Bester",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "better-days",
+              "name": "Better Days",
+              "routeNumber": 8,
+              "grade": 20,
+              "stars": "",
+              "description": "This route is away to the R of the rest. Climb the fat undercut off width crack. Will need 6 Friend to protect. Short, but sweet!",
+              "first_ascent": "Derek Marshall & Craig Bester",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "one-alone",
+              "name": "One Alone",
+              "routeNumber": 9,
+              "grade": 15,
+              "stars": null,
+              "description": "Situated on its own to the R of Better Days. Climb the RH arete.",
+              "first_ascent": "Gavin Peckham & Derek Marshall",
+              "date": "15/12/2002",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "pivotal-motion",
+          "name": "Pivotal Motion",
+          "description": "Although this area is short it has some potential for harder bolted routes.",
+          "routes": [
+            {
+              "slug": "pivotal-motion",
+              "name": "Pivotal Motion",
+              "routeNumber": 1,
+              "grade": 14,
+              "stars": null,
+              "description": "On MB side. Start R of arete. Move L onto arete. Then onto ledge.",
+              "first_ascent": "Gavin Peckham & Buggs Sprouse",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "triumph-of-steel",
+              "name": "Triumph of Steel",
+              "routeNumber": 2,
+              "grade": 22,
+              "stars": "",
+              "description": "Derek Marshall & Allen Luck May 2003 (5B&C). Bolted in about 2003. These bolts are old & dangerous.",
+              "first_ascent": "Derek Marshall & Allen Luck",
+              "date": "May 2003",
+              "info": "(5B&C)"
+            },
+            {
+              "slug": "the-gladiator",
+              "name": "The Gladiator",
+              "routeNumber": 3,
+              "grade": 20,
+              "stars": "",
+              "description": "Awkward off width through roof.",
+              "first_ascent": "Craig Bester & Derek Marshall",
+              "date": "2003",
+              "info": "(T)"
+            },
+            {
+              "slug": "anti-terror",
+              "name": "Anti Terror",
+              "routeNumber": 4,
+              "grade": 18,
+              "stars": null,
+              "description": "Open book to top of pinnical.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "noodle-attack",
+              "name": "Noodle Attack",
+              "routeNumber": 5,
+              "grade": 14,
+              "stars": null,
+              "description": "Prominent broken crack to L of open book.",
+              "first_ascent": "Craig Bester & Allen Luck",
+              "date": "2002",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "booze-cruise",
+          "name": "Booze Cruise",
+          "description": "This is the small sector directly above Just a Breeze.",
+          "routes": [
+            {
+              "slug": "booze-control",
+              "name": "Booze Control",
+              "routeNumber": 1,
+              "grade": 13,
+              "stars": null,
+              "description": "Start L of twin cracks. Top out in LH crack.",
+              "first_ascent": "Craig Bester & Allen Luck",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "booze-cruise-route",
+              "name": "Booze Cruise",
+              "routeNumber": 2,
+              "grade": 12,
+              "stars": null,
+              "description": "There are two obvious parallel crack lines towards the left-hand end of this crag. Booze Cruise takes the LH crack line.",
+              "first_ascent": "Buggs Sprouse & Gavin Peckham",
+              "date": "09/01/2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "trad-intoxicated",
+              "name": "Trad Intoxicated",
+              "routeNumber": 3,
+              "grade": 18,
+              "stars": null,
+              "description": "Smooth perfect chimney. L of large hanging chock stone.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "2002",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "just-a-breeze",
+          "name": "Just a Breeze",
+          "description": "This is a short section of rock to the R of Smooth Operator. See topo for route locations.",
+          "routes": [
+            {
+              "slug": "just-a-breeze-route",
+              "name": "Just a Breeze",
+              "routeNumber": 1,
+              "grade": 12,
+              "stars": null,
+              "description": "Climb chimney to ledge. Then 2nd chimney to top of block.",
+              "first_ascent": "Derek Marshall & Gavin Peckham",
+              "date": "2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "angst",
+              "name": "Angst",
+              "routeNumber": 2,
+              "grade": 17,
+              "stars": null,
+              "description": "Seaward blunt arête. This is a hi-ball route with no gear (zero). Marshall, having more to live for, refused to follow.",
+              "first_ascent": "Gavin Peckham & Derek Marshall",
+              "date": "15/12/2002",
+              "info": "(T)"
+            },
+            {
+              "slug": "small-fry",
+              "name": "Small Fry",
+              "routeNumber": 3,
+              "grade": 11,
+              "stars": null,
+              "description": "Start in easy crack. Top out on large boulder, then jump from the top.",
+              "first_ascent": "Derek Marshall & Gavin Peckham",
+              "date": "2002",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "smooth-operator",
+          "name": "Smooth Operator",
+          "description": "This is the last small piece of rock as the 5th Headland curves down towards DM. The routes were scrambled without ropes, but have fairly good grass landings.",
+          "routes": [
+            {
+              "slug": "forked-tongue",
+              "name": "Forked Tongue",
+              "routeNumber": 1,
+              "grade": 15,
+              "stars": null,
+              "description": "Climb the crack with the large wedged block on the DM side. Go L or R where crack splits.",
+              "first_ascent": "Gavin Peckham",
+              "date": "15/12/2002",
+              "info": "(S)"
+            },
+            {
+              "slug": "smooth-operator-route",
+              "name": "Smooth Operator",
+              "routeNumber": 2,
+              "grade": 19,
+              "stars": "",
+              "description": "Climb the seaward face starting on the rock shelf, past two pockets to the top. There is no gear what so ever.",
+              "first_ascent": "Gavin Peckham & Derek Marshall",
+              "date": "09/01/2002",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "outlaw-crag",
+          "name": "Outlaw Crag",
+          "description": "Driving towards DM, just after the dairy (square building to the R), pass through a gate. Outlaw Crag is in the river valley to the R. (Private property – contact landowner before climbing.)",
+          "routes": [
+            {
+              "slug": "forgive-us-our-trespassing",
+              "name": "Forgive Us Our Trespassing",
+              "routeNumber": 1,
+              "grade": 14,
+              "stars": null,
+              "description": "Up stepped blocks on the river side of free stander, to top of pinnacle.",
+              "first_ascent": "Derek Marshall & Allen Luck",
+              "date": "July 2003",
+              "info": "(T)"
+            },
+            {
+              "slug": "lucky-luke",
+              "name": "Lucky Luke",
+              "routeNumber": 2,
+              "grade": 18,
+              "stars": null,
+              "description": "Up easy cracks to big ledge. Up crack. Traverse R to huge flake. Top out.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "July 2003",
+              "info": "(T)"
+            }
+          ]
+        },
+        {
+          "slug": "black-rock",
+          "name": "Black Rock",
+          "description": "From the Double Mouth campsite, walk along the beach in the direction of East London. Cross the river at low tide and continue to the dolerite outcrops on the far side. The crags are short and suitable for bouldering or easy routes.",
+          "routes": [
+            {
+              "slug": "cling-to-the-dream",
+              "name": "Cling to the Dream",
+              "routeNumber": 1,
+              "grade": 14,
+              "stars": null,
+              "description": "Easy line on the far L.",
+              "first_ascent": "Craig Bester & Allen Luck",
+              "date": "July 2003",
+              "info": "(T)"
+            },
+            {
+              "slug": "smart-as-can-be",
+              "name": "Smart as Can Be",
+              "routeNumber": 2,
+              "grade": 14,
+              "stars": null,
+              "description": "Easy steps breaking L.",
+              "first_ascent": "Craig Bester & Allen Luck",
+              "date": "July 2003",
+              "info": "(T)"
+            },
+            {
+              "slug": "silent-symptoms",
+              "name": "Silent Symptoms",
+              "routeNumber": 3,
+              "grade": 16,
+              "stars": null,
+              "description": "Inner chimney. Through hole in the roof.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "July 2003",
+              "info": "(T)"
+            },
+            {
+              "slug": "leopards-lilies",
+              "name": "Leopards & Lilies",
+              "routeNumber": 4,
+              "grade": 17,
+              "stars": null,
+              "description": "Outer chimney.",
+              "first_ascent": "Allen Luck & Craig Bester",
+              "date": "July 2003",
+              "info": "(T)"
+            },
+            {
+              "slug": "seal-struck",
+              "name": "Seal Struck",
+              "routeNumber": 5,
+              "grade": 18,
+              "stars": null,
+              "description": "Smooth chimney to the R of the prominent chimney.",
+              "first_ascent": "Allen Luck & Derek Marshall",
+              "date": "July 2003",
+              "info": "(T)"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

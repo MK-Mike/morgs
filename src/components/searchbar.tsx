@@ -154,7 +154,7 @@ const SearchBar: React.FC = () => {
       )}
 
       {isDropdownVisible && (
-        <div className="absolute z-10 mt-1 max-h-96 w-full overflow-y-auto rounded-md border border-gray-300 bg-white shadow-lg">
+        <div className="absolute z-10 mt-1 max-h-96 w-full overflow-y-auto rounded-md border border-gray-300 bg-secondary shadow-lg">
           {filteredResults.matchedRoutes.length === 0 &&
           filteredResults.matchedSectors.length === 0 ? (
             <div className="p-2 text-gray-500">No results found</div>
@@ -163,11 +163,11 @@ const SearchBar: React.FC = () => {
               {filteredResults.matchedRoutes.map((route) => (
                 <div
                   key={route.slug}
-                  className="cursor-pointer p-2 hover:bg-gray-100"
+                  className="cursor-pointer p-2 text-accent-foreground hover:bg-gray-100"
                   onClick={() => handleResultClick(route)}
                 >
                   <div className="font-medium">{route.name}</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-secondary-foreground">
                     Grade: {route.grade} | {route.sector}, {route.headland}
                   </div>
                 </div>
