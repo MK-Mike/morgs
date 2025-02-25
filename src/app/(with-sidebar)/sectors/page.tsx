@@ -1,4 +1,4 @@
-import type { Route, Sector, Headland, RoutesData } from "@/types/routes";
+import type { Route, Sector, Headland, RoutesData } from "@/app/types/routes";
 import routesData from "@/data/routes.json" assert { type: "json" };
 
 import SectorCard from "~/components/SectorCard";

@@ -8,7 +8,7 @@ import Breadcrumbs from "~/components/Breadcrumbs";
 import { Skeleton } from "~/components/ui/skeleton";
 import routesData from "~/data/routes.json";
 import { Star } from "lucide-react";
-import type { Route } from "~/types/routes";
+import type { Route } from "~/app/types/routes";
 
 export default function RoutePage() {
   const { sector: sectorSlug, route: routeSlug } = useParams();
