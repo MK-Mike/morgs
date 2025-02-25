@@ -12,7 +12,7 @@ export default function SectorsLayout({
     <div className="overflow-auto p-4">
       <div className="mx-auto max-w-5xl">
         <div className="relative mb-6">
-          <SearchBar className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
+          <SearchBar />
         </div>
         {children}
       </div>

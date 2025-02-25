@@ -177,7 +177,7 @@ export default function SearchResultsPage() {
                     <div className="mt-4">
                       <Link
                         href={`/sectors/${route.sectorSlug}/${route.slug}`}
-                        className="font-medium text-blue-600 hover:underline"
+                        className="font-medium text-cyan-800 hover:underline"
                       >
                         View Route Details
                       </Link>

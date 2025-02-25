@@ -163,7 +163,7 @@ const SearchBar: React.FC = () => {
               {filteredResults.matchedRoutes.map((route) => (
                 <div
                   key={route.slug}
-                  className="cursor-pointer p-2 text-accent-foreground hover:bg-gray-100"
+                  className="cursor-pointer p-2 text-accent-foreground hover:bg-cyan-800"
                   onClick={() => handleResultClick(route)}
                 >
                   <div className="font-medium">{route.name}</div>
@@ -175,7 +175,7 @@ const SearchBar: React.FC = () => {
               {filteredResults.matchedSectors.map((sector) => (
                 <div
                   key={sector.slug}
-                  className="cursor-pointer p-2 hover:bg-gray-100"
+                  className="cursor-pointer p-2 hover:bg-cyan-800"
                   onClick={() => handleResultClick(sector)}
                 >
                   <div className="font-medium">{sector.name}</div>
