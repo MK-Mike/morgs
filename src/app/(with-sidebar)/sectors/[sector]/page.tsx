@@ -1,5 +1,5 @@
 "use client";
-import { Headland, Sector, Route } from "@/types/routes";
+import type { Headland, Sector, Route } from "@/app/types/routes";
 
 import { useState } from "react";
 import { useParams } from "next/navigation";
@@ -26,7 +26,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import Breadcrumbs from "~/components/Breadcrumbs";
 import { Star } from "lucide-react";
 import routesData from "~/data/routes.json";
-import type { Sector, Route } from "~/types/routes";
 
 export default function SectorPage() {
   const { sector } = useParams();
