@@ -1,5 +1,5 @@
 "use client";
-import type { Headland, Sector, Route } from "@/app/types/routes";
+import type { Headland, Sector, Route, RouteType } from "@/app/types/routes";
 
 import { useState } from "react";
 import { useParams } from "next/navigation";
@@ -48,7 +48,8 @@ export default function SectorPage() {
     const gradeFilter =
       (!minGrade || route.grade >= Number(minGrade)) &&
       (!maxGrade || route.grade <= Number(maxGrade));
-    const typeFilter = type === "all" || sectorData.info.includes(type as any);
+    const typeFilter =
+      type === "all" || sectorData.climbingTypes.includes(type as RouteType);
     return gradeFilter && typeFilter;
   });
 

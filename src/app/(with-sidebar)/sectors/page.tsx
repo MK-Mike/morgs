@@ -19,7 +19,7 @@ export default function SectorsPage() {
 
       // Count routes in each grade bucket
       sector.routes.forEach((route: Route) => {
-        const grade = parseInt(route.grade);
+        const grade: number = parseInt(route.grade);
         if (grade <= 16) gradeBuckets[0].count++;
         else if (grade <= 24) gradeBuckets[1].count++;
         else if (grade <= 32) gradeBuckets[2].count++;
