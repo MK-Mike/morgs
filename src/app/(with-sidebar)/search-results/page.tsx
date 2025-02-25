@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -125,109 +126,110 @@ export default function SearchResultsPage() {
       <h1 className="mb-4 text-2xl font-bold">
         Search Results {queryTerm && <span>for "{queryTerm}"</span>}
       </h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        {totalResults === 0 && !isLoading ? (
+          <div className="rounded-lg bg-gray-100 p-6 text-center">
+            <h2 className="mb-2 text-xl">No results found</h2>
+            <p className="text-gray-600">Try adjusting your search terms</p>
+          </div>
+        ) : (
+          <>
+            {results.matchedRoutes.length > 0 && (
+              <section aria-labelledby="routes-heading">
+                <h2
+                  id="routes-heading"
+                  className="mb-2 border-b pb-2 text-xl font-semibold"
+                >
+                  Routes ({results.matchedRoutes.length})
+                </h2>
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {results.matchedRoutes.map((route) => (
+                    <div
+                      key={route.slug}
+                      className="rounded-lg border p-4 shadow-sm transition-shadow hover:shadow-md"
+                    >
+                      <h3 className="text-lg font-bold">{route.name}</h3>
+                      <dl className="mt-2 grid grid-cols-2 gap-x-2">
+                        <dt className="text-gray-600">Grade:</dt>
+                        <dd>{route.grade}</dd>
 
-      {totalResults === 0 && !isLoading ? (
-        <div className="rounded-lg bg-gray-100 p-6 text-center">
-          <h2 className="mb-2 text-xl">No results found</h2>
-          <p className="text-gray-600">Try adjusting your search terms</p>
-        </div>
-      ) : (
-        <>
-          {results.matchedRoutes.length > 0 && (
-            <section aria-labelledby="routes-heading">
-              <h2
-                id="routes-heading"
-                className="mb-2 border-b pb-2 text-xl font-semibold"
-              >
-                Routes ({results.matchedRoutes.length})
-              </h2>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {results.matchedRoutes.map((route) => (
-                  <div
-                    key={route.slug}
-                    className="rounded-lg border p-4 shadow-sm transition-shadow hover:shadow-md"
-                  >
-                    <h3 className="text-lg font-bold">{route.name}</h3>
-                    <dl className="mt-2 grid grid-cols-2 gap-x-2">
-                      <dt className="text-gray-600">Grade:</dt>
-                      <dd>{route.grade}</dd>
+                        {route.length && (
+                          <>
+                            <dt className="text-gray-600">Length:</dt>
+                            <dd>{route.length} m</dd>
+                          </>
+                        )}
 
-                      {route.length && (
-                        <>
-                          <dt className="text-gray-600">Length:</dt>
-                          <dd>{route.length} m</dd>
-                        </>
+                        <dt className="text-gray-600">Sector:</dt>
+                        <dd>{route.sector}</dd>
+
+                        <dt className="text-gray-600">Headland:</dt>
+                        <dd>{route.headland}</dd>
+                      </dl>
+
+                      {route.description && (
+                        <div className="mt-2">
+                          <p className="text-sm text-gray-600">
+                            {route.description}
+                          </p>
+                        </div>
                       )}
 
-                      <dt className="text-gray-600">Sector:</dt>
-                      <dd>{route.sector}</dd>
-
-                      <dt className="text-gray-600">Headland:</dt>
-                      <dd>{route.headland}</dd>
-                    </dl>
-
-                    {route.description && (
-                      <div className="mt-2">
-                        <p className="text-sm text-gray-600">
-                          {route.description}
-                        </p>
+                      <div className="mt-4">
+                        <Link
+                          href={`/sectors/${route.sectorSlug}/${route.slug}`}
+                          className="font-medium text-cyan-800 hover:underline"
+                        >
+                          View Route Details
+                        </Link>
                       </div>
-                    )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
 
-                    <div className="mt-4">
+            {results.matchedSectors.length > 0 && (
+              <section aria-labelledby="sectors-heading" className="mt-8">
+                <h2
+                  id="sectors-heading"
+                  className="mb-2 border-b pb-2 text-xl font-semibold"
+                >
+                  Sectors ({results.matchedSectors.length})
+                </h2>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {results.matchedSectors.map((sector) => (
+                    <div
+                      key={sector.slug}
+                      className="rounded-lg border p-4 shadow-sm transition-shadow hover:shadow-md"
+                    >
+                      <h3 className="text-lg font-bold">{sector.name}</h3>
+                      <p className="mb-2 text-gray-600">
+                        <strong>Headland:</strong> {sector.headland}
+                      </p>
+
+                      {sector.description && (
+                        <div className="mb-4 mt-2">
+                          <p className="text-sm text-gray-600">
+                            {sector.description}
+                          </p>
+                        </div>
+                      )}
+
                       <Link
-                        href={`/sectors/${route.sectorSlug}/${route.slug}`}
-                        className="font-medium text-cyan-800 hover:underline"
+                        href={`/sectors/${sector.slug}`}
+                        className="font-medium text-blue-600 hover:underline"
                       >
-                        View Route Details
+                        View All Routes in This Sector
                       </Link>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {results.matchedSectors.length > 0 && (
-            <section aria-labelledby="sectors-heading" className="mt-8">
-              <h2
-                id="sectors-heading"
-                className="mb-2 border-b pb-2 text-xl font-semibold"
-              >
-                Sectors ({results.matchedSectors.length})
-              </h2>
-              <div className="grid gap-4 md:grid-cols-2">
-                {results.matchedSectors.map((sector) => (
-                  <div
-                    key={sector.slug}
-                    className="rounded-lg border p-4 shadow-sm transition-shadow hover:shadow-md"
-                  >
-                    <h3 className="text-lg font-bold">{sector.name}</h3>
-                    <p className="mb-2 text-gray-600">
-                      <strong>Headland:</strong> {sector.headland}
-                    </p>
-
-                    {sector.description && (
-                      <div className="mb-4 mt-2">
-                        <p className="text-sm text-gray-600">
-                          {sector.description}
-                        </p>
-                      </div>
-                    )}
-
-                    <Link
-                      href={`/sectors/${sector.slug}`}
-                      className="font-medium text-blue-600 hover:underline"
-                    >
-                      View All Routes in This Sector
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-        </>
-      )}
+                  ))}
+                </div>
+              </section>
+            )}
+          </>
+        )}
+      </Suspense>
     </div>
   );
 }
