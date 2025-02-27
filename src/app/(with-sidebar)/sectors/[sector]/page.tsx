@@ -22,10 +22,25 @@ import {
   TableRow,
 } from "~/components/ui/table";
 import { Skeleton } from "~/components/ui/skeleton";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardFooter,
+} from "~/components/ui/card";
 import Breadcrumbs from "~/components/Breadcrumbs";
-import { Star } from "lucide-react";
+import {
+  Star,
+  Route as RouteIcon,
+  Mountain,
+  SearchIcon,
+  MapPinCheckIcon,
+} from "lucide-react";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import routesData from "~/data/routes.json";
+import { Button } from "~/components/ui/button";
 
 export default function SectorPage() {
   const { sector } = useParams();
@@ -59,58 +74,88 @@ export default function SectorPage() {
       "15-minute walk from the parking area. Follow the marked trail heading east.",
     aspect: "South-facing",
     sun: "Gets sun from mid-morning to late afternoon. Shaded in early morning and evening.",
-    rock: "Solid dolerite with excellent friction.",
-    season:
-      "Climbable year-round, but best conditions are from April to October.",
   };
 
+  const minRouteGrade = Math.min(...sectorData.routes.map((r) => r.grade));
+  const maxRouteGrade = Math.max(...sectorData.routes.map((r) => r.grade));
+
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container px-4 py-8">
       <Breadcrumbs />
       <h1 className="mb-6 text-3xl font-bold">{sectorData.name} Sector</h1>
-
-      <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2">
-        <Card>
+      <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-4">
+        {/* Description and Access Card */}
+        <Card className="flex flex-col items-center md:col-span-2 md:row-span-2">
           <CardHeader>
-            <CardTitle>Sector Information</CardTitle>
+            <CardTitle>Description & Access</CardTitle>
           </CardHeader>
           <CardContent>
-            <dl className="grid grid-cols-1 gap-4">
+            <dl className="grid gap-2">
               <div>
                 <dt className="font-semibold">Description:</dt>
                 <dd>{sectorData.description}</dd>
               </div>
               <div>
-                <dt className="font-semibold">Climbing Types:</dt>
-                {/* <dd>{sectorData.info.join(", ")}</dd> */}
+                <dt className="font-semibold">Access:</dt>
+                <dd>{sectorInfo.access}</dd>
+              </div>
+            </dl>
+          </CardContent>
+          <CardFooter className="w-full flex-1">
+            <Button className="w-full" asChild>
+              <Link
+                href={`https://www.google.com/maps/place/32%C2%B042'55.8%22S+28%C2%B019'55.0%22E/@-32.715512,28.331947,1011`}
+                target="_blank"
+              >
+                <MapPinCheckIcon /> Take me there
+              </Link>
+            </Button>
+          </CardFooter>
+        </Card>
+
+        {/* Total Routes Card */}
+        <Card className="flex flex-col items-center justify-center p-4 text-center">
+          <RouteIcon className="mb-2 h-8 w-8 text-primary" />
+          <CardTitle className="text-4xl font-bold">
+            {sectorData.routes.length}
+          </CardTitle>
+          <CardDescription>Total Routes</CardDescription>
+        </Card>
+
+        {/* Grade Range Card */}
+        <Card className="flex flex-col items-center justify-center p-4 text-center">
+          <Mountain className="mb-2 h-8 w-8 text-primary" />
+          <CardTitle className="text-4xl font-bold">
+            {minRouteGrade} - {maxRouteGrade}
+          </CardTitle>
+          <CardDescription>Grade Range</CardDescription>
+        </Card>
+
+        {/* Aspect and Sun Card */}
+        <Card className="md:col-span-2 md:col-start-3">
+          <CardHeader>
+            <CardTitle>Climbing Conditions</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <dl className="grid gap-2">
+              <div>
+                <dt className="font-semibold">Aspect:</dt>
+                <dd>{sectorInfo.aspect}</dd>
               </div>
               <div>
-                <dt className="font-semibold">Total Routes:</dt>
-                <dd>{sectorData.routes.length}</dd>
+                <dt className="font-semibold">Sun Exposure:</dt>
+                <dd>{sectorInfo.sun}</dd>
               </div>
-              <div>
-                <dt className="font-semibold">Grade Range:</dt>
-                <dd>
-                  {Math.min(...sectorData.routes.map((r) => r.grade))} -{" "}
-                  {Math.max(...sectorData.routes.map((r) => r.grade))}
-                </dd>
-              </div>
-              {/* Additional sector info */}
-              {Object.entries(sectorInfo).map(([key, value]) => (
-                <div key={key}>
-                  <dt className="font-semibold">
-                    {key.charAt(0).toUpperCase() + key.slice(1)}:
-                  </dt>
-                  <dd>{value}</dd>
-                </div>
-              ))}
             </dl>
           </CardContent>
         </Card>
+      </div>
 
+      {/* Image moved below all cards */}
+      <div className="mb-8 w-full">
         <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-muted">
           <Image
-            src="/placeholder.svg?height=360&width=640"
+            src="/images/mockRoutes.jpg"
             alt={`${sectorData.name} sector`}
             layout="fill"
             objectFit="cover"

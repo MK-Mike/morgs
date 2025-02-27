@@ -65,7 +65,7 @@ export default function RoutePage() {
         </div>
         <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-muted">
           <Image
-            src="/placeholder.svg?height=600&width=450"
+            src="/images/mockRoute.jpg"
             alt={`${route.name} route`}
             layout="fill"
             objectFit="cover"
