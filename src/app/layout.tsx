@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import "../styles/wave-animations.css";
 import type React from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.className} text-text bg-background`}>
-        <SidebarProvider>{children}</SidebarProvider>
+        <ClerkProvider>
+          <SidebarProvider>{children}</SidebarProvider>
+        </ClerkProvider>
       </body>
     </html>
   );

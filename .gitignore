@@ -44,3 +44,9 @@ yarn-error.log*
 
 # idea files
 .idea
+
+# repomix
+repomix-output.txt
+
+# clerk configuration (can include secrets)
+/.clerk/

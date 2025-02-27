@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "id": "1",
+      "userId": "user_1",
+      "username": "AlexSender",
+      "userImage": "https://randomuser.me/api/portraits/men/1.jpg",
+      "content": "The crux move is easier if you heel hook the left crimper. Trust me on this!",
+      "createdAt": "2025-01-15T10:30:00Z",
+      "tags": ["beta"]
+    },
+    {
+      "id": "2",
+      "userId": "user_2",
+      "username": "CrimpQueen",
+      "userImage": "https://randomuser.me/api/portraits/women/2.jpg",
+      "content": "Be careful on the third bolt - the right handhold has gotten pretty polished.",
+      "createdAt": "2025-01-20T14:25:00Z",
+      "tags": ["update"]
+    },
+    {
+      "id": "3",
+      "userId": "user_3",
+      "username": "DynoKing",
+      "userImage": "https://randomuser.me/api/portraits/men/3.jpg",
+      "content": "The small jug at the top section broke off last weekend. Makes the finish a bit harder now.",
+      "createdAt": "2025-02-05T09:15:00Z",
+      "tags": ["update", "warning"]
+    },
+    {
+      "id": "4",
+      "userId": "user_4",
+      "username": "SlabMaster",
+      "userImage": "https://randomuser.me/api/portraits/women/4.jpg",
+      "content": "Bring extra quickdraws if you're planning to project this. The existing ones are quite worn.",
+      "createdAt": "2025-02-10T16:42:00Z",
+      "tags": ["gear"]
+    },
+    {
+      "id": "5",
+      "userId": "user_5",
+      "username": "CrackClipper",
+      "userImage": "https://randomuser.me/api/portraits/men/5.jpg",
+      "content": "If you're under 5'8\", there's a hidden intermediate hold on the right that helps with the reach problem.",
+      "createdAt": "2025-02-12T11:20:00Z",
+      "tags": ["beta"]
+    },
+    {
+      "id": "6",
+      "userId": "user_6",
+      "username": "BetaBreaker",
+      "userImage": "https://randomuser.me/api/portraits/women/6.jpg",
+      "content": "Anyone else think this is sandbagged? Feels harder than the grade suggests.",
+      "createdAt": "2025-02-15T08:30:00Z",
+      "tags": ["question"]
+    },
+    {
+      "id": "7",
+      "userId": "user_7",
+      "username": "TopRoper",
+      "userImage": "https://randomuser.me/api/portraits/men/7.jpg",
+      "content": "Watch out for loose rock near the top. Test holds before committing.",
+      "createdAt": "2025-02-17T13:15:00Z",
+      "tags": ["warning"]
+    },
+    {
+      "id": "8",
+      "userId": "user_8",
+      "username": "BoulderBabe",
+      "userImage": "https://randomuser.me/api/portraits/women/8.jpg",
+      "content": "Found a knee bar rest right before the crux that makes a huge difference. Look for it!",
+      "createdAt": "2025-02-20T15:45:00Z",
+      "tags": ["beta"]
+    },
+    {
+      "id": "9",
+      "userId": "user_9",
+      "username": "LeadClimber",
+      "userImage": "https://randomuser.me/api/portraits/men/9.jpg",
+      "content": "Trail to this route is overgrown now. Allow extra time for the approach.",
+      "createdAt": "2025-02-21T10:10:00Z",
+      "tags": ["update"]
+    },
+    {
+      "id": "10",
+      "userId": "user_10",
+      "username": "ChalkyFingers",
+      "userImage": "https://randomuser.me/api/portraits/women/10.jpg",
+      "content": "There's now a fixed anchor at the top that wasn't in the guidebook. Makes descent much easier.",
+      "createdAt": "2025-02-22T09:30:00Z",
+      "tags": ["update", "gear"]
+    },
+    {
+      "id": "11",
+      "userId": "user_11",
+      "username": "RockJock",
+      "userImage": "https://randomuser.me/api/portraits/men/11.jpg",
+      "content": "Anyone know if this is climbable after rain? Wondering about drainage.",
+      "createdAt": "2025-02-23T14:20:00Z",
+      "tags": ["question"]
+    },
+    {
+      "id": "12",
+      "userId": "user_12",
+      "username": "DynoQueen",
+      "userImage": "https://randomuser.me/api/portraits/women/12.jpg",
+      "content": "The dynamic move to the pocket is way easier if you flag your right foot. Keeps you from barn-dooring.",
+      "createdAt": "2025-02-24T11:05:00Z",
+      "tags": ["beta"]
+    },
+    {
+      "id": "13",
+      "userId": "user_13",
+      "username": "TradDad",
+      "userImage": "https://randomuser.me/api/portraits/men/13.jpg",
+      "content": "A #3 cam fits perfectly in the crack at the crux. Don't bother with anything smaller.",
+      "createdAt": "2025-02-24T16:30:00Z",
+      "tags": ["gear", "beta"]
+    },
+    {
+      "id": "14",
+      "userId": "user_14",
+      "username": "CrimpCrusher",
+      "userImage": "https://randomuser.me/api/portraits/women/14.jpg",
+      "content": "There's a wasp nest forming in the crack on the second pitch. Be aware!",
+      "createdAt": "2025-02-25T08:45:00Z",
+      "tags": ["warning"]
+    },
+    {
+      "id": "15",
+      "userId": "user_15",
+      "username": "SmearMaster",
+      "userImage": "https://randomuser.me/api/portraits/men/15.jpg",
+      "content": "The best sequence for the roof section is left hand to the sidepull, right to the pinch, then left to the jug.",
+      "createdAt": "2025-02-25T13:20:00Z",
+      "tags": ["beta"]
+    },
+    {
+      "id": "16",
+      "userId": "user_16",
+      "username": "CrackClipper",
+      "userImage": "https://randomuser.me/api/portraits/women/16.jpg",
+      "content": "Anyone have beta for shorter climbers on the reachy section after the third bolt?",
+      "createdAt": "2025-02-25T15:10:00Z",
+      "tags": ["question", "beta"]
+    },
+    {
+      "id": "17",
+      "userId": "user_17",
+      "username": "PitchPioneer",
+      "userImage": "https://randomuser.me/api/portraits/men/17.jpg",
+      "content": "Just climbed this yesterday. The rockfall from last month has been cleared, route is good to go!",
+      "createdAt": "2025-02-25T17:30:00Z",
+      "tags": ["update"]
+    },
+    {
+      "id": "18",
+      "userId": "user_18",
+      "username": "SloperSlayer",
+      "userImage": "https://randomuser.me/api/portraits/women/18.jpg",
+      "content": "Don't trust the flake halfway up - it's moving more than it was last season.",
+      "createdAt": "2025-02-25T18:45:00Z",
+      "tags": ["warning"]
+    },
+    {
+      "id": "19",
+      "userId": "user_19",
+      "username": "GraniteGuru",
+      "userImage": "https://randomuser.me/api/portraits/men/19.jpg",
+      "content": "The start is way easier if you use the boulder on the right as a step-up. Not cheating, just smart beta!",
+      "createdAt": "2025-02-26T07:15:00Z",
+      "tags": ["beta"]
+    },
+    {
+      "id": "20",
+      "userId": "user_20",
+      "username": "StemQueen",
+      "userImage": "https://randomuser.me/api/portraits/women/20.jpg",
+      "content": "For this route, La Sportiva Solutions work better than TC Pros. The extra downturn helps on the roof.",
+      "createdAt": "2025-02-26T09:30:00Z",
+      "tags": ["gear", "beta"]
+    },
+    {
+      "id": "21",
+      "userId": "user_21",
+      "username": "AreteMaster",
+      "userImage": "https://randomuser.me/api/portraits/men/21.jpg",
+      "content": "I found a dropped quickdraw at the base. Message me if it's yours!",
+      "createdAt": "2025-02-26T10:45:00Z",
+      "tags": ["update"]
+    },
+    {
+      "id": "22",
+      "userId": "user_22",
+      "username": "CrimperQueen",
+      "userImage": "https://randomuser.me/api/portraits/women/22.jpg",
+      "content": "There's a new variation that goes straight up the face instead of using the crack. Solid 5.11b.",
+      "createdAt": "2025-02-26T11:20:00Z",
+      "tags": ["update", "beta"]
+    },
+    {
+      "id": "23",
+      "userId": "user_23",
+      "username": "RoofRanger",
+      "userImage": "https://randomuser.me/api/portraits/men/23.jpg",
+      "content": "The tree that was used to rap down has died. Bring your own anchor material if topping out.",
+      "createdAt": "2025-02-26T12:15:00Z",
+      "tags": ["warning", "gear"]
+    },
+    {
+      "id": "24",
+      "userId": "user_24",
+      "username": "ChalkWarrior",
+      "userImage": "https://randomuser.me/api/portraits/women/24.jpg",
+      "content": "Does anyone know if there's a way to avoid the offwidth section? It's killing my ankles.",
+      "createdAt": "2025-02-26T13:05:00Z",
+      "tags": ["question", "beta"]
+    },
+    {
+      "id": "25",
+      "userId": "user_25",
+      "username": "EdgeLord",
+      "userImage": "https://randomuser.me/api/portraits/men/25.jpg",
+      "content": "The undercling in the middle section has gotten really greasy. Brush it before your send attempt!",
+      "createdAt": "2025-02-26T14:30:00Z",
+      "tags": ["update"]
+    },
+    {
+      "id": "26",
+      "userId": "user_26",
+      "username": "PinchPower",
+      "userImage": "https://randomuser.me/api/portraits/women/26.jpg",
+      "content": "Rockfall has created a new hold at the crux! It's actually easier now, might need a downgrade.",
+      "createdAt": "2025-02-26T15:20:00Z",
+      "tags": ["update", "beta"]
+    },
+    {
+      "id": "27",
+      "userId": "user_27",
+      "username": "MultiPitchMan",
+      "userImage": "https://randomuser.me/api/portraits/men/27.jpg",
+      "content": "Has anyone tried the sit start variation? Wondering if it's worth the extra effort.",
+      "createdAt": "2025-02-26T16:10:00Z",
+      "tags": ["question"]
+    },
+    {
+      "id": "28",
+      "userId": "user_28",
+      "username": "DynoGirl",
+      "userImage": "https://randomuser.me/api/portraits/women/28.jpg",
+      "content": "I recorded a beta video for this route. Check my profile for the link if you're stuck!",
+      "createdAt": "2025-02-26T17:00:00Z",
+      "tags": ["beta"]
+    },
+    {
+      "id": "29",
+      "userId": "user_29",
+      "username": "SlabSlayer",
+      "userImage": "https://randomuser.me/api/portraits/men/29.jpg",
+      "content": "The approach trail has been rerouted due to erosion. Follow the blue markers, not the guidebook.",
+      "createdAt": "2025-02-26T17:45:00Z",
+      "tags": ["update"]
+    },
+    {
+      "id": "30",
+      "userId": "user_30",
+      "username": "CrackCrusher",
+      "userImage": "https://randomuser.me/api/portraits/women/30.jpg",
+      "content": "Finally sent this after 5 attempts! Key is to rest at the horizontal break before pushing through the roof.",
+      "createdAt": "2025-02-26T18:30:00Z",
+      "tags": ["beta"]
+    }
+  ]
+}

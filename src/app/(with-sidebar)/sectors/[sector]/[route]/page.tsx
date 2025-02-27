@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { useParams } from "next/navigation";
-import { notFound } from "next/navigation";
+import { Star } from "lucide-react";
 import Image from "next/image";
+import { notFound, useParams } from "next/navigation";
+import { Suspense, useState } from "react";
+import type { Route } from "~/app/types/routes";
 import Breadcrumbs from "~/components/Breadcrumbs";
+import CommentsSection from "~/components/commentSection";
 import { Skeleton } from "~/components/ui/skeleton";
 import routesData from "~/data/routes.json";
-import { Star } from "lucide-react";
-import type { Route } from "~/app/types/routes";
 
 export default function RoutePage() {
   const { sector: sectorSlug, route: routeSlug } = useParams();
@@ -78,6 +78,9 @@ export default function RoutePage() {
             </div>
           )}
         </div>
+        <Suspense fallback={<div>Loading comments...</div>}>
+          <CommentsSection routeSlug={route.slug} />
+        </Suspense>
       </div>
     </div>
   );
