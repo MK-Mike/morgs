@@ -3,6 +3,7 @@ import React, { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import debounce from "lodash.debounce";
 import routesData from "@/data/routes.json";
+import { Route, Search } from "lucide-react";
 
 interface Route {
   slug: string;
@@ -47,6 +48,7 @@ const SearchBar: React.FC = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isFocussed, setIsFocussed] = useState(false);
 
   const router = useRouter();
 
@@ -77,7 +79,7 @@ const SearchBar: React.FC = () => {
                 grade: route.grade,
                 length: route.length,
                 description: route.description,
-                sector: sector.name,
+                sector: sector.slug,
                 headland: headland.name,
                 slug: route.slug,
               });
@@ -116,7 +118,6 @@ const SearchBar: React.FC = () => {
 
   const handleSearch = () => {
     try {
-      const results = searchRoutes(searchTerm);
       router.push(`/search-results?q=${encodeURIComponent(searchTerm)}`);
     } catch (err) {
       setError("Error performing search");
@@ -124,26 +125,40 @@ const SearchBar: React.FC = () => {
     }
   };
 
-  const handleResultClick = (result: Route | Sector) => {
+  const handleResultClick = (result: Route | Sector, isRoute: boolean) => {
     setSearchTerm(result.name);
     setIsDropdownVisible(false);
-    handleSearch();
+    // handleSearch();
+    if (!isRoute) {
+      router.push(`/sectors/${result.slug}`);
+      setSearchTerm("");
+    } else if (isRoute) {
+      router.push(`/sectors/${result.sector}/${result.slug}`);
+      setSearchTerm("");
+    }
   };
 
   return (
     <div className="relative mb-6">
-      <input
-        type="search"
-        placeholder="Search routes..."
-        className={`w-full rounded-md bg-secondary py-2 pl-10 ${error ? "border-red-500" : "border-gray-300"}`}
-        value={searchTerm}
-        onChange={handleInputChange}
-        onKeyPress={(event) => {
-          if (event.key === "Enter") {
-            handleSearch();
-          }
-        }}
-      />
+      <div className="flex items-center">
+        {!isFocussed && (
+          <Search className="absolute left-3 h-4 w-4 text-gray-500" />
+        )}
+        <input
+          type="search"
+          placeholder={!isFocussed ? "Search routes..." : ""}
+          className={`w-full rounded-md bg-secondary py-2 ${isFocussed ? "pl-2" : "pl-10"} ${error ? "border-red-500" : "border-gray-300"}`}
+          value={searchTerm}
+          onChange={handleInputChange}
+          onFocus={() => setIsFocussed(true)}
+          onBlur={() => setIsFocussed(false)}
+          onKeyPress={(event) => {
+            if (event.key === "Enter") {
+              handleSearch();
+            }
+          }}
+        />
+      </div>
 
       {error && <div className="mt-1 text-sm text-red-500">{error}</div>}
 
@@ -164,7 +179,7 @@ const SearchBar: React.FC = () => {
                 <div
                   key={route.slug}
                   className="cursor-pointer p-2 text-accent-foreground hover:bg-cyan-800"
-                  onClick={() => handleResultClick(route)}
+                  onClick={() => handleResultClick(route, true)}
                 >
                   <div className="font-medium">{route.name}</div>
                   <div className="text-sm text-secondary-foreground">
@@ -176,7 +191,7 @@ const SearchBar: React.FC = () => {
                 <div
                   key={sector.slug}
                   className="cursor-pointer p-2 hover:bg-cyan-800"
-                  onClick={() => handleResultClick(sector)}
+                  onClick={() => handleResultClick(sector, false)}
                 >
                   <div className="font-medium">{sector.name}</div>
                   <div className="text-sm text-gray-600">

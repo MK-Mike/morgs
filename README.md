@@ -2,14 +2,17 @@
 
 ## TODO
 
-[] add mock gps data for sectors info
-[] add route tags eg pumpy with user feedback (pumpuy, slaby, crimpy, cruxy, etc)
-[] add sandbagging ratings
-[] change into to style
-[] update search bar to go to route if clicked on
-[] add filters to seach page
-[] add an all routes page with filtering
-[] add sector access comments
+[x] add mock gps data for sectors info
+
+- [] move the sidebar into a side drawer for mobile views
+  -- []add a button to toggle the drawe
+- [] add route tags eg pumpy with user feedback (pumpuy, slaby, crimpy, cruxy, etc)
+  [] add sandbagging ratings
+  [] change into to style
+  [x] update search bar to go to route if clicked on
+  [] add filters to seach page
+  [] add an all routes page with filtering
+  [] add sector access comments
 
 ### user managemnet
 
