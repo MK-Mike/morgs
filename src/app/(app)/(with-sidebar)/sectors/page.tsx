@@ -59,10 +59,10 @@ export default function SectorsPage() {
   );
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-4">
       <Breadcrumbs />
 
-      <div className="mb-8">
+      <div className="mb-4">
         <h1 className="mb-2 text-3xl font-bold">Climbing Sectors</h1>
         <p className="text-muted-foreground">
           {sectors.length} sectors across {routesData.headlands.length}{" "}

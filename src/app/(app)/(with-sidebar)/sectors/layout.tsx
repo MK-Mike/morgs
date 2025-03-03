@@ -7,9 +7,9 @@ export default function SectorsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen flex-col overflow-hidden">
-      <ScrollArea className="flex-1 overflow-auto">
-        <div className="mx-auto max-w-5xl px-4">{children}</div>
+    <div className="flex h-[calc(100vh-36px)] w-full flex-col overflow-hidden">
+      <ScrollArea className="flex-1 overflow-auto pb-32">
+        <div className="mx-auto max-w-5xl">{children}</div>
         <ScrollBar orientation="vertical" />
       </ScrollArea>
     </div>
