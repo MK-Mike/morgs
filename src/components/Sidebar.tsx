@@ -24,13 +24,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="bg-surface flex max-h-svh w-64 flex-col border-r border-secondary">
       <div className="p-4">
-        {/* Logo */}
-        <Link href="/" className="mb-6 flex items-center">
-          <span className="text-lg font-bold">Morgan Bay Climbing</span>
-        </Link>
-
         {/* Top Section */}
         <nav className="mb-6">
           <ul className="space-y-2">
@@ -106,6 +100,5 @@ export default function Sidebar() {
           </div>
         </Link>
       </div>
-    </aside>
   );
 }
