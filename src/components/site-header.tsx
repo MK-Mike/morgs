@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
@@ -28,12 +29,12 @@ export function SiteHeader() {
                 className="h-8 w-8 px-0"
               >
                 <Link
-                  href={siteConfig.links.github}
+                  href={siteConfig.links.whatsapp}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Icons.gitHub className="h-4 w-4" />
-                  <span className="sr-only">GitHub</span>
+                  <Icons.twitter className="h-4 w-4" />
+                  <span className="sr-only">twitter</span>
                 </Link>
               </Button>
               {/* <ModeSwitcher /> */}

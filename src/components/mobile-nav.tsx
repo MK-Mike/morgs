@@ -1,7 +1,6 @@
-"use client";
 import * as React from "react";
 import Link, { LinkProps } from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { docsConfig } from "@/config/nav";
 import { cn } from "@/lib/utils";
@@ -19,6 +18,7 @@ import {
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
   const { setMetaColor, metaColor } = useMetaColor();
+  const pathname = usePathname();
 
   const onOpenChange = React.useCallback(
     (open: boolean) => {

@@ -24,63 +24,62 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-      <div className="p-4">
-        {/* Top Section */}
-        <nav className="mb-6">
-          <ul className="space-y-2">
-            {topLinks.map((link) => (
-              <li key={link.name}>
-                <Link
-                  href={link.href}
-                  className={cn(
-                    "flex items-center rounded p-2 transition-colors",
-                    pathname === link.href
-                      ? "bg-primary text-primary-foreground"
-                      : "text-text hover:bg-secondary hover:text-white",
-                  )}
-                >
-                  <link.icon className="mr-2 h-4 w-4" />
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Headlands and Sectors Accordion */}
-        <Accordion type="single" collapsible className="w-full">
-          {routesData.headlands.map((headland) => (
-            <AccordionItem
-              value={headland.slug}
-              key={headland.slug}
-              className="border-b-0"
-            >
-              <AccordionTrigger className="hover:no-underline">
-                {headland.name}
-              </AccordionTrigger>
-              <AccordionContent>
-                <ul className="ml-4 space-y-2">
-                  {headland.sectors.map((sector) => (
-                    <li key={sector.slug}>
-                      <Link
-                        href={`/sectors/${sector.slug}`}
-                        className={cn(
-                          "block rounded p-2 transition-colors",
-                          pathname.includes(sector.slug)
-                            ? "bg-primary text-primary-foreground"
-                            : "hover:bg-secondary",
-                        )}
-                      >
-                        {sector.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
+    <div className="p-4">
+      {/* Top Section */}
+      <nav className="mb-6">
+        <ul className="space-y-2">
+          {topLinks.map((link) => (
+            <li key={link.name}>
+              <Link
+                href={link.href}
+                className={cn(
+                  "flex items-center rounded p-2 transition-colors",
+                  pathname === link.href
+                    ? "bg-primary text-primary-foreground"
+                    : "text-text hover:bg-secondary hover:text-white",
+                )}
+              >
+                <link.icon className="mr-2 h-4 w-4" />
+                {link.name}
+              </Link>
+            </li>
           ))}
-        </Accordion>
-      </div>
+        </ul>
+      </nav>
+
+      {/* Headlands and Sectors Accordion */}
+      <Accordion type="single" collapsible className="w-full">
+        {routesData.headlands.map((headland) => (
+          <AccordionItem
+            value={headland.slug}
+            key={headland.slug}
+            className="border-b-0"
+          >
+            <AccordionTrigger className="hover:no-underline">
+              {headland.name}
+            </AccordionTrigger>
+            <AccordionContent>
+              <ul className="ml-4 space-y-2">
+                {headland.sectors.map((sector) => (
+                  <li key={sector.slug}>
+                    <Link
+                      href={`/sectors/${sector.slug}`}
+                      className={cn(
+                        "block rounded p-2 transition-colors",
+                        pathname.includes(sector.slug)
+                          ? "bg-primary text-primary-foreground"
+                          : "hover:bg-secondary",
+                      )}
+                    >
+                      {sector.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
 
       {/* User Account Section */}
       <div className="mt-auto border-t border-border p-4">
@@ -100,5 +99,6 @@ export default function Sidebar() {
           </div>
         </Link>
       </div>
+    </div>
   );
 }
