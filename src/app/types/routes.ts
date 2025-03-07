@@ -12,6 +12,7 @@ export interface Route {
   first_ascent: string;
   date: string;
   info: string;
+  tags: string[];
 }
 
 // Types for sector data
