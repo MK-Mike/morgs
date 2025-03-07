@@ -80,10 +80,10 @@ export default function SectorPage() {
   const maxRouteGrade = Math.max(...sectorData.routes.map((r) => r.grade));
 
   return (
-    <div className="container px-4 py-8">
+    <div className="container">
       <Breadcrumbs />
       <h1 className="mb-6 text-3xl font-bold">{sectorData.name} Sector</h1>
-      <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-4">
+      <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
         {/* Description and Access Card */}
         <Card className="flex flex-col items-center md:col-span-2 md:row-span-2">
           <CardHeader>
@@ -224,50 +224,52 @@ export default function SectorPage() {
           </div>
         </div>
 
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Number</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Grade</TableHead>
-              <TableHead>Stars</TableHead>
-              <TableHead>First Ascent</TableHead>
-              <TableHead>Info</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {filteredRoutes.map((route) => (
-              <TableRow key={route.slug}>
-                <TableCell>{route.routeNumber}</TableCell>
-                <TableCell>
-                  <Link
-                    href={`/sectors/${sector}/${route.slug}`}
-                    className="text-primary hover:underline"
-                  >
-                    {route.name}
-                  </Link>
-                </TableCell>
-                <TableCell>{route.grade}</TableCell>
-                <TableCell>
-                  {route.stars ? (
-                    <div className="flex">
-                      {[...Array(route.stars)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-4 w-4 fill-yellow-400 text-yellow-400"
-                        />
-                      ))}
-                    </div>
-                  ) : (
-                    "-"
-                  )}
-                </TableCell>
-                <TableCell>{route.first_ascent}</TableCell>
-                <TableCell>{route.info}</TableCell>
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Number</TableHead>
+                <TableHead>Name</TableHead>
+                <TableHead>Grade</TableHead>
+                <TableHead>Stars</TableHead>
+                <TableHead>First Ascent</TableHead>
+                <TableHead>Info</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {filteredRoutes.map((route) => (
+                <TableRow key={route.slug}>
+                  <TableCell>{route.routeNumber}</TableCell>
+                  <TableCell>
+                    <Link
+                      href={`/sectors/${sector}/${route.slug}`}
+                      className="text-primary hover:underline"
+                    >
+                      {route.name}
+                    </Link>
+                  </TableCell>
+                  <TableCell>{route.grade}</TableCell>
+                  <TableCell>
+                    {route.stars ? (
+                      <div className="flex">
+                        {[...Array(route.stars)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="h-4 w-4 fill-yellow-400 text-yellow-400"
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      "-"
+                    )}
+                  </TableCell>
+                  <TableCell>{route.first_ascent}</TableCell>
+                  <TableCell>{route.info}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
     </div>
   );

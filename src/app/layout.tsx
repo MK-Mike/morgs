@@ -8,7 +8,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Morgans Bay Climbing",
   description: "Discover the best climbing routes at Morgans Bay",
 };

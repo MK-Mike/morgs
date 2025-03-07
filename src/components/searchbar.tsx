@@ -139,7 +139,7 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <div className="relative mb-6">
+    <div className="relative my-2">
       <div className="flex items-center">
         {!isFocussed && (
           <Search className="absolute left-3 h-4 w-4 text-gray-500" />

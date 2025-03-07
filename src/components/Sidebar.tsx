@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import routesData from "@/data/routes.json";
+import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
 const topLinks = [
   { name: "About", href: "/about", icon: Info },
@@ -24,13 +25,8 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="bg-surface flex max-h-svh w-64 flex-col border-r border-secondary">
-      <div className="p-4">
-        {/* Logo */}
-        <Link href="/" className="mb-6 flex items-center">
-          <span className="text-lg font-bold">Morgan Bay Climbing</span>
-        </Link>
-
+    <div className="bg-surface flex h-[calc(100vh-26px)] w-64 flex-col justify-between border-r border-secondary p-4">
+      <ScrollArea className="flex-1 overflow-auto">
         {/* Top Section */}
         <nav className="mb-6">
           <ul className="space-y-2">
@@ -54,7 +50,7 @@ export default function Sidebar() {
         </nav>
 
         {/* Headlands and Sectors Accordion */}
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion type="single" collapsible className="w-full flex-grow">
           {routesData.headlands.map((headland) => (
             <AccordionItem
               value={headland.slug}
@@ -86,10 +82,11 @@ export default function Sidebar() {
             </AccordionItem>
           ))}
         </Accordion>
-      </div>
 
+        <ScrollBar orientation="vertical" />
+      </ScrollArea>
       {/* User Account Section */}
-      <div className="mt-auto border-t border-border p-4">
+      <div className="mt-auto border-t border-border p-4 pb-8">
         <Link
           href="/account"
           className="flex items-center space-x-3 rounded p-2 hover:bg-secondary hover:text-white"
@@ -106,6 +103,6 @@ export default function Sidebar() {
           </div>
         </Link>
       </div>
-    </aside>
+    </div>
   );
 }
