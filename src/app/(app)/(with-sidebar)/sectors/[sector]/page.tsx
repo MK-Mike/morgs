@@ -41,7 +41,34 @@ import {
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import routesData from "~/data/routes.json";
 import { Button } from "~/components/ui/button";
+import { Badge } from "~/components/ui/badge";
+function generateTags() {
+  const tagsList = ["pumpy", "run out", "technical", "slabby", "juggy"];
 
+  // Randomly decide whether to include tags (50% chance)
+  if (Math.random() < 0.5) {
+    return []; // No tags
+  }
+
+  // Generate a random number of tags (1 to 3)
+  const numberOfTags = Math.floor(Math.random() * 3) + 1;
+
+  // Shuffle the tags and select a subset
+  const selectedTags = tagsList
+    .sort(() => 0.5 - Math.random())
+    .slice(0, numberOfTags);
+
+  return selectedTags;
+}
+
+//mapping for tag colours
+const tagColours = new Map([
+  ["pumpy", "emerald"],
+  ["run out", "rose"],
+  ["technical", "yellow"],
+  ["slabby", "sky"],
+  ["juggy", "pink"],
+]);
 export default function SectorPage() {
   const { sector } = useParams();
 
@@ -49,7 +76,6 @@ export default function SectorPage() {
   const sectorData = routesData.headlands
     .flatMap((headland: Headland) => headland.sectors)
     .find((s: Sector) => s.slug === sector) as Sector | undefined;
-
   const [minGrade, setMinGrade] = useState("");
   const [maxGrade, setMaxGrade] = useState("");
   const [type, setType] = useState("all");
@@ -68,6 +94,9 @@ export default function SectorPage() {
     return gradeFilter && typeFilter;
   });
 
+  filteredRoutes.forEach((r: RouteType) => {
+    r.tags = generateTags();
+  });
   // Mock data for sector information (replace with actual data when available)
   const sectorInfo = {
     access:
@@ -232,7 +261,7 @@ export default function SectorPage() {
                 <TableHead>Name</TableHead>
                 <TableHead>Grade</TableHead>
                 <TableHead>Stars</TableHead>
-                <TableHead>First Ascent</TableHead>
+                <TableHead className="text-end">Tags</TableHead>
                 <TableHead>Info</TableHead>
               </TableRow>
             </TableHeader>
@@ -263,7 +292,17 @@ export default function SectorPage() {
                       "-"
                     )}
                   </TableCell>
-                  <TableCell>{route.first_ascent}</TableCell>
+                  <TableCell>
+                    <div className="flex justify-end gap-2">
+                      {route.tags.map((tag: string) => {
+                        return (
+                          <Badge key={tag} variant={tagColours.get(tag)}>
+                            {tag}
+                          </Badge>
+                        );
+                      })}
+                    </div>
+                  </TableCell>
                   <TableCell>{route.info}</TableCell>
                 </TableRow>
               ))}
