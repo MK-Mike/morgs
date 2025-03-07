@@ -33,8 +33,23 @@ export function SiteHeader() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Icons.twitter className="h-4 w-4" />
-                  <span className="sr-only">twitter</span>
+                  <Icons.whatsApp className="h-4 w-4" />
+                  <span className="sr-only">whatsApp</span>
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 px-0"
+              >
+                <Link
+                  href={siteConfig.links.pdfGuide}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icons.PDF className="h-4 w-4" />
+                  <span className="sr-only">PDF Guide</span>
                 </Link>
               </Button>
               {/* <ModeSwitcher /> */}

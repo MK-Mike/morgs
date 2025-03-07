@@ -7,7 +7,7 @@ export default function WithSidebarLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex">
+    <div className="flex h-[calc(100vh-56px)] overflow-y-auto">
       <aside className="hidden lg:block lg:w-72 lg:flex-none">
         <Sidebar />
       </aside>

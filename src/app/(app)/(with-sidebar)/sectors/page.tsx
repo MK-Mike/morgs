@@ -59,7 +59,7 @@ export default function SectorsPage() {
   );
 
   return (
-    <div className="container mx-auto py-4">
+    <div className="container mx-auto max-w-screen-xl">
       <Breadcrumbs />
 
       <div className="mb-4">
@@ -77,7 +77,7 @@ export default function SectorsPage() {
 
       {/* Group sectors by headland */}
       {routesData.headlands.map((headland) => (
-        <div key={headland.slug} className="mb-12">
+        <div key={headland.slug} className="mb-12 w-full overflow-y-auto">
           <h2 className="mb-6 text-2xl font-semibold">{headland.name}</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {sectors
