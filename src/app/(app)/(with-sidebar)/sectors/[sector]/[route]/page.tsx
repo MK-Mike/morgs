@@ -8,38 +8,9 @@ import type { Route } from "~/app/types/routes";
 import Breadcrumbs from "~/components/Breadcrumbs";
 import CommentsSection from "~/components/commentSection";
 import { Skeleton } from "~/components/ui/skeleton";
-import { Badge } from "~/components/ui/badge";
-import { Button } from "~/components/ui/button";
+import DifficultyConsensus from "~/components/difficulty-consensus";
 import routesData from "~/data/routes.json";
-
-function generateTags() {
-  const tagsList = ["pumpy", "run out", "technical", "slabby", "juggy"];
-
-  // Randomly decide whether to include tags (50% chance)
-  if (Math.random() < 0.5) {
-    return []; // No tags
-  }
-
-  // Generate a random number of tags (1 to 3)
-  const numberOfTags = Math.floor(Math.random() * 3) + 1;
-
-  // Shuffle the tags and select a subset
-  const selectedTags = tagsList
-    .sort(() => 0.5 - Math.random())
-    .slice(0, numberOfTags);
-
-  return selectedTags;
-}
-//mapping for tag colours
-const tagColours = new Map([
-  ["pumpy", "emerald"],
-  ["run out", "rose"],
-  ["technical", "yellow"],
-  ["slabby", "sky"],
-  ["juggy", "pink"],
-]);
-
-const tags = generateTags();
+import RouteTags from "~/components/route-tags";
 
 export default function RoutePage() {
   const { sector: sectorSlug, route: routeSlug } = useParams();
@@ -87,32 +58,10 @@ export default function RoutePage() {
               <strong>Description:</strong> {route.description}
             </p>
             <p>
-              <strong>First Ascent:</strong> {route.first_ascent}
+              <strong>First Ascent:</strong> {route.first_ascent} - {route.date}
             </p>
-            <p>
-              <strong>Date of First Ascent:</strong> {route.date}
-            </p>
-            {tags.length > 0 && (
-              <div className="flex justify-start gap-2">
-                <p>
-                  <strong>Tags: </strong>
-                  {tags.map((tag: string) => {
-                    return (
-                      <Badge
-                        className="m-1"
-                        key={tag}
-                        variant={tagColours.get(tag)}
-                      >
-                        {tag}
-                      </Badge>
-                    );
-                  })}
-                </p>
-              </div>
-            )}
-            <Button variant="secondary" asChild>
-              <p> add tag(s)</p>
-            </Button>
+            <RouteTags specifiedTags={route.tags} />
+            <DifficultyConsensus />
           </div>
         </div>
         <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-muted">

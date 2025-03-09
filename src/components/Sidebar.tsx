@@ -25,7 +25,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="bg-surface flex h-[calc(100vh-26px)] w-64 flex-col justify-between border-r border-secondary p-4">
+    <div className="bg-surface flex h-[calc(100vh-28px)] w-64 flex-col justify-between border-r border-secondary p-4">
       <ScrollArea className="flex-1 overflow-auto">
         {/* Top Section */}
         <nav className="mb-6">

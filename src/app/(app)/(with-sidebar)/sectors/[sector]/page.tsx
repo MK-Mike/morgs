@@ -35,31 +35,11 @@ import {
   Star,
   Route as RouteIcon,
   Mountain,
-  SearchIcon,
   MapPinCheckIcon,
 } from "lucide-react";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import routesData from "~/data/routes.json";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
-function generateTags() {
-  const tagsList = ["pumpy", "run out", "technical", "slabby", "juggy"];
-
-  // Randomly decide whether to include tags (50% chance)
-  if (Math.random() < 0.5) {
-    return []; // No tags
-  }
-
-  // Generate a random number of tags (1 to 3)
-  const numberOfTags = Math.floor(Math.random() * 3) + 1;
-
-  // Shuffle the tags and select a subset
-  const selectedTags = tagsList
-    .sort(() => 0.5 - Math.random())
-    .slice(0, numberOfTags);
-
-  return selectedTags;
-}
 
 //mapping for tag colours
 const tagColours = new Map([
@@ -68,6 +48,11 @@ const tagColours = new Map([
   ["technical", "yellow"],
   ["slabby", "sky"],
   ["juggy", "pink"],
+  ["crimpy", "emerald"],
+  ["exposed", "rose"],
+  ["vertical", "yellow"],
+  ["overhang", "sky"],
+  ["sustained", "pink"],
 ]);
 export default function SectorPage() {
   const { sector } = useParams();
@@ -94,9 +79,8 @@ export default function SectorPage() {
     return gradeFilter && typeFilter;
   });
 
-  filteredRoutes.forEach((r: RouteType) => {
-    r.tags = generateTags();
-  });
+  //   r.tags = generateTags();
+  // });
   // Mock data for sector information (replace with actual data when available)
   const sectorInfo = {
     access:

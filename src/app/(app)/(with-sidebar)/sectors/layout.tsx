@@ -10,7 +10,6 @@ export default function SectorsLayout({
     <div className="flex min-h-0 w-full flex-col overflow-y-auto">
       <ScrollArea className="flex-1 overflow-auto pb-32">
         <div className="mx-auto max-w-5xl">{children}</div>
-        <ScrollBar orientation="vertical" />
       </ScrollArea>
     </div>
   );
