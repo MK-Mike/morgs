@@ -93,7 +93,7 @@ export default function SectorPage() {
   const maxRouteGrade = Math.max(...sectorData.routes.map((r) => r.grade));
 
   return (
-    <div className="container">
+    <div className="container mx-auto px-4 sm:px-6">
       <Breadcrumbs />
       <h1 className="mb-6 text-3xl font-bold">{sectorData.name} Sector</h1>
       <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
@@ -198,7 +198,7 @@ export default function SectorPage() {
               placeholder="Min Grade"
               value={minGrade}
               onChange={(e) => setMinGrade(e.target.value)}
-              className="w-32"
+              className="w-20 sm:w-32"
             />
           </div>
           <div>
@@ -237,16 +237,18 @@ export default function SectorPage() {
           </div>
         </div>
 
-        <div className="overflow-x-auto">
-          <Table>
+        <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+          <Table className="w-full table-fixed">
             <TableHeader>
               <TableRow>
-                <TableHead>Number</TableHead>
-                <TableHead>Name</TableHead>
-                <TableHead>Grade</TableHead>
-                <TableHead>Stars</TableHead>
-                <TableHead className="text-end">Tags</TableHead>
-                <TableHead>Info</TableHead>
+                <TableHead className="w-1/6">#</TableHead>
+                <TableHead className="w-1/3">Name</TableHead>
+                <TableHead className="w-1/6">Grade</TableHead>
+                <TableHead className="w-1/6">Stars</TableHead>
+                <TableHead className="w-1/4 text-end">Tags</TableHead>
+                <TableHead className="hidden w-1/6 sm:table-cell">
+                  Info
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -276,18 +278,22 @@ export default function SectorPage() {
                       "-"
                     )}
                   </TableCell>
-                  <TableCell>
-                    <div className="flex justify-end gap-2">
-                      {route.tags.map((tag: string) => {
-                        return (
-                          <Badge key={tag} variant={tagColours.get(tag)}>
-                            {tag}
-                          </Badge>
-                        );
-                      })}
+                  <TableCell className="max-w-[120px]">
+                    <div className="flex flex-wrap justify-end gap-1">
+                      {route.tags.map((tag: string) => (
+                        <Badge
+                          key={tag}
+                          variant={tagColours.get(tag)}
+                          className="mb-1 whitespace-nowrap text-xs"
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
                     </div>
                   </TableCell>
-                  <TableCell>{route.info}</TableCell>
+                  <TableCell className="hidden sm:table-cell">
+                    {route.info}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
