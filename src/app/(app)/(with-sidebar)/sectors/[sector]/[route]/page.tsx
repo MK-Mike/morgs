@@ -52,7 +52,7 @@ export default function RoutePage() {
               </span>
             </div>
           </div>
-          <span className="text-sm text-gray-500">
+          <span className="text-sm text-gray-400 font-style:italic">
             {route.first_ascent} - {route.date}
           </span>
         </div>
@@ -61,7 +61,7 @@ export default function RoutePage() {
             <strong>Style:</strong> {ClimbingStyleMap.get(route.info)}
           </p>
           <p>
-            <strong>Info:</strong> {route.info}
+            <strong>Info:</strong> {route.info.replace("\(", "").replace("\)", "") }
           </p>
           <p>
             <strong>Description:</strong> {route.description}
