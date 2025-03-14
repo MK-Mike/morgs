@@ -12,6 +12,9 @@ import DifficultyConsensus from "~/components/difficulty-consensus";
 import routesData from "~/data/routes.json";
 import RouteTags from "~/components/route-tags";
 import { uniqueInfoValues as ClimbingStyleMap } from "@/data/info-to-climbing-style";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "~/components/ui/button";
+import Link from "next/link";
 
 export default function RoutePage() {
   const { sector: sectorSlug, route: routeSlug } = useParams();
@@ -26,9 +29,53 @@ export default function RoutePage() {
   if (!route) {
     notFound();
   }
+  const currentSector = routesData.headlands
+  .flatMap((headland) => headland.sectors)
+  .find((s) => s.slug === sectorSlug);
+
+  // Get the index of the current route in the sector
+  const currentRouteIndex = currentSector?.routes.findIndex(
+  (r) => r.slug === routeSlug
+);
+  
+  // Determine the previous and next routes
+  const prevRoute = currentRouteIndex > 0 ? currentSector?.routes[currentRouteIndex - 1] : null;
+  const nextRoute = currentRouteIndex < (currentSector?.routes.length - 1) 
+    ? currentSector?.routes[currentRouteIndex + 1] 
+    : null;
+  
   return (
   <div className="container mx-auto max-w-screen-xl px-4 py-4">
     <Breadcrumbs />
+    <div className="flex justify-between w-full mb-4">
+      {prevRoute ? (
+        <Button variant="outline" size="sm" asChild>
+          <Link href={`/sectors/${sectorSlug}/${prevRoute.slug}`}>
+            <ChevronLeft className="mr-2 h-4 w-4" />
+            Previous: {prevRoute.name}
+          </Link>
+        </Button>
+      ) : (
+        <Button variant="outline" size="sm" disabled>
+          <ChevronLeft className="mr-2 h-4 w-4" />
+          Previous: None
+        </Button>
+      )}
+      
+      {nextRoute ? (
+        <Button variant="outline" size="sm" asChild>
+          <Link href={`/sectors/${sectorSlug}/${nextRoute.slug}`}>
+            Next: {nextRoute.name}
+            <ChevronRight className="ml-2 h-4 w-4" />
+          </Link>
+        </Button>
+      ) : (
+        <Button variant="outline" size="sm" disabled>
+          Next: None
+          <ChevronRight className="ml-2 h-4 w-4" />
+        </Button>
+      )}
+    </div>
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
       <div className="order-2 md:order-1">
         <div className="mb-3">
