@@ -61,6 +61,9 @@ export default function RoutePage() {
             <strong>Style:</strong> {ClimbingStyleMap.get(route.info)}
           </p>
           <p>
+            <strong>Info:</strong> {route.info}
+          </p>
+          <p>
             <strong>Description:</strong> {route.description}
           </p>
         </div>
