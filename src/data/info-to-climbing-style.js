@@ -1,0 +1,16 @@
+export const uniqueInfoValues = new Map([
+  ["", ""],
+  ["(1B&T)", "trad"],
+  ["(2RB&T)", "trad"],
+  ["(3RB&T)", "trad"],
+  ["(4B&C)", "sport"],
+  ["(4RB&T)", "trad"],
+  ["(5B&C)", "sport"],
+  ["(8B&C)", "sport"],
+  ["(C only)", "trad"],
+  ["(S)", "solo"],
+  ["(Solo)", "solo"],
+  ["(T&3RB)", "trad"],
+  ["(T)", "trad"],
+  ["(solo)", "solo"],
+]);
