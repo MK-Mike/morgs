@@ -7,6 +7,7 @@ export const siteConfig = {
     facebook: "https://facebook.com",
     ecclimbing: "https://www.easterncaperockclimbing.co.za/",
     whatsapp: "https://chat.whatsapp.com/EmbPAOD23JkClJdU4opBX1",
+    github: "https://github.com/mk-kent/morgan-bay-climbing",
     pdfGuide:
       "https://www.easterncaperockclimbing.co.za/documents/location-37-494-morgan-bay.pdf",
   },
