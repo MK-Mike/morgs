@@ -1,44 +1,29 @@
-# CLimbing at Morgan Bay
+# Morgan Bay Climbing Guide Website
 
-## TODO
+This project is create a modern, up to date climbing guide for Morgan Bay
 
-[x] add mock gps data for sectors info
+## Acknowldgements
 
-- [x] move the sidebar into a side drawer for mobile views
-      -- []add a button to toggle the drawe
-- [x] add route tags eg pumpy with user feedback (pumpuy, slaby, crimpy, cruxy, etc)
-      [x] add sandbagging ratings
-      [] change into to style
-      [x] update search bar to go to route if clicked on
-      [] add filters to seach page
-      [] add an all routes page with filtering
-      [] add sector access comments
-      [] create non sidebar layout for non routes pages
-      [] move footer into non sidebar layouts
+This project is only possible because of the hard work and time put in by Derek Marshal (legend of Eastern Cape Climbing) who was the first person to put together a climbing guide for Morgan Bay.
+Without his hard work and dedication to documenting climbing rotue we would have nothing to work with. We are deeply thankful for his time and effort.
 
-### user managemnet
+## Philosophy / Aim
 
-[] set up clerk
-[] add user account page
-[] redo sidebar with user account info / sign in / sign out
+A climbing guide should serve the needs of the climbing community. It should make it easy to search for and discover new routes as well as provide up to date information about access and conditions (eg broken holds, damaged bolts ). It should also help the community reach consensus on the difficulty of routes and allow for members of the community to give input and contribute to the ongoing maintainance of the body of knowledge.
 
-### migrate to db instead of json
+Climbing guides should also be able to be downloaded or stored for offline use as connectivity is often an issue in climbing areas
 
-[] add db
-[] add db migrations
-[] add db seeding
-[] redo all imports to use db
+## Tech Stack
 
-### route management
+T3 stack
 
-[] add route creation page
-[] add route editing page
-[] add route deletion page
-[] add route comments
+- NextJs (app router)
+- TypeScript
+- Drizzle
+- Tailwind
 
-### sector management
+DB - Vercel Postgress
+Auth - Clerk
+Media - UploadThing
 
-[] add sector creation page
-[] add sector editing page
-[] add sector deletion page
-[] add sector comments
+Hosting - Vercel
