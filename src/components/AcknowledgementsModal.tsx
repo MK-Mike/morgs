@@ -18,10 +18,11 @@ const AcknowledgementsModal = ({ isOpen = false, onOpenChange }) => {
         </DialogHeader>
         <DialogDescription className="text-base">
           This project is only possible because of the hard work and time put in
-          by Derek Marshal (legend of Eastern Cape Climbing) who was the first
-          person to put together a climbing guide for Morgan Bay. Without his
-          hard work and dedication to documenting climbing routes we would have
-          nothing to work with. We are deeply thankful for his time and effort.
+          by Derek the Monster Marshal (legend of Eastern Cape Climbing) who was
+          the first person to put together a climbing guide for Morgan Bay.
+          Without his hard work and dedication to documenting climbing routes we
+          would have nothing to work with. We are deeply thankful for his time
+          and effort.
         </DialogDescription>
       </DialogContent>
     </Dialog>

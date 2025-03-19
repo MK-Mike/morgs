@@ -195,7 +195,7 @@ export default function SectorPage() {
             <Input
               id="minGrade"
               type="number"
-              placeholder="Min Grade"
+              placeholder={minRouteGrade}
               value={minGrade}
               onChange={(e) => setMinGrade(e.target.value)}
               className="w-20 sm:w-32"
@@ -211,7 +211,7 @@ export default function SectorPage() {
             <Input
               id="maxGrade"
               type="number"
-              placeholder="Max Grade"
+              placeholder={maxRouteGrade}
               value={maxGrade}
               onChange={(e) => setMaxGrade(e.target.value)}
               className="w-32"
@@ -222,14 +222,14 @@ export default function SectorPage() {
               htmlFor="routeType"
               className="block text-sm font-medium text-gray-700"
             >
-              Route Type
+              Route Style
             </label>
             <Select value={type} onValueChange={setType}>
               <SelectTrigger id="routeType" className="w-[180px]">
-                <SelectValue placeholder="Select type" />
+                <SelectValue placeholder="Select style" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All Types</SelectItem>
+                <SelectItem value="all">All Styles</SelectItem>
                 <SelectItem value="trad">Trad</SelectItem>
                 <SelectItem value="sport">Sport</SelectItem>
               </SelectContent>

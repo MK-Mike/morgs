@@ -20,6 +20,10 @@
 [] add sector access comments
 [] create non sidebar layout for non routes pages
 [] move footer into non sidebar layouts
+[] options drop down / command menu / filters in home search bar
+[] find a partner button
+[] key or label for colored circles in sector cards
+[]
 
 ### user managemnet
 

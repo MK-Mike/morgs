@@ -32,7 +32,7 @@ export function SiteFooter() {
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
-              Easter Cape.
+              Eastern Cape.
             </a>
           </div>
         </div>
