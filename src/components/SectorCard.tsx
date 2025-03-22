@@ -11,6 +11,7 @@ type GradeBucket = {
   label: string;
   color: string;
   count: number;
+  range: string;
 };
 
 type SectorCardProps = {
@@ -54,23 +55,42 @@ export default function SectorCard({
   routeTypes,
 }: SectorCardProps) {
   return (
-    <Card className="relative h-full max-w-sm overflow-hidden">
+    <Card className="relative h-full max-w-sm overflow-hidden bg-slate-800">
       <CardHeader className="pb-2">
         <CardTitle className="truncate">{name}</CardTitle>
       </CardHeader>
 
       <CardContent className="relative z-10 pb-12">
-        <div className="lex-wrap mb-4 flex gap-2">
+        <div className="my-4 flex flex-wrap justify-evenly gap-4">
           {gradeBuckets.map((bucket, index) => (
             <TooltipProvider key={index}>
               <Tooltip>
                 <TooltipTrigger>
                   <div
-                    className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white"
-                    style={{ backgroundColor: bucket.color }}
+                    className="flex h-8 w-8 items-center justify-center text-sm font-bold"
+                    style={{
+                      border: `2px solid ${bucket.color}`,
+                      transform: "rotate(45deg)",
+                      color: `${bucket.color}`,
+                    }}
                   >
-                    {bucket.count}
+                    <div
+                      style={{
+                        transform: "rotate(-45deg)", // Rotate the content back to normal
+                      }}
+                    >
+                      {bucket.count}
+                    </div>
                   </div>
+                  <span
+                    className="mt-6 sm:hidden"
+                    style={{
+                      fontSize: "0.8rem",
+                      color: `${bucket.color}`,
+                    }}
+                  >
+                    {bucket.range}
+                  </span>
                 </TooltipTrigger>
                 <TooltipContent side="top">
                   <p>{bucket.label}</p>
@@ -82,7 +102,7 @@ export default function SectorCard({
 
         {routeTypes.length > 0 && (
           <div className="mb-4">
-            <p className="text-sm text-muted-foreground">Route Types:</p>
+            <p className="text-sm text-muted-foreground">Route Styles:</p>
             <div className="mt-1 flex flex-wrap gap-2">
               {routeTypes.map((type, index) => (
                 <span

@@ -13,6 +13,7 @@ export interface Route {
   date: string;
   info: string;
   tags: string[];
+  routeStyle: string;
 }
 
 // Types for sector data

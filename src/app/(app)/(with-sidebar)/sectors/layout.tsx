@@ -7,10 +7,8 @@ export default function SectorsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-0 w-full flex-col overflow-y-auto">
-      <ScrollArea className="flex-1 overflow-auto pb-32">
-        <div className="mx-auto max-w-5xl">{children}</div>
-      </ScrollArea>
+    <div className="flex min-h-0 w-full flex-col">
+      <ScrollArea className="flex-1 pb-32">{children}</ScrollArea>
     </div>
   );
 }

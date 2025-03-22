@@ -27,10 +27,20 @@ export default function SectorsPage() {
     const processedSectors = data.headlands.flatMap((headland: Headland) =>
       headland.sectors.map((sector: Sector) => {
         const gradeBuckets = [
-          { label: "Easy (0-16)", color: "#4CAF50", count: 0 },
-          { label: "Medium (17-24)", color: "#2196F3", count: 0 },
-          { label: "Hard (25-32)", color: "#F44336", count: 0 },
-          { label: "Very Hard (33+)", color: "#212121", count: 0 },
+          { label: "Easy (0-16)", color: "#4CAF50", count: 0, range: "0-16" },
+          {
+            label: "Medium (17-24)",
+            color: "#2196F3",
+            count: 0,
+            range: "17-24",
+          },
+          { label: "Hard (25-32)", color: "#F44336", count: 0, range: "25-32" },
+          {
+            label: "Very Hard (33+)",
+            color: "#000000",
+            count: 0,
+            range: "33+",
+          },
         ];
 
         // Count routes in each grade bucket
@@ -44,25 +54,8 @@ export default function SectorsPage() {
 
         // Process route types
         const routeTypes = [
-          ...new Set(
-            sector.routes.map((route) =>
-              route.info.replace(/[()]/g, "").trim(),
-            ),
-          ),
-        ]
-          .filter(
-            (type) =>
-              type === "T" ||
-              type === "S" ||
-              type === "solo" ||
-              /\d+[B]/.test(type),
-          )
-          .map((type) => {
-            if (type === "T") return "trad";
-            if (type === "S" || type === "solo") return "solo";
-            if (/\d+[B]/.test(type)) return "sport";
-            return type;
-          });
+          ...new Set(sector.routes.map((route) => route?.routeStyle)),
+        ].filter((style) => style !== "unknown");
 
         return {
           name: sector.name,
@@ -95,7 +88,7 @@ export default function SectorsPage() {
   }, [isMounted]);
 
   return (
-    <div className="container mx-auto max-w-screen-xl">
+    <div className="container mx-auto max-w-screen-xl px-4">
       <Breadcrumbs />
       <AcknowledgementsModal
         onOpenChange={setIsModalOpen}
@@ -109,16 +102,16 @@ export default function SectorsPage() {
         </p>
       </div>
 
-      <div className="mb-8">
+      <div className="mb-8 w-full overflow-hidden">
         <h2 className="mb-4 text-2xl font-semibold">Featured Routes</h2>
         <SkeletonCarousel />
       </div>
 
       {/* Group sectors by headland */}
       {data.headlands.map((headland) => (
-        <div key={headland.slug} className="mb-12 w-full overflow-y-auto">
+        <div key={headland.slug} className="mb-12 w-full">
           <h2 className="mb-6 text-2xl font-semibold">{headland.name}</h2>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
             {sectors
               .filter((sector) => sector.headland === headland.name)
               .map((sector) => (
