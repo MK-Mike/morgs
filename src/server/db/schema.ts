@@ -108,7 +108,7 @@ export const routeTagVotes = createTable(
     tagId: varchar("tag_id", { length: 255 })
       .notNull()
       .references(() => tags.id),
-    userId: integer("user_id")
+    userId: text("user_id")
       .notNull()
       .references(() => users.id), // Assuming you have a users table
   },
@@ -121,7 +121,7 @@ export const routeTagVotes = createTable(
     ),
     routeIdIdx: index("route_tag_votes_route_id_idx").on(routeTagVote.routeId),
     tagIdIdx: index("tag_id_idx").on(routeTagVote.tagId),
-    userIdIdx: index("user_id_idx").on(routeTagVote.userId),
+    userIdIdx: index("route_tag_votes_user_id_idx").on(routeTagVote.userId),
   }),
 );
 
@@ -141,10 +141,10 @@ export const routeDifficultyVotes = createTable(
     routeId: integer("route_id")
       .notNull()
       .references(() => routes.id),
-    userId: integer("user_id")
+    userId: text("user_id")
       .notNull()
       .references(() => users.id),
-    difficulty: difficultyOptionEnum("difficulty_option").notNull(),
+    difficulty: difficultyEnum("difficulty_option").notNull(),
   },
   (routeDifficultyVote) => ({
     // Enforce that a user can only vote once per route
@@ -155,7 +155,9 @@ export const routeDifficultyVotes = createTable(
     routeIdIdx: index("route_difficulty_votes_route_id_idx").on(
       routeDifficultyVote.routeId,
     ),
-    userIdIdx: index("user_id_idx").on(routeDifficultyVote.userId),
+    userIdIdx: index("route_difficulty_user_id_idx").on(
+      routeDifficultyVote.userId,
+    ),
   }),
 );
 
@@ -174,7 +176,7 @@ export const comments = createTable(
     routeId: integer("route_id")
       .notNull()
       .references(() => routes.id),
-    userId: varchar("user_id", { length: 255 }).notNull(), // Clerk user ID
+    userId: text("user_id").notNull(), // Clerk user ID
     content: text("content").notNull(),
     createdAt: timestamp("created_at", { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
@@ -182,7 +184,7 @@ export const comments = createTable(
   },
   (comment) => ({
     routeIdIdx: index("route_id_idx").on(comment.routeId),
-    userIdIdx: index("user_id_idx").on(comment.userId),
+    userIdIdx: index("comments_user_id_idx").on(comment.userId),
   }),
 );
 
