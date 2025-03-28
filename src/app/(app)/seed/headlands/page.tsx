@@ -176,7 +176,9 @@ export default function SeedSectorPage() {
       </div>
       <div className="mb-4 text-2xl">
         <h2 className="mt-4">Edit Headland</h2>
-        <DBHeadlandsTable />
+        <Suspense fallback={<div>Loading...</div>}>
+          <DBHeadlandsTable />
+        </Suspense>
       </div>
     </div>
   );
