@@ -1,6 +1,9 @@
-import { console } from "node:inspector";
+"use server";
+import { eq } from "drizzle-orm";
+import { z } from "zod";
 import { db } from "../db/index";
 import { headlands } from "../db/schema";
+import { revalidatePath } from "next/cache";
 
 export type HeadlandData = {
   slug: string;
@@ -15,22 +18,92 @@ export type Headland = {
   id: number;
 };
 
-export const getAllHeadlands = async () => {
+export async function getAllHeadlands() {
   const allHeadlands: Headland[] = await db.select().from(headlands);
   return allHeadlands;
-};
+}
 
-//insert new headland
-export async function insertHeadland(headlandData: HeadlandData) {
-  const newHeadland: typeof headlands.$inferInsert = {
-    slug: headlandData.slug,
-    name: headlandData.name,
-    description: headlandData.description,
+export async function createHeadland(headland: HeadlandData) {
+  console.log("Server Action: Creating headland", headland); // Good for debugging
+  try {
+    const result = await db
+      .insert(headlands)
+      .values({
+        name: headland.name,
+        slug: headland.slug,
+        description: headland.description,
+      })
+      .returning({ insertedId: headlands.id }); // Example: return the ID
+
+    console.log("Server Action: Inserted ID", result[0]?.insertedId);
+    return result; // Or return something more meaningful
+  } catch (error) {
+    console.error("Server Action Error:", error);
+    // Re-throw or return an error object/message
+    throw new Error("Failed to create headland.");
+  }
+}
+const formSchema = z.object({
+  name: z.string().min(2),
+  slug: z
+    .string()
+    .min(2)
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  description: z.string(),
+});
+
+export async function updateHeadlandAction(formData: {
+  name: string;
+  slug: string;
+  description: string;
+  id: number;
+}) {
+  // Validate data on the server side as well
+  const data: z.infer<typeof formSchema> = {
+    name: formData.name,
+    slug: formData.slug,
+    description: formData.description,
   };
+  const validation = formSchema.safeParse(data);
+  if (!validation.success) {
+    console.error("Server Validation Failed:", validation.error.errors);
+    console.log(
+      "Data:",
+      formData.id,
+      formData.slug,
+      formData.description,
+      formData.name,
+    );
+    return { error: "Invalid data provided." }; // Return error object
+  }
 
-  await db.insert(headlands).values(newHeadland);
-  console.log(`New Headland Created ${headlandData.name}`);
+  try {
+    if (validation.data.description) {
+      await db
+        .update(headlands)
+        .set({
+          name: validation.data.name,
+          slug: validation.data.slug,
+          description: validation.data.description,
+        })
+        .where(eq(headlands.id, formData.id));
+    }
+    if (!validation.data.description) {
+      await db
+        .update(headlands)
+        .set({
+          name: validation.data.name,
+          slug: validation.data.slug,
+        })
+        .where(eq(headlands.id, formData.id));
+    }
 
-  const allHeadlands: Headland[] = await getAllHeadlands();
-  return allHeadlands;
+    console.log(`Headland ${formData.id} updated successfully.`);
+    // Optionally: Revalidate cache tags if needed
+    revalidatePath("/seed/headlands");
+    return; // Indicate success (void return)
+  } catch (error) {
+    console.error("Error updating headland in DB:", error);
+    return { error: "Database error: Could not update headland." }; // Return error object
+  }
 }
