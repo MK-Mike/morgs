@@ -3,7 +3,7 @@
 ## Roadmap
 
 - [x] Recreate the routes.json more accuratly
-- [] Create and Seed postgress db with data from routes.json
+- [x] Create and Seed postgress db with data from routes.json
 - [] Rewrite pages to use db data not routes.json
 - [] Create auth protected routes for admin
 - [] Validate and correct db entries
@@ -15,9 +15,13 @@
 
 ## Next up
 
-- [] Add a sectors sedit dialog
-- [] add a routes seeding page
-- [] Add a route edit dialog
+- [] refactor to use bd as source of data instead of routes.json
+  - [] sectors page
+  - [] routes page
+  - [] route page
+  - [] sector page
+  - [] sidebar
+- []
 
 ## UI Fixes and Features
 
