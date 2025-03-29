@@ -9,7 +9,7 @@ import {
   json,
   pgEnum,
   serial,
-  real,
+  date,
   unique,
 } from "drizzle-orm/pg-core";
 import { object } from "zod";
@@ -45,6 +45,7 @@ export const routeStyleEnum = pgEnum("route_style", [
   "bouldering",
   "mixed",
   "aid",
+  "-",
 ]);
 
 export const headlands = createTable("headland", {
@@ -81,10 +82,10 @@ export const routes = createTable(
     name: varchar("name", { length: 255 }).notNull(),
     routeNumber: integer("route_number"),
     grade: integer("grade"),
-    stars: real("stars"),
+    stars: integer("stars"),
     description: text("description").notNull(),
     firstAscent: varchar("first_ascent", { length: 255 }),
-    date: timestamp("date", { mode: "date" }),
+    date: date("date", { mode: "string" }),
     info: varchar("info", { length: 255 }),
     routeStyle: routeStyleEnum("route_style"),
   },

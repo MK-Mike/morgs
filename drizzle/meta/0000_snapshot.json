@@ -1,0 +1,761 @@
+{
+  "id": "1a249630-5ea1-4187-8984-28f9c0df746f",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.morgan-bay-climbing_comment_tag": {
+      "name": "morgan-bay-climbing_comment_tag",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "comment_id": {
+          "name": "comment_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tag": {
+          "name": "tag",
+          "type": "comment_tag",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "comment_id_idx": {
+          "name": "comment_id_idx",
+          "columns": [
+            {
+              "expression": "comment_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "morgan-bay-climbing_comment_tag_comment_id_morgan-bay-climbing_comment_id_fk": {
+          "name": "morgan-bay-climbing_comment_tag_comment_id_morgan-bay-climbing_comment_id_fk",
+          "tableFrom": "morgan-bay-climbing_comment_tag",
+          "tableTo": "morgan-bay-climbing_comment",
+          "columnsFrom": [
+            "comment_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "unique_comment_tag": {
+          "name": "unique_comment_tag",
+          "nullsNotDistinct": false,
+          "columns": [
+            "comment_id",
+            "tag"
+          ]
+        }
+      }
+    },
+    "public.morgan-bay-climbing_comment": {
+      "name": "morgan-bay-climbing_comment",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "route_id": {
+          "name": "route_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content": {
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        }
+      },
+      "indexes": {
+        "route_id_idx": {
+          "name": "route_id_idx",
+          "columns": [
+            {
+              "expression": "route_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "comments_user_id_idx": {
+          "name": "comments_user_id_idx",
+          "columns": [
+            {
+              "expression": "user_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "morgan-bay-climbing_comment_route_id_morgan-bay-climbing_route_id_fk": {
+          "name": "morgan-bay-climbing_comment_route_id_morgan-bay-climbing_route_id_fk",
+          "tableFrom": "morgan-bay-climbing_comment",
+          "tableTo": "morgan-bay-climbing_route",
+          "columnsFrom": [
+            "route_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.morgan-bay-climbing_headland": {
+      "name": "morgan-bay-climbing_headland",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "morgan-bay-climbing_headland_slug_unique": {
+          "name": "morgan-bay-climbing_headland_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      }
+    },
+    "public.morgan-bay-climbing_route_difficulty_vote": {
+      "name": "morgan-bay-climbing_route_difficulty_vote",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "route_id": {
+          "name": "route_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "difficulty_option": {
+          "name": "difficulty_option",
+          "type": "difficulty_option",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "route_difficulty_votes_route_id_idx": {
+          "name": "route_difficulty_votes_route_id_idx",
+          "columns": [
+            {
+              "expression": "route_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "route_difficulty_user_id_idx": {
+          "name": "route_difficulty_user_id_idx",
+          "columns": [
+            {
+              "expression": "user_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "morgan-bay-climbing_route_difficulty_vote_route_id_morgan-bay-climbing_route_id_fk": {
+          "name": "morgan-bay-climbing_route_difficulty_vote_route_id_morgan-bay-climbing_route_id_fk",
+          "tableFrom": "morgan-bay-climbing_route_difficulty_vote",
+          "tableTo": "morgan-bay-climbing_route",
+          "columnsFrom": [
+            "route_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "morgan-bay-climbing_route_difficulty_vote_user_id_morgan-bay-climbing_user_id_fk": {
+          "name": "morgan-bay-climbing_route_difficulty_vote_user_id_morgan-bay-climbing_user_id_fk",
+          "tableFrom": "morgan-bay-climbing_route_difficulty_vote",
+          "tableTo": "morgan-bay-climbing_user",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "unique_difficulty_vote": {
+          "name": "unique_difficulty_vote",
+          "nullsNotDistinct": false,
+          "columns": [
+            "route_id",
+            "user_id"
+          ]
+        }
+      }
+    },
+    "public.morgan-bay-climbing_route_tag_vote": {
+      "name": "morgan-bay-climbing_route_tag_vote",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "route_id": {
+          "name": "route_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tag_id": {
+          "name": "tag_id",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "route_tag_votes_route_id_idx": {
+          "name": "route_tag_votes_route_id_idx",
+          "columns": [
+            {
+              "expression": "route_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "tag_id_idx": {
+          "name": "tag_id_idx",
+          "columns": [
+            {
+              "expression": "tag_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "route_tag_votes_user_id_idx": {
+          "name": "route_tag_votes_user_id_idx",
+          "columns": [
+            {
+              "expression": "user_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "morgan-bay-climbing_route_tag_vote_route_id_morgan-bay-climbing_route_id_fk": {
+          "name": "morgan-bay-climbing_route_tag_vote_route_id_morgan-bay-climbing_route_id_fk",
+          "tableFrom": "morgan-bay-climbing_route_tag_vote",
+          "tableTo": "morgan-bay-climbing_route",
+          "columnsFrom": [
+            "route_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "morgan-bay-climbing_route_tag_vote_tag_id_morgan-bay-climbing_tag_id_fk": {
+          "name": "morgan-bay-climbing_route_tag_vote_tag_id_morgan-bay-climbing_tag_id_fk",
+          "tableFrom": "morgan-bay-climbing_route_tag_vote",
+          "tableTo": "morgan-bay-climbing_tag",
+          "columnsFrom": [
+            "tag_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "morgan-bay-climbing_route_tag_vote_user_id_morgan-bay-climbing_user_id_fk": {
+          "name": "morgan-bay-climbing_route_tag_vote_user_id_morgan-bay-climbing_user_id_fk",
+          "tableFrom": "morgan-bay-climbing_route_tag_vote",
+          "tableTo": "morgan-bay-climbing_user",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "unique_vote": {
+          "name": "unique_vote",
+          "nullsNotDistinct": false,
+          "columns": [
+            "route_id",
+            "tag_id",
+            "user_id"
+          ]
+        }
+      }
+    },
+    "public.morgan-bay-climbing_route": {
+      "name": "morgan-bay-climbing_route",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "sector_id": {
+          "name": "sector_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "route_number": {
+          "name": "route_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "grade": {
+          "name": "grade",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stars": {
+          "name": "stars",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "first_ascent": {
+          "name": "first_ascent",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "date": {
+          "name": "date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "info": {
+          "name": "info",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "route_style": {
+          "name": "route_style",
+          "type": "route_style",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "sector_id_idx": {
+          "name": "sector_id_idx",
+          "columns": [
+            {
+              "expression": "sector_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "morgan-bay-climbing_route_sector_id_morgan-bay-climbing_sector_id_fk": {
+          "name": "morgan-bay-climbing_route_sector_id_morgan-bay-climbing_sector_id_fk",
+          "tableFrom": "morgan-bay-climbing_route",
+          "tableTo": "morgan-bay-climbing_sector",
+          "columnsFrom": [
+            "sector_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "morgan-bay-climbing_route_slug_unique": {
+          "name": "morgan-bay-climbing_route_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      }
+    },
+    "public.morgan-bay-climbing_sector": {
+      "name": "morgan-bay-climbing_sector",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "headland_id": {
+          "name": "headland_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "headland_id_idx": {
+          "name": "headland_id_idx",
+          "columns": [
+            {
+              "expression": "headland_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "morgan-bay-climbing_sector_headland_id_morgan-bay-climbing_headland_id_fk": {
+          "name": "morgan-bay-climbing_sector_headland_id_morgan-bay-climbing_headland_id_fk",
+          "tableFrom": "morgan-bay-climbing_sector",
+          "tableTo": "morgan-bay-climbing_headland",
+          "columnsFrom": [
+            "headland_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "morgan-bay-climbing_sector_slug_unique": {
+          "name": "morgan-bay-climbing_sector_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      }
+    },
+    "public.morgan-bay-climbing_tag": {
+      "name": "morgan-bay-climbing_tag",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(255)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "morgan-bay-climbing_tag_name_unique": {
+          "name": "morgan-bay-climbing_tag_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name"
+          ]
+        }
+      }
+    },
+    "public.morgan-bay-climbing_user": {
+      "name": "morgan-bay-climbing_user",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "role": {
+          "name": "role",
+          "type": "role",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "preferences": {
+          "name": "preferences",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {
+    "public.comment_tag": {
+      "name": "comment_tag",
+      "schema": "public",
+      "values": [
+        "beta",
+        "update",
+        "warning",
+        "question",
+        "gear"
+      ]
+    },
+    "public.difficulty_option": {
+      "name": "difficulty_option",
+      "schema": "public",
+      "values": [
+        "sandbag",
+        "staunch",
+        "stiff",
+        "fair",
+        "easy",
+        "overgraded"
+      ]
+    },
+    "public.role": {
+      "name": "role",
+      "schema": "public",
+      "values": [
+        "admin",
+        "user",
+        "manager"
+      ]
+    },
+    "public.route_style": {
+      "name": "route_style",
+      "schema": "public",
+      "values": [
+        "trad",
+        "sport",
+        "solo",
+        "bouldering",
+        "mixed",
+        "aid"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

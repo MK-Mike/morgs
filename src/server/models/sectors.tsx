@@ -10,6 +10,18 @@ export type SectorData = {
 export interface SectorMetaData extends SectorData {
   id: number;
 }
+export async function getAllSectors() {
+  console.log("Server Action: Fetching all sectors");
+  try {
+    const result = await db.select().from(sectors);
+    console.log("Server Action: Fetched sectors. First 5:", result.slice(0, 5));
+    return result;
+  } catch (error) {
+    console.error("Server Action Error:", error);
+    // Re-throw or return an error object/message
+    throw new Error("Failed to fetch sectors.");
+  }
+}
 
 export async function createSector(sector: SectorData) {
   console.log("Server Action: Creating sector", sector);

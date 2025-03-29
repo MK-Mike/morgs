@@ -2,7 +2,7 @@
 
 ## Roadmap
 
-- [] Recreate the routes.json more accuratly
+- [x] Recreate the routes.json more accuratly
 - [] Create and Seed postgress db with data from routes.json
 - [] Rewrite pages to use db data not routes.json
 - [] Create auth protected routes for admin
@@ -13,6 +13,12 @@
 - [] UI Fixes
 - [] Features
 
+## Next up
+
+- [] Add a sectors sedit dialog
+- [] add a routes seeding page
+- [] Add a route edit dialog
+
 ## UI Fixes and Features
 
 [] add filters to seach page
@@ -21,8 +27,8 @@
 [] create non sidebar layout for non routes pages
 [] move footer into non sidebar layouts
 [] options drop down / command menu / filters in home search bar
-[] find a partner button
-[] key or label for colored circles in sector cards
+[x] find a partner button
+[x] key or label for colored circles in sector cards
 []
 
 ### user managemnet
