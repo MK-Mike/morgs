@@ -1,8 +1,6 @@
 "use client";
-import type { Headland, Sector, Route, RouteType } from "@/app/types/routes";
-
-import { useState } from "react";
-import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { notFound, useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Input } from "~/components/ui/input";
@@ -37,9 +35,13 @@ import {
   Mountain,
   MapPinCheckIcon,
 } from "lucide-react";
-import routesData from "~/data/routes.json";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
+
+import { getSectorBySlug } from "~/server/models/sectors";
+import { getRoutesInSector } from "~/server/models/routes";
+import type { SectorData as Sector } from "~/server/models/sectors";
+import type { Route } from "~/server/models/routes";
 
 //mapping for tag colours
 const tagColours = new Map([
@@ -55,31 +57,57 @@ const tagColours = new Map([
   ["sustained", "pink"],
 ]);
 export default function SectorPage() {
-  const { sector } = useParams();
+  const { sector: sectorSlug } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [sectorData, setSectorData] = useState<Sector | undefined>(undefined);
+  const [sectorRoutes, setSectorRoutes] = useState<Route[] | undefined>(
+    undefined,
+  );
 
-  // Find the sector in the headlands data structure
-  const sectorData = routesData.headlands
-    .flatMap((headland: Headland) => headland.sectors)
-    .find((s: Sector) => s.slug === sector) as Sector | undefined;
   const [minGrade, setMinGrade] = useState("");
   const [maxGrade, setMaxGrade] = useState("");
-  const [type, setType] = useState("all");
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [routeStyle, setRouteStyle] = useState("all");
 
-  if (!sectorData) {
-    return <div>Sector not found</div>;
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!sectorSlug) return; // Guard clause
+
+      setIsLoading(true);
+      try {
+        // Fetch the primary sector data
+        const currentSector: Sector = await getSectorBySlug(String(sectorSlug));
+        setSectorData(currentSector);
+
+        // Fetch the routes in this sector
+        const routes: Route[] = await getRoutesInSector(currentSector.id);
+        setSectorRoutes(routes);
+      } catch (e) {
+        console.error("Failed to fetch sector data:", e);
+        notFound();
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    void fetchData();
+  }, [sectorSlug]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
-  const filteredRoutes = sectorData.routes.filter((route: Route) => {
+  if (!isLoading && !sectorData) {
+    return <div>Sector not found</div>;
+  }
+  const filteredRoutes = sectorRoutes.filter((route: Route) => {
     const gradeFilter =
       (!minGrade || route.grade >= Number(minGrade)) &&
       (!maxGrade || route.grade <= Number(maxGrade));
-    const typeFilter =
-      type === "all" || sectorData.climbingTypes.includes(type as RouteType);
+    const typeFilter = routeStyle === "all" || route.routeStyle === routeStyle;
     return gradeFilter && typeFilter;
   });
 
-  //   r.tags = generateTags();
+  const tags = [];
   // });
   // Mock data for sector information (replace with actual data when available)
   const sectorInfo = {
@@ -89,8 +117,8 @@ export default function SectorPage() {
     sun: "Gets sun from mid-morning to late afternoon. Shaded in early morning and evening.",
   };
 
-  const minRouteGrade = Math.min(...sectorData.routes.map((r) => r.grade));
-  const maxRouteGrade = Math.max(...sectorData.routes.map((r) => r.grade));
+  const minRouteGrade = Math.min(...sectorRoutes.map((r) => r.grade));
+  const maxRouteGrade = Math.max(...sectorRoutes.map((r) => r.grade));
 
   return (
     <div className="container mx-auto px-4 sm:px-6">
@@ -130,7 +158,7 @@ export default function SectorPage() {
         <Card className="flex flex-col items-center justify-center p-4 text-center">
           <RouteIcon className="mb-2 h-8 w-8 text-primary" />
           <CardTitle className="text-4xl font-bold">
-            {sectorData.routes.length}
+            {sectorRoutes.length}
           </CardTitle>
           <CardDescription>Total Routes</CardDescription>
         </Card>
@@ -224,7 +252,7 @@ export default function SectorPage() {
             >
               Route Style
             </label>
-            <Select value={type} onValueChange={setType}>
+            <Select value={routeStyle} onValueChange={setRouteStyle}>
               <SelectTrigger id="routeType" className="w-[180px]">
                 <SelectValue placeholder="Select style" />
               </SelectTrigger>
@@ -257,7 +285,7 @@ export default function SectorPage() {
                   <TableCell>{route.routeNumber}</TableCell>
                   <TableCell>
                     <Link
-                      href={`/sectors/${sector}/${route.slug}`}
+                      href={`/sectors/${String(sectorSlug)}/${route.slug}`}
                       className="text-primary hover:underline"
                     >
                       {route.name}
@@ -267,7 +295,7 @@ export default function SectorPage() {
                   <TableCell>
                     {route.stars ? (
                       <div className="flex">
-                        {[...Array(route.stars)].map((_, i) => (
+                        {Array.from({ length: route.stars }).map((_, i) => (
                           <Star
                             key={i}
                             className="h-4 w-4 fill-yellow-400 text-yellow-400"
@@ -280,10 +308,10 @@ export default function SectorPage() {
                   </TableCell>
                   <TableCell className="max-w-[120px]">
                     <div className="flex flex-wrap justify-end gap-1">
-                      {route.tags.map((tag: string) => (
+                      {tags.map((tag) => (
                         <Badge
                           key={tag}
-                          variant={tagColours.get(tag)}
+                          variant={tagColours.get(tag) ?? "fuschia"}
                           className="mb-1 whitespace-nowrap text-xs"
                         >
                           {tag}

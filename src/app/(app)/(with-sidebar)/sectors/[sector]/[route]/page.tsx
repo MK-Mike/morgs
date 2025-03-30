@@ -15,14 +15,13 @@ import type { Route } from "~/server/models/routes";
 import { getRouteBySlug, getRoutesInSector } from "~/server/models/routes";
 
 export default function RoutePage() {
-  const { sectorSlug: sectorSlug, routeSlug: routeSlug } = useParams();
+  const { sector: sectorSlug, route: routeSlug } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [route, setRoute] = useState<Route | undefined>(undefined);
   const [prevRoute, setPrevRoute] = useState<Route | null>(null);
   const [nextRoute, setNextRoute] = useState<Route | null>(null);
   const tags: string[] = ["pumpy", "technical"];
-
   if (!routeSlug) {
     notFound();
   }
@@ -33,7 +32,7 @@ export default function RoutePage() {
       setIsLoading(true);
       try {
         // Fetch the primary route
-        const currentRoute: Route = await getRouteBySlug(routeSlug[0]);
+        const currentRoute: Route = await getRouteBySlug(String(routeSlug));
         setRoute(currentRoute);
 
         // Fetch other routes in the same sector after getting the sectorId
@@ -60,6 +59,7 @@ export default function RoutePage() {
         }
       } catch (e) {
         console.error("Failed to fetch route data:", e);
+        setIsLoading(false);
         notFound();
       } finally {
         setIsLoading(false);
@@ -138,7 +138,7 @@ export default function RoutePage() {
             </p>
             <p>
               <strong>Info:</strong>{" "}
-              {route.info.replace("\(", "").replace("\)", "")}
+              {route.info?.replace("\(", "").replace("\)", "")}
             </p>
             <p>
               <strong>Description:</strong> {route.description}

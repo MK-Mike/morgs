@@ -63,3 +63,20 @@ export async function getSectorById(id: number) {
     throw new Error("Failed to fetch sector by id.");
   }
 }
+
+export async function getSectorBySlug(slug: string) {
+  console.log("Server Action: Fetching sector by slug", slug);
+  try {
+    const result: SectorData[] = await db
+      .select()
+      .from(sectors)
+      .where(eq(sectors.slug, slug));
+    console.log("Server Action: Fetched sector by slug", result);
+    const sector: SectorData = result[0];
+    return sector;
+  } catch (error) {
+    console.error("Server Action Error:", error);
+    // Re-throw or return an error object/message
+    throw new Error("Failed to fetch sector by slug.");
+  }
+}
