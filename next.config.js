@@ -35,6 +35,7 @@ const config = {
         }),
       );
     }
+    return config;
   },
 };
 
