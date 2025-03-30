@@ -1,7 +1,22 @@
 "use server";
 import { db } from "../db/index";
 import { routes } from "../db/schema";
+import { eq } from "drizzle-orm";
 export interface DBRouteData {
+  slug: string;
+  name: string;
+  routeNumber: number;
+  grade: number;
+  stars: number | null;
+  description: string;
+  firstAscent: string;
+  date: Date | string;
+  info: string;
+  routeStyle: string;
+  sectorId: number;
+}
+export interface Route {
+  id: number;
   slug: string;
   name: string;
   routeNumber: number;
@@ -68,5 +83,39 @@ export async function getRouteSlugs() {
     console.error("Server Action Error:", error);
     // Re-throw or return an error object/message
     throw new Error("Failed to fetch route slugs.");
+  }
+}
+
+export async function getRouteBySlug(slug: string) {
+  console.log("Server Action: Fetching route by slug", slug);
+  try {
+    const result: Route[] = await db
+      .select()
+      .from(routes)
+      .where(eq(routes.slug, slug));
+    console.log("Server Action: Fetched route by slug", result);
+    const route: Route = result[0];
+    return route;
+  } catch (error) {
+    console.error("Server Action Error:", error);
+    // Re-throw or return an error object/message
+    throw new Error("Failed to fetch route by slug.");
+  }
+}
+
+export async function getRoutesInSector(id: number) {
+  console.log("Server Action: Fetching routes in sector", id);
+  try {
+    const result = await db
+      .select()
+      .from(routes)
+      .where(eq(routes.sectorId, id))
+      .orderBy(routes.routeNumber);
+    console.log("Server Action: Fetched routes in sector", result);
+    return result;
+  } catch (error) {
+    console.error("Server Action Error:", error);
+    // Re-throw or return an error object/message
+    throw new Error("Failed to fetch routes in sector.");
   }
 }

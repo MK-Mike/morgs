@@ -1,49 +1,77 @@
 "use client";
 
-import { Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
-import { Suspense, useState } from "react";
-import type { Route } from "~/app/types/routes";
+import { Suspense, useEffect, useState } from "react";
 import Breadcrumbs from "~/components/Breadcrumbs";
 import CommentsSection from "~/components/commentSection";
-import { Skeleton } from "~/components/ui/skeleton";
 import DifficultyConsensus from "~/components/difficulty-consensus";
-import routesData from "~/data/routes.json";
 import RouteTags from "~/components/route-tags";
-import { uniqueInfoValues as ClimbingStyleMap } from "@/data/info-to-climbing-style";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import Link from "next/link";
+import { Skeleton } from "~/components/ui/skeleton";
+import type { Route } from "~/server/models/routes";
+import { getRouteBySlug, getRoutesInSector } from "~/server/models/routes";
 
 export default function RoutePage() {
-  const { sector: sectorSlug, route: routeSlug } = useParams();
+  const { sectorSlug: sectorSlug, routeSlug: routeSlug } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [route, setRoute] = useState<Route | undefined>(undefined);
+  const [prevRoute, setPrevRoute] = useState<Route | null>(null);
+  const [nextRoute, setNextRoute] = useState<Route | null>(null);
+  const tags: string[] = ["pumpy", "technical"];
 
-  // Find the route in the nested data structure
-  const route = routesData.headlands
-    .flatMap((headland) => headland.sectors)
-    .find((s) => s.slug === sectorSlug)
-    ?.routes.find((r) => r.slug === routeSlug) as Route | undefined;
-
-  if (!route) {
+  if (!routeSlug) {
     notFound();
   }
-  const currentSector = routesData.headlands
-    .flatMap((headland) => headland.sectors)
-    .find((s) => s.slug === sectorSlug);
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!routeSlug) return; // Guard clause
 
-  // Get the index of the current route in the sector
-  const currentRouteIndex = currentSector?.routes.findIndex(
-    (r) => r.slug === routeSlug,
-  );
-  // Determine the previous and next routes
-  const prevRoute =
-    currentRouteIndex > 0 ? currentSector?.routes[currentRouteIndex - 1] : null;
-  const nextRoute =
-    currentRouteIndex < currentSector?.routes.length - 1
-      ? currentSector?.routes[currentRouteIndex + 1]
-      : null;
+      setIsLoading(true);
+      try {
+        // Fetch the primary route
+        const currentRoute: Route = await getRouteBySlug(routeSlug[0]);
+        setRoute(currentRoute);
+
+        // Fetch other routes in the same sector after getting the sectorId
+        const otherRoutes: Route[] = await getRoutesInSector(
+          currentRoute.sectorId,
+        );
+        // Assuming server returns sorted data. If not, sort here:
+        // const sortedRoutes = [...otherRoutes].sort((a, b) => a.routeNumber - b.routeNumber);
+        const sortedRoutes = otherRoutes;
+
+        const currentIndex = sortedRoutes.findIndex(
+          (r) => r.slug === currentRoute.slug,
+        );
+
+        if (currentIndex !== -1) {
+          setPrevRoute(
+            currentIndex > 0 ? sortedRoutes[currentIndex - 1] : null,
+          );
+          setNextRoute(
+            currentIndex < sortedRoutes.length - 1
+              ? sortedRoutes[currentIndex + 1]
+              : null,
+          );
+        }
+      } catch (e) {
+        console.error("Failed to fetch route data:", e);
+        notFound();
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    void fetchData();
+  }, [routeSlug]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="container mx-auto max-w-screen-xl px-4 py-4">
@@ -51,7 +79,7 @@ export default function RoutePage() {
       <div className="mb-4 flex w-full justify-between">
         {prevRoute ? (
           <Button variant="outline" size="sm" asChild>
-            <Link href={`/sectors/${sectorSlug}/${prevRoute.slug}`}>
+            <Link href={`/sectors/${String(sectorSlug)}/${prevRoute.slug}`}>
               <ChevronLeft className="mr-2 h-4 w-4" />
               Previous: {prevRoute.name}
             </Link>
@@ -65,7 +93,7 @@ export default function RoutePage() {
 
         {nextRoute ? (
           <Button variant="outline" size="sm" asChild>
-            <Link href={`/sectors/${sectorSlug}/${nextRoute.slug}`}>
+            <Link href={`/sectors/${String(sectorSlug)}/${nextRoute.slug}`}>
               Next: {nextRoute.name}
               <ChevronRight className="ml-2 h-4 w-4" />
             </Link>
@@ -85,7 +113,7 @@ export default function RoutePage() {
               <div className="flex items-center gap-2">
                 {route.stars ? (
                   <span className="flex">
-                    {[...Array(route.stars)].map((_, i) => (
+                    {Array.from({ length: route.stars }).map((_, i) => (
                       <Star
                         key={i}
                         className="h-4 w-4 fill-yellow-400 text-yellow-400"
@@ -101,12 +129,12 @@ export default function RoutePage() {
               </div>
             </div>
             <span className="font-style:italic text-sm text-gray-400">
-              {route.first_ascent} - {route.date}
+              {route.firstAscent} - {String(route.date)}
             </span>
           </div>
           <div className="space-y-4">
             <p>
-              <strong>Style:</strong> {ClimbingStyleMap.get(route.info)}
+              <strong>Style:</strong> {route.routeStyle}
             </p>
             <p>
               <strong>Info:</strong>{" "}
@@ -117,7 +145,7 @@ export default function RoutePage() {
             </p>
           </div>
           <div className="hidden w-full flex-col gap-2 pt-2 md:block">
-            <RouteTags specifiedTags={route.tags} />
+            <RouteTags specifiedTags={tags} />
             <DifficultyConsensus />
           </div>
         </div>
@@ -140,7 +168,7 @@ export default function RoutePage() {
 
         <div className="order-3 col-span-1 md:col-span-2">
           <div className="flex w-full flex-col gap-2 md:hidden">
-            <RouteTags specifiedTags={route.tags} />
+            <RouteTags specifiedTags={tags} />
             <DifficultyConsensus />
           </div>
           <Suspense fallback={<div>Loading comments...</div>}>

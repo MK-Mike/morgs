@@ -1,7 +1,9 @@
 "use server";
 import { db } from "../db/index";
 import { sectors } from "../db/schema";
+import { eq } from "drizzle-orm";
 export type SectorData = {
+  id: number;
   slug: string;
   name: string;
   description: string;
@@ -42,5 +44,22 @@ export async function createSector(sector: SectorData) {
     console.error("Server Action Error:", error);
     // Re-throw or return an error object/message
     throw new Error("Failed to create sector.");
+  }
+}
+
+export async function getSectorById(id: number) {
+  console.log("Server Action: Fetching sector by id", id);
+  try {
+    const result: SectorData[] = await db
+      .select()
+      .from(sectors)
+      .where(eq(sectors.id, id));
+    console.log("Server Action: Fetched sector by id", result);
+    const sector: SectorData = result[0];
+    return sector;
+  } catch (error) {
+    console.error("Server Action Error:", error);
+    // Re-throw or return an error object/message
+    throw new Error("Failed to fetch sector by id.");
   }
 }
