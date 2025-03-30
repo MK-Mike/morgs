@@ -1,4 +1,4 @@
-# Project To Do'set
+# Project To tasks
 
 ## Roadmap
 
@@ -18,8 +18,8 @@
 - [] refactor to use bd as source of data instead of routes.json
   - [] sectors page
   - [] routes page
-  - [] route page
-  - [] sector page
+  - [x] route page
+  - [x] sector page
   - [] sidebar
 - []
 
