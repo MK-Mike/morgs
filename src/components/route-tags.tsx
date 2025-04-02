@@ -185,7 +185,7 @@ export default function RouteTags({ specifiedTags }: RouteTagCardProps) {
   }
 
   return (
-    <Card className="mx-auto w-full max-w-md">
+    <Card className="mx-auto w-full max-w-md pb-2">
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center justify-between text-lg">
           <span className="flex items-center">

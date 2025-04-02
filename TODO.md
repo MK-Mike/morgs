@@ -31,6 +31,8 @@
 [] create non sidebar layout for non routes pages
 [] move footer into non sidebar layouts
 [] options drop down / command menu / filters in home search bar
+[] skeleton loading states for sectors and routes (if needed when using local db)
+[] add tandstack ranger to the sectors page to handle the grade filters
 [x] find a partner button
 [x] key or label for colored circles in sector cards
 []

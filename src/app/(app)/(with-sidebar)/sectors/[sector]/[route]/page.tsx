@@ -144,7 +144,7 @@ export default function RoutePage() {
               <strong>Description:</strong> {route.description}
             </p>
           </div>
-          <div className="hidden w-full flex-col gap-2 pt-2 md:block">
+          <div className="hidden w-full flex-col gap-4 pt-2 md:block">
             <RouteTags specifiedTags={tags} />
             <DifficultyConsensus />
           </div>

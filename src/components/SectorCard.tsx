@@ -7,11 +7,16 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip";
 
-type GradeBucket = {
+type GradeBucketsMeta = {
   label: string;
   color: string;
-  count: number;
   range: string;
+};
+
+type GradeBucketsProperties = Record<string, GradeBucketsMeta>;
+type GradeBucket = {
+  name: string;
+  count: number;
 };
 
 type SectorCardProps = {
@@ -22,7 +27,7 @@ type SectorCardProps = {
 };
 
 const getRandomWaves = () => {
-  const waves = [];
+  const waves: JSX.Element[] = [];
   const numWaves = Math.floor(Math.random() * 2) + 2; // 2 or 3 waves
   const colors = ["#FF6B6B", "#4ECDC4", "#45B7D1"];
 
@@ -47,6 +52,12 @@ const getRandomWaves = () => {
   }
   return waves;
 };
+const gradeBucketsProperties: GradeBucketsProperties = {
+  easy: { label: "Easy (0-16)", color: "#4CAF50", range: "0-16" },
+  medium: { label: "Medium (17-24)", color: "#2196F3", range: "17-24" },
+  hard: { label: "Hard (25-32)", color: "#F44336", range: "25-32" },
+  veryHard: { label: "Very Hard (33+)", color: "#000000", range: "33+" },
+};
 
 export default function SectorCard({
   name,
@@ -57,68 +68,71 @@ export default function SectorCard({
   return (
     <Card className="relative h-full max-w-sm overflow-hidden bg-slate-800">
       <CardHeader className="pb-2">
-        <CardTitle className="truncate">{name}</CardTitle>
+        <CardTitle className="truncate">
+          <div className="flex items-center justify-between gap-2">
+            {name}
+            {routeTypes.length > 0 && (
+              <div className="mt-1 flex flex-wrap gap-2">
+                {routeTypes.map((type, index) => (
+                  <span
+                    key={index}
+                    className="rounded-full bg-secondary px-2 py-1 text-xs text-secondary-foreground"
+                  >
+                    {type}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </CardTitle>
       </CardHeader>
 
       <CardContent className="relative z-10 pb-12">
         <div className="my-4 flex flex-wrap justify-evenly gap-4">
-          {gradeBuckets.map((bucket, index) => (
-            <TooltipProvider key={index}>
-              <Tooltip>
-                <TooltipTrigger>
-                  <div
-                    className="flex h-8 w-8 items-center justify-center text-sm font-bold"
-                    style={{
-                      border: `2px solid ${bucket.color}`,
-                      transform: "rotate(45deg)",
-                      color: `${bucket.color}`,
-                    }}
-                  >
-                    <div
-                      style={{
-                        transform: "rotate(-45deg)", // Rotate the content back to normal
-                      }}
-                    >
-                      {bucket.count}
-                    </div>
-                  </div>
-                  <span
-                    className="mt-6 sm:hidden"
-                    style={{
-                      fontSize: "0.8rem",
-                      color: `${bucket.color}`,
-                    }}
-                  >
-                    {bucket.range}
-                  </span>
-                </TooltipTrigger>
-                <TooltipContent side="top">
-                  <p>{bucket.label}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ))}
+          {gradeBuckets.map(
+            (bucket, index) =>
+              bucket.count > 0 && (
+                <TooltipProvider key={index}>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <div
+                        className="flex h-8 w-8 items-center justify-center text-sm font-bold"
+                        style={{
+                          border: `2px solid ${gradeBucketsProperties[bucket.name]?.color}`,
+                          transform: "rotate(45deg)",
+                          color: `${gradeBucketsProperties[bucket.name].color}`,
+                        }}
+                      >
+                        <div
+                          style={{
+                            transform: "rotate(-45deg)", // Rotate the content back to normal
+                          }}
+                        >
+                          {bucket.count}
+                        </div>
+                      </div>
+                      <span
+                        className="mt-6 sm:hidden"
+                        style={{
+                          fontSize: "0.8rem",
+                          color: `${gradeBucketsProperties[bucket.name].color}`,
+                        }}
+                      >
+                        {gradeBucketsProperties[bucket.name].range}
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent side="top">
+                      <p>{gradeBucketsProperties[bucket.name].label}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              ),
+          )}
         </div>
-
-        {routeTypes.length > 0 && (
-          <div className="mb-4">
-            <p className="text-sm text-muted-foreground">Route Styles:</p>
-            <div className="mt-1 flex flex-wrap gap-2">
-              {routeTypes.map((type, index) => (
-                <span
-                  key={index}
-                  className="rounded-full bg-secondary px-2 py-1 text-xs text-secondary-foreground"
-                >
-                  {type}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
 
         <Link
           href={`/sectors/${slug}`}
-          className="hover:text-primary-hover absolute bottom-4 left-6 z-20 text-primary"
+          className="absolute bottom-4 left-6 z-20 text-primary hover:text-blue-500"
         >
           View routes
         </Link>

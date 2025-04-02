@@ -1,92 +1,81 @@
 "use client";
-import type { Route, Sector, Headland, RoutesData } from "@/app/types/routes";
 import { useState, useEffect } from "react";
-import routesData from "@/data/routes.json";
+import {
+  getAllSectors,
+  getAllSectorsWithMetaData,
+} from "~/server/models/sectors";
+import type { SectorData as Sector } from "~/server/models/sectors";
+import type { Headland } from "~/server/models/headlands";
 
 import SectorCard from "~/components/SectorCard";
 import Breadcrumbs from "~/components/Breadcrumbs";
 import SkeletonCarousel from "~/components/SkeletonCarousel";
 import AcknowledgementsModal from "~/components/AcknowledgementsModal";
-const data: RoutesData = routesData as RoutesData;
+
+import { getAllHeadlands } from "~/server/models/headlands";
+type gradeBucket = {
+  name: string;
+  count: number;
+};
+interface SectorMetaData extends Sector {
+  headlandId: number;
+  gradeBuckets: gradeBucket[];
+  routeTypes: string[];
+}
 
 export default function SectorsPage() {
-  const [sectors, setSectors] = useState<any[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [headlands, setHeadlands] = useState<Headland[]>([]);
+  const [sectors, setSectors] = useState<Sector[]>([]);
+  const [processedSectors, setProcessedSectors] = useState<SectorMetaData[]>(
+    [],
+  );
 
-  // Set isMounted to true after component mounts
   useEffect(() => {
-    setIsMounted(true);
+    setIsLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const [headlandsData, sectorsData] = await Promise.all([
+          getAllHeadlands(),
+          getAllSectorsWithMetaData(),
+        ]);
+
+        const orderedHeadlands = headlandsData.sort((a, b) =>
+          a.name.slice(0, 1).localeCompare(b.name.slice(0, 1)),
+        );
+
+        setHeadlands(orderedHeadlands);
+        setSectors(sectorsData);
+        setProcessedSectors(sectorsData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    void fetchData();
   }, []);
 
-  // Handle localStorage and data processing after component is mounted
+  // Modal logic - simplified
   useEffect(() => {
-    if (!isMounted) return;
-
-    // Process sectors data
-    const processedSectors = data.headlands.flatMap((headland: Headland) =>
-      headland.sectors.map((sector: Sector) => {
-        const gradeBuckets = [
-          { label: "Easy (0-16)", color: "#4CAF50", count: 0, range: "0-16" },
-          {
-            label: "Medium (17-24)",
-            color: "#2196F3",
-            count: 0,
-            range: "17-24",
-          },
-          { label: "Hard (25-32)", color: "#F44336", count: 0, range: "25-32" },
-          {
-            label: "Very Hard (33+)",
-            color: "#000000",
-            count: 0,
-            range: "33+",
-          },
-        ];
-
-        // Count routes in each grade bucket
-        sector.routes.forEach((route: Route) => {
-          const grade: number = parseInt(route.grade);
-          if (grade <= 16) gradeBuckets[0].count++;
-          else if (grade <= 24) gradeBuckets[1].count++;
-          else if (grade <= 32) gradeBuckets[2].count++;
-          else gradeBuckets[3].count++;
-        });
-
-        // Process route types
-        const routeTypes = [
-          ...new Set(sector.routes.map((route) => route?.routeStyle)),
-        ].filter((style) => style !== "unknown");
-
-        return {
-          name: sector.name,
-          slug: sector.slug,
-          description: sector.description,
-          gradeBuckets,
-          routeTypes,
-          totalRoutes: sector.routes.length,
-          headland: headland.name,
-        };
-      }),
-    );
-
-    setSectors(processedSectors);
-
     try {
-      // Check if user has visited before
       const hasVisitedBefore = localStorage.getItem("hasVisitedSectorsPage");
-
       if (!hasVisitedBefore) {
         setIsModalOpen(true);
         localStorage.setItem("hasVisitedSectorsPage", "true");
       }
     } catch (error) {
-      // Handle any localStorage errors
       console.error("localStorage error:", error);
-      // Fallback behavior - show modal if localStorage fails
       setIsModalOpen(true);
     }
-  }, [isMounted]);
+  }, []);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="container mx-auto max-w-screen-xl px-4">
       <Breadcrumbs />
@@ -98,7 +87,7 @@ export default function SectorsPage() {
       <div className="mb-4">
         <h1 className="mb-2 text-3xl font-bold">Climbing Sectors</h1>
         <p className="text-muted-foreground">
-          {sectors.length} sectors across {data.headlands.length} headlands
+          {sectors.length} sectors across {headlands.length} headlands
         </p>
       </div>
 
@@ -108,21 +97,20 @@ export default function SectorsPage() {
       </div>
 
       {/* Group sectors by headland */}
-      {data.headlands.map((headland) => (
+      {headlands.map((headland) => (
         <div key={headland.slug} className="mb-12 w-full">
           <h2 className="mb-6 text-2xl font-semibold">{headland.name}</h2>
           <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {sectors
-              .filter((sector) => sector.headland === headland.name)
+            {processedSectors
+              .filter((sector) => sector.headlandId === headland.id)
               .map((sector) => (
                 <SectorCard
                   key={sector.slug}
                   name={sector.name}
                   slug={sector.slug}
-                  description={sector.description}
                   gradeBuckets={sector.gradeBuckets}
                   routeTypes={sector.routeTypes}
-                  totalRoutes={sector.totalRoutes}
+                  // totalRoutes={sector.totalRoutes}
                 />
               ))}
           </div>
