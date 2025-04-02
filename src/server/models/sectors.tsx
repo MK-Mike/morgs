@@ -9,6 +9,10 @@ export type SectorData = {
   description: string;
   headlandId: number;
 };
+export type SectorNavData = {
+  slug: string;
+  name: string;
+};
 export type gradeBucket = {
   name: string;
   count: number;

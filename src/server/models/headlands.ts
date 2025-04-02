@@ -2,8 +2,9 @@
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { db } from "../db/index";
-import { headlands } from "../db/schema";
+import { headlands, sectors } from "../db/schema";
 import { revalidatePath } from "next/cache";
+import type { SectorNavData } from "./sectors";
 
 export type HeadlandData = {
   slug: string;
@@ -17,7 +18,12 @@ export type Headland = {
   description: string;
   id: number;
 };
-
+export type HeadlandNavData = {
+  id: number;
+  slug: string;
+  name: string;
+  sectors: SectorNavData[];
+};
 export async function getAllHeadlands() {
   const allHeadlands: Headland[] = await db.select().from(headlands);
   return allHeadlands;
@@ -106,4 +112,43 @@ export async function updateHeadlandAction(formData: {
     console.error("Error updating headland in DB:", error);
     return { error: "Database error: Could not update headland." }; // Return error object
   }
+}
+
+export async function getHeadlandsForNav() {
+  // Get all headlands with their sectors
+  const data = await db
+    .select({
+      headlandId: headlands.id,
+      headlandName: headlands.name,
+      headlandSlug: headlands.slug,
+      sectorName: sectors.name,
+      sectorSlug: sectors.slug,
+    })
+    .from(headlands)
+    .leftJoin(sectors, eq(sectors.headlandId, headlands.id))
+    .orderBy(headlands.name, sectors.name);
+
+  // Group by headland
+  const headlandMap = new Map<string | number, HeadlandNavData>();
+
+  for (const row of data) {
+    if (!headlandMap.has(row.headlandId)) {
+      headlandMap.set(row.headlandId, {
+        id: row.headlandId,
+        name: row.headlandName,
+        slug: row.headlandSlug,
+        sectors: [],
+      });
+    }
+
+    // Only add sector if it exists (leftJoin might return nulls)
+    if (row.sectorName && row.sectorSlug) {
+      headlandMap.get(row.headlandId).sectors.push({
+        name: row.sectorName,
+        slug: row.sectorSlug,
+      });
+    }
+  }
+
+  return Array.from(headlandMap.values());
 }
