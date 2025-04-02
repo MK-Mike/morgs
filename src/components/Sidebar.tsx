@@ -64,7 +64,7 @@ export default function Sidebar() {
     size?: "small" | "default"; // Define possible sizes
   }) => {
     // Determine classes based on size
-    const linkPadding = size === "small" ? "py-1 px-2 pl-4" : "p-2 pl-8"; // Adjust padding
+    const linkPadding = size === "small" ? "py-1 px-2 pl-4" : "p-2 pl-4"; // Adjust padding
     const textSize = size === "small" ? "text-sm" : ""; // Adjust text size if needed
 
     return (
@@ -82,7 +82,7 @@ export default function Sidebar() {
         >
           {name}
         </Link>
-        <div className="group absolute right-0 top-1/2 flex h-full -translate-y-1/2 flex-row gap-2 transition-opacity">
+        <div className="group absolute right-0 top-1/2 flex h-full -translate-y-1/2 flex-row gap-2 pr-2 transition-opacity">
           <div
             className={cn(
               "transition-all duration-300",
@@ -210,8 +210,7 @@ export default function Sidebar() {
             ))}
           </Accordion>
         )}
-
-        {/* <ScrollBar orientation="vertical" /> */}
+        <ScrollBar orientation="vertical" />
       </ScrollArea>
       {/* User Account Section */}
       <div className="mt-auto border-t border-border p-4 pb-8">

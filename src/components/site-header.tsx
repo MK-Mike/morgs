@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/site";
 import { Icons } from "@/components/icons";
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
+import { MobileNavDrawer } from "@/components/mobile-nav-drawer";
 import { ModeSwitcher } from "@/components/mode-switcher";
 import { Button } from "@/components/ui/button";
 import SearchBar from "./searchbar";
@@ -16,7 +17,7 @@ export function SiteHeader() {
       <div className="container-wrapper">
         <div className="container flex h-14 items-center">
           <MainNav />
-          <MobileNav />
+          <MobileNavDrawer />
           <div className="flex flex-1 items-center justify-between gap-2 md:justify-end">
             <div className="flex-1 md:w-auto md:flex-none">
               <SearchBar />
