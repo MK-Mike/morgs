@@ -16,26 +16,16 @@ const config = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  /**
-   * Customizes the Webpack configuration.
-   * @param {import('webpack').Configuration} config The current Webpack configuration.
-   * @param {{ webpack: typeof import('webpack'), buildId: string, dev: boolean, isServer: boolean, defaultLoaders: object }} options Context object provided by Next.js, including the webpack instance.
-   * @returns {import('webpack').Configuration} The modified Webpack configuration.
-   */
-  webpack: (config, { webpack }) => {
-    // Ensure plugins array exists before pushing
-    config.plugins = config.plugins || [];
-
-    if (process.env.NODE_ENV === "production") {
-      // Now 'webpack' comes from the destructured 'options' parameter,
-      // and 'config' is typed by the JSDoc above.
-      config.plugins.push(
-        new webpack.IgnorePlugin({
-          resourceRegExp: /^\.\/app\/\(app\)\/seed\//,
-        }),
-      );
-    }
-    return config;
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img.clerk.com",
+        port: "",
+        pathname: "/**", // Allows any path under this hostname
+      },
+      // ... add other patterns if needed
+    ],
   },
 };
 
