@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { notFound, useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -42,6 +42,7 @@ import { getSectorBySlug } from "~/server/models/sectors";
 import { getRoutesInSector } from "~/server/models/routes";
 import type { SectorData as Sector } from "~/server/models/sectors";
 import type { Route } from "~/server/models/routes";
+import { LoadingContext } from "~/contexts/sector-loading-context";
 
 //mapping for tag colours
 const tagColours = new Map([
@@ -68,8 +69,10 @@ export default function SectorPage() {
   const [minGrade, setMinGrade] = useState("");
   const [maxGrade, setMaxGrade] = useState("");
   const [routeStyle, setRouteStyle] = useState("all");
+  const { setChildrenLoaded } = useContext(LoadingContext);
 
   useEffect(() => {
+    setChildrenLoaded(false);
     const fetchData = async () => {
       if (!sectorSlug) return; // Guard clause
 
@@ -82,6 +85,7 @@ export default function SectorPage() {
         // Fetch the routes in this sector
         const routes: Route[] = await getRoutesInSector(currentSector.id);
         setSectorRoutes(routes);
+        setChildrenLoaded(true);
       } catch (e) {
         console.error("Failed to fetch sector data:", e);
         notFound();
@@ -90,7 +94,7 @@ export default function SectorPage() {
       }
     };
     void fetchData();
-  }, [sectorSlug]);
+  }, [sectorSlug, setChildrenLoaded]);
 
   if (isLoading) {
     return <div>Loading...</div>;

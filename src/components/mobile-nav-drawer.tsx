@@ -2,8 +2,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { User, Info, MapPin, BookmarkIcon, PinIcon } from "lucide-react";
+import { Info, MapPin, BookmarkIcon, PinIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
@@ -17,6 +16,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useState, useEffect } from "react";
 import { getHeadlandsForNav } from "~/server/models/headlands";
 import type { HeadlandNavData } from "~/server/models/headlands";
+import UserAccountButtons from "./UserAccountButtons";
 
 const topLinks = [
   { name: "About", href: "/about", icon: Info },
@@ -30,7 +30,6 @@ export function MobileNavDrawer() {
   const [bookmarked, setBookmarked] = useState({});
   const [pinned, setPinned] = useState({});
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -216,24 +215,7 @@ export function MobileNavDrawer() {
           )}
 
           {/* User Account Section */}
-          <div className="mt-6 border-t border-border pt-4">
-            <Link
-              href="/account"
-              onClick={() => setOpen(false)}
-              className="flex items-center space-x-3 rounded p-2 hover:bg-secondary hover:text-white"
-            >
-              <Avatar>
-                <AvatarImage src="/placeholder-avatar.jpg" alt="User" />
-                <AvatarFallback className="bg-secondary">
-                  <User />
-                </AvatarFallback>
-              </Avatar>
-              <div>
-                <p className="font-medium">John Doe</p>
-                <p className="text-sm text-muted-foreground">View Account</p>
-              </div>
-            </Link>
-          </div>
+          <UserAccountButtons />
         </ScrollArea>
       </DrawerContent>
     </Drawer>

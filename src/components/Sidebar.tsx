@@ -1,17 +1,4 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  User,
-  Info,
-  Leaf,
-  Home,
-  Compass,
-  MapPin,
-  BookmarkIcon,
-  PinIcon,
-} from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -19,10 +6,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
-import { ScrollArea, ScrollBar } from "./ui/scroll-area";
-import { useState, useEffect } from "react";
-import { getHeadlandsForNav } from "~/server/models/headlands";
+import { BookmarkIcon, Info, MapPin, PinIcon } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import type { HeadlandNavData } from "~/server/models/headlands";
+import { getHeadlandsForNav } from "~/server/models/headlands";
+import { ScrollArea, ScrollBar } from "./ui/scroll-area";
+import UserAccountButtons from "./UserAccountButtons";
 
 const topLinks = [
   { name: "About", href: "/about", icon: Info },
@@ -213,23 +204,7 @@ export default function Sidebar() {
         <ScrollBar orientation="vertical" />
       </ScrollArea>
       {/* User Account Section */}
-      <div className="mt-auto border-t border-border p-4 pb-8">
-        <Link
-          href="/account"
-          className="flex items-center space-x-3 rounded p-2 hover:bg-secondary hover:text-white"
-        >
-          <Avatar>
-            <AvatarImage src="/placeholder-avatar.jpg" alt="User" />
-            <AvatarFallback className="bg-secondary">
-              <User />
-            </AvatarFallback>
-          </Avatar>
-          <div>
-            <p className="font-medium">John Doe</p>
-            <p className="text-sm text-muted-foreground">View Account</p>
-          </div>
-        </Link>
-      </div>
+      <UserAccountButtons />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState, useContext } from "react";
 import Breadcrumbs from "~/components/Breadcrumbs";
 import CommentsSection from "~/components/commentSection";
 import DifficultyConsensus from "~/components/difficulty-consensus";
@@ -13,6 +13,7 @@ import { Button } from "~/components/ui/button";
 import { Skeleton } from "~/components/ui/skeleton";
 import type { Route } from "~/server/models/routes";
 import { getRouteBySlug, getRoutesInSector } from "~/server/models/routes";
+import { LoadingContext } from "~/contexts/sector-loading-context";
 
 export default function RoutePage() {
   const { sector: sectorSlug, route: routeSlug } = useParams();
@@ -21,11 +22,13 @@ export default function RoutePage() {
   const [route, setRoute] = useState<Route | undefined>(undefined);
   const [prevRoute, setPrevRoute] = useState<Route | null>(null);
   const [nextRoute, setNextRoute] = useState<Route | null>(null);
+  const { setChildrenLoaded } = useContext(LoadingContext);
   const tags: string[] = ["pumpy", "technical"];
   if (!routeSlug) {
     notFound();
   }
   useEffect(() => {
+    setChildrenLoaded(false);
     const fetchData = async () => {
       if (!routeSlug) return; // Guard clause
 
@@ -63,11 +66,12 @@ export default function RoutePage() {
         notFound();
       } finally {
         setIsLoading(false);
+        setChildrenLoaded(true);
       }
     };
 
     void fetchData();
-  }, [routeSlug]);
+  }, [routeSlug, setChildrenLoaded]);
 
   if (isLoading) {
     return <div>Loading...</div>;

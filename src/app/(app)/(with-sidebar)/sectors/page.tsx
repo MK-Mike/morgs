@@ -1,9 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
-import {
-  getAllSectors,
-  getAllSectorsWithMetaData,
-} from "~/server/models/sectors";
+import { useState, useEffect, useContext } from "react";
+import { getAllSectorsWithMetaData } from "~/server/models/sectors";
 import type { SectorData as Sector } from "~/server/models/sectors";
 import type { Headland } from "~/server/models/headlands";
 
@@ -13,6 +10,7 @@ import SkeletonCarousel from "~/components/SkeletonCarousel";
 import AcknowledgementsModal from "~/components/AcknowledgementsModal";
 
 import { getAllHeadlands } from "~/server/models/headlands";
+import { LoadingContext } from "~/contexts/sector-loading-context";
 type gradeBucket = {
   name: string;
   count: number;
@@ -31,6 +29,7 @@ export default function SectorsPage() {
   const [processedSectors, setProcessedSectors] = useState<SectorMetaData[]>(
     [],
   );
+  const { setChildrenLoaded } = useContext(LoadingContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -49,6 +48,7 @@ export default function SectorsPage() {
         setHeadlands(orderedHeadlands);
         setSectors(sectorsData);
         setProcessedSectors(sectorsData);
+        setChildrenLoaded(true);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -57,7 +57,7 @@ export default function SectorsPage() {
     };
 
     void fetchData();
-  }, []);
+  }, [setChildrenLoaded]);
 
   // Modal logic - simplified
   useEffect(() => {
