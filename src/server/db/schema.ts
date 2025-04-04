@@ -36,6 +36,7 @@ export const users = createTable("user", {
     .notNull(),
   role: roleEnum("role").notNull(),
   preferences: json("preferences"),
+  username: text("username"),
 });
 
 export const routeStyleEnum = pgEnum("route_style", [

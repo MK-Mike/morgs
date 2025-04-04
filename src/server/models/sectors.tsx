@@ -33,7 +33,8 @@ export async function getAllSectors() {
   console.log("Server Action: Fetching all sectors");
   try {
     const result = await db.select().from(sectors);
-    console.log("Server Action: Fetched sectors. First 5:", result.slice(0, 5));
+    // console.log("Server Action: Fetched sectors. First 5:", result.slice(0, 5));
+    console.log("Server Action: Fetched sectors.");
     return result;
   } catch (error) {
     console.error("Server Action Error:", error);
@@ -83,10 +84,7 @@ export async function getAllSectorsWithMetaData() {
         sectors.headlandId,
       )
       .orderBy(sectors.name);
-    console.log(
-      "Server Action: Fetched sectors with meta data. First 5:",
-      result.slice(0, 5),
-    );
+    console.log("Server Action: Fetched sectors with meta data. :");
     const sectorsWithMetaData: SectorMetaData[] = [];
 
     result.forEach((result) => {

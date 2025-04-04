@@ -35,7 +35,7 @@ export default function UserAccountButtons() {
         <div className="flex items-center space-x-3 rounded p-2 hover:bg-secondary hover:text-white">
           <UserButton />
           <div>
-            <p className="font-medium">{user?.firstName}</p>
+            <p className="font-medium">{user?.username ?? "User"}</p>
             <Link href="/account">
               <p className="text-sm text-muted-foreground hover:underline">
                 Settings
