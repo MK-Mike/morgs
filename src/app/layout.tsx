@@ -6,6 +6,7 @@ import type React from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { Toaster } from "~/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,10 @@ export default function RootLayout({
             baseTheme: dark,
           }}
         >
-          <SidebarProvider>{children}</SidebarProvider>
+          <SidebarProvider>
+            {children}
+            <Toaster />
+          </SidebarProvider>
         </ClerkProvider>
       </body>
     </html>
