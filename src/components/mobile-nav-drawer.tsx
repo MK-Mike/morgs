@@ -17,19 +17,35 @@ import { useState, useEffect } from "react";
 import { getHeadlandsForNav } from "~/server/models/headlands";
 import type { HeadlandNavData } from "~/server/models/headlands";
 import UserAccountButtons from "./UserAccountButtons";
+import { useUser } from "@clerk/nextjs";
+import { navConfig } from "@/config/nav";
+import { getUserRole } from "@/server/models/users";
 
-const topLinks = [
-  { name: "About", href: "/about", icon: Info },
-  { name: "Routes", href: "/sectors", icon: MapPin },
-];
+const topLinks = navConfig.mainNav;
 
 export function MobileNavDrawer() {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [routesData, setRoutesData] = useState<HeadlandNavData[]>([]);
   const [bookmarked, setBookmarked] = useState({});
+  const [filteredTopLink, setFilteredTopLinks] = useState(topLinks);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [pinned, setPinned] = useState({});
   const pathname = usePathname();
+  const { user } = useUser();
+
+  useEffect(() => {
+    const fetchUserRole = async () => {
+      try {
+        if (!user) return;
+        const userRole = await getUserRole(user.id);
+        if (userRole === "admin") setIsAdmin(true);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    void fetchUserRole();
+  }, [setIsAdmin, user]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,6 +61,23 @@ export function MobileNavDrawer() {
 
     void fetchData();
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      if (isAdmin) {
+        // Admins see all links
+        setFilteredTopLinks(topLinks);
+      } else {
+        // Non-admins see only non-admin links
+        const filtered = topLinks.filter((link) => !link.admin);
+        setFilteredTopLinks(filtered);
+      }
+    } else {
+      // Handle the case where there's no user
+      const filtered = topLinks.filter((link) => !link.admin);
+      setFilteredTopLinks(filtered);
+    }
+  }, [isAdmin, user]);
 
   const LiElement = ({
     slug,
@@ -137,7 +170,7 @@ export function MobileNavDrawer() {
           {/* Top Section */}
           <nav className="mb-6">
             <ul className="space-y-2">
-              {topLinks.map((link) => (
+              {filteredTopLink.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}

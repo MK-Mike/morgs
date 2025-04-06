@@ -20,17 +20,11 @@ import type { HeadlandNavData } from "~/server/models/headlands";
 import { getHeadlandsForNav } from "~/server/models/headlands";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 import UserAccountButtons from "./UserAccountButtons";
-import { useAuth, useUser } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 import { getUserRole } from "@/server/models/users";
+import { navConfig } from "@/config/nav";
 
-const topLinks = [
-  { name: "About", href: "/about", icon: Info, admin: false },
-  // { name: "Environment & Ethics", href: "/environment-ethics", icon: Leaf },
-  // { name: "Accommodation", href: "/accommodation", icon: Home },
-  // { name: "Activities", href: "/activities", icon: Compass },
-  { name: "Users", href: "/users", icon: UserIcon, admin: true },
-  { name: "Routes", href: "/sectors", icon: MapPin, admin: false },
-];
+const topLinks = navConfig.mainNav;
 
 export default function Sidebar() {
   const [loading, setLoading] = useState(true);

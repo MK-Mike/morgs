@@ -1,8 +1,8 @@
-import { Info, Leaf, Home, Compass, MapPin } from "lucide-react";
-import { Icons } from "@/components/icons";
+import { Info, Leaf, Home, Compass, MapPin, UserIcon } from "lucide-react";
+import type { Icons } from "@/components/icons";
 
 export interface NavItem {
-  title: string;
+  name: string;
   href?: string;
   disabled?: boolean;
   external?: boolean;
@@ -15,21 +15,28 @@ export interface NavItemWithChildren extends NavItem {
   items: NavItemWithChildren[];
 }
 
-export interface MainNavItem extends NavItem {}
+export interface MainNavItem extends NavItem {
+  admin?: boolean;
+}
 
-export interface SidebarNavItem extends NavItemWithChildren {}
-export interface DocsConfig {
+export interface SidebarNavItem extends NavItemWithChildren {
+  admin?: boolean;
+}
+export interface NavConfig {
   mainNav: MainNavItem[];
   sidebarNav: SidebarNavItem[];
   chartsNav: SidebarNavItem[];
 }
 
-export const docsConfig: DocsConfig = {
+export const navConfig: NavConfig = {
   mainNav: [
-    { title: "About", href: "/about", icon: Info },
-    { title: "Environment & Ethics", href: "/environment-ethics", icon: Info },
-    { title: "Accommodation", href: "/accommodation", icon: Home },
-    { title: "Activities", href: "/activities", icon: Compass },
-    { title: "Routes", href: "/sectors", icon: MapPin },
+    { name: "About", href: "/about", icon: Info, admin: false },
+    // { name: "Environment & Ethics", href: "/environment-ethics", icon: Info },
+    // { name: "Accommodation", href: "/accommodation", icon: Home },
+    // { name: "Activities", href: "/activities", icon: Compass },
+    { name: "Users", href: "/users", icon: UserIcon, admin: true },
+    { name: "Routes", href: "/sectors", icon: MapPin, admin: false },
   ],
+  sidebarNav: [],
+  chartsNav: [],
 };
