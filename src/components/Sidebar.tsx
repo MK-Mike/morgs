@@ -6,7 +6,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
-import { BookmarkIcon, Info, MapPin, PinIcon } from "lucide-react";
+import {
+  BookmarkIcon,
+  Info,
+  MapPin,
+  PinIcon,
+  User as UserIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -14,20 +20,56 @@ import type { HeadlandNavData } from "~/server/models/headlands";
 import { getHeadlandsForNav } from "~/server/models/headlands";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 import UserAccountButtons from "./UserAccountButtons";
+import { useAuth, useUser } from "@clerk/nextjs";
+import { getUserRole } from "@/server/models/users";
 
 const topLinks = [
-  { name: "About", href: "/about", icon: Info },
+  { name: "About", href: "/about", icon: Info, admin: false },
   // { name: "Environment & Ethics", href: "/environment-ethics", icon: Leaf },
   // { name: "Accommodation", href: "/accommodation", icon: Home },
   // { name: "Activities", href: "/activities", icon: Compass },
-  { name: "Routes", href: "/sectors", icon: MapPin },
+  { name: "Users", href: "/users", icon: UserIcon, admin: true },
+  { name: "Routes", href: "/sectors", icon: MapPin, admin: false },
 ];
 
 export default function Sidebar() {
   const [loading, setLoading] = useState(true);
   const [routesData, setRoutesData] = useState<HeadlandNavData[]>();
   const [bookmarked, setBookmarked] = useState({});
+  const [isAdmin, setIsAdmin] = useState(false);
   const [pinned, setPinned] = useState({});
+  const [filteredTopLink, setFilteredTopLinks] = useState(topLinks);
+  const { user } = useUser();
+
+  useEffect(() => {
+    const fetchUserRole = async () => {
+      try {
+        if (!user) return;
+        const userRole = await getUserRole(user.id);
+        if (userRole === "admin") setIsAdmin(true);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    void fetchUserRole();
+  }, [setIsAdmin, user]);
+
+  useEffect(() => {
+    if (user) {
+      if (isAdmin) {
+        // Admins see all links
+        setFilteredTopLinks(topLinks);
+      } else {
+        // Non-admins see only non-admin links
+        const filtered = topLinks.filter((link) => !link.admin);
+        setFilteredTopLinks(filtered);
+      }
+    } else {
+      // Handle the case where there's no user
+      const filtered = topLinks.filter((link) => !link.admin);
+      setFilteredTopLinks(filtered);
+    }
+  }, [isAdmin, user]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -127,7 +169,7 @@ export default function Sidebar() {
         {/* Top Section */}
         <nav className="mb-6">
           <ul className="space-y-2">
-            {topLinks.map((link) => (
+            {filteredTopLink.map((link) => (
               <li key={link.name}>
                 <Link
                   href={link.href}
