@@ -28,7 +28,9 @@ export default function Home() {
 
         <div className="space-x-4">
           <Button asChild>
-            <Link href="/sectors">Find a Climb</Link>
+            <Link href="/sectors" prefetch={true}>
+              Find a Climb
+            </Link>
           </Button>
           <Button asChild variant="outline">
             <Link href="/partners">Find a Partner</Link>

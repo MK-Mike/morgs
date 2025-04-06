@@ -138,9 +138,9 @@ export default function SectorCard({
         </Link>
       </CardContent>
 
-      <div className="absolute inset-0 z-0 w-full overflow-hidden">
-        {getRandomWaves()}
-      </div>
+      {/* <div className="absolute inset-0 z-0 w-full overflow-hidden"> */}
+      {/*   {getRandomWaves()} */}
+      {/* </div> */}
     </Card>
   );
 }
