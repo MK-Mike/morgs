@@ -7,7 +7,9 @@ import SkeletonCarousel from "~/components/SkeletonCarousel";
 import AcknowledgementsModal from "~/components/AcknowledgementsModal";
 
 import { useHeadlandAndSector } from "@/contexts/headland-sector-context";
-
+async function waitFor(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 export default function SectorsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { headlands, sectors } = useHeadlandAndSector();
@@ -25,6 +27,14 @@ export default function SectorsPage() {
       console.error("localStorage error:", error);
       setIsModalOpen(true);
     }
+  }, []);
+
+  useEffect(() => {
+    const wait = async () => {
+      await waitFor(1000);
+      console.log("Waited for 1 second");
+    };
+    void wait();
   }, []);
 
   return (

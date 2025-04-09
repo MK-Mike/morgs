@@ -163,7 +163,7 @@ export async function getSectorById(id: number) {
       .select()
       .from(sectors)
       .where(eq(sectors.id, id));
-    console.log("Server Action: Fetched sector by id", result);
+    // console.log("Server Action: Fetched sector by id", result);
     const sector: SectorData = result[0];
     return sector;
   } catch (error) {
@@ -180,7 +180,7 @@ export async function getSectorBySlug(slug: string) {
       .select()
       .from(sectors)
       .where(eq(sectors.slug, slug));
-    console.log("Server Action: Fetched sector by slug", result);
+    // console.log("Server Action: Fetched sector by slug", result);
     const sector: SectorData = result[0];
     return sector;
   } catch (error) {
