@@ -119,7 +119,7 @@ export function EditHeadlandDialog({
       };
       const result = await onSaveAction(data);
 
-      if (result?.error) {
+      if (!result) {
         // Handle errors returned from server action
         setServerError(result.error);
         // Optional: Show toast notification for server error

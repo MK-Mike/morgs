@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
-import { Suspense, useEffect, useState, useContext } from "react";
+import { Suspense, useEffect, useState, useContext, useCallback } from "react";
 import Breadcrumbs from "~/components/Breadcrumbs";
 import CommentsSection from "~/components/commentSection";
 import DifficultyConsensus from "~/components/difficulty-consensus";
@@ -12,9 +12,19 @@ import RouteTags from "~/components/route-tags";
 import { Button } from "~/components/ui/button";
 import { Skeleton } from "~/components/ui/skeleton";
 import type { Route } from "~/server/models/routes";
-import { getRouteBySlug, getRoutesInSector } from "~/server/models/routes";
+import {
+  getRouteBySlug,
+  getRoutesInSector,
+  updateRoute,
+} from "~/server/models/routes";
 import { LoadingContext } from "~/contexts/sector-loading-context";
+import { useUser } from "@clerk/nextjs";
+import { getUserRole } from "@/server/models/users";
+import { EditRouteDialog } from "~/components/EditRouteDialog";
 
+const handleEditRouteClick = async (route: Route) => {
+  console.log("Edit route clicked:", route);
+};
 export default function RoutePage() {
   const { sector: sectorSlug, route: routeSlug } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -22,11 +32,34 @@ export default function RoutePage() {
   const [route, setRoute] = useState<Route | undefined>(undefined);
   const [prevRoute, setPrevRoute] = useState<Route | null>(null);
   const [nextRoute, setNextRoute] = useState<Route | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const { setChildrenLoaded } = useContext(LoadingContext);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  const { user } = useUser();
   const tags: string[] = ["pumpy", "technical"];
   if (!routeSlug) {
     notFound();
   }
+
+  const handleEditFinished = useCallback(() => {
+    console.log("Edit finished, triggering refetch...");
+    setRefreshTrigger((count) => count + 1); // Increment to trigger effect
+  }, []); // useCallback ensures this function identity is stable]
+
+  useEffect(() => {
+    const fetchUserRole = async () => {
+      try {
+        if (!user) return;
+        const userRole = await getUserRole(user.id);
+        if (userRole === "admin") setIsAdmin(true);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    void fetchUserRole();
+  }, [setIsAdmin, user]);
+
   useEffect(() => {
     setChildrenLoaded(false);
     const fetchData = async () => {
@@ -71,7 +104,7 @@ export default function RoutePage() {
     };
 
     void fetchData();
-  }, [routeSlug, setChildrenLoaded]);
+  }, [routeSlug, setChildrenLoaded, refreshTrigger]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -129,6 +162,23 @@ export default function RoutePage() {
                 )}
                 <span className="text-bg-secondary text-3xl font-bold">
                   {route.grade}
+                </span>
+                <span>
+                  {isAdmin && (
+                    <EditRouteDialog
+                      route={route}
+                      onSaveAction={updateRoute}
+                      onFinishedAction={handleEditFinished}
+                    >
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleEditRouteClick(route)}
+                      >
+                        Edit
+                      </Button>
+                    </EditRouteDialog>
+                  )}
                 </span>
               </div>
             </div>
