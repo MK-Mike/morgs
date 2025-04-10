@@ -16,6 +16,19 @@ export interface DBRouteData {
   routeStyle: string;
   sectorId: number;
 }
+export interface DBRouteData {
+  slug: string;
+  name: string;
+  routeNumber: number;
+  grade: number;
+  stars: number | null;
+  description: string;
+  firstAscent: string;
+  date: Date | string;
+  info: string;
+  routeStyle: string;
+  sectorId: number;
+}
 export interface Route {
   id: number;
   slug: string;
@@ -80,11 +93,11 @@ export async function createRoute(route: DBRouteData) {
       .returning({ insertedId: routes.id, insertedName: routes.name });
 
     console.log("Server Action: Inserted ID", result[0]?.insertedId);
-    return result; // Or return something more meaningful
+    return { status: "OK", success: true, message: result };
   } catch (error) {
     console.error("Server Action Error:", error);
     // Re-throw or return an error object/message
-    throw new Error("Failed to create route.");
+    return { status: "ERROR", success: false, message: error };
   }
 }
 

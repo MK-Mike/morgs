@@ -189,3 +189,21 @@ export async function getSectorBySlug(slug: string) {
     throw new Error("Failed to fetch sector by slug.");
   }
 }
+
+export async function getSectorsAndIds() {
+  console.log("Server Action: Fetching all sectors and ids");
+  try {
+    const result = await db
+      .select({
+        id: sectors.id,
+        name: sectors.name,
+      })
+      .from(sectors);
+    console.log("Server Action: Fetched sectors and ids.");
+    return result;
+  } catch (error) {
+    console.error("Server Action Error:", error);
+    // Re-throw or return an error object/message
+    throw new Error("Failed to fetch sectors and ids.");
+  }
+}

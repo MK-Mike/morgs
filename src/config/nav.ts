@@ -1,4 +1,4 @@
-import { Info, Leaf, Home, Compass, MapPin, UserIcon } from "lucide-react";
+import { Info, MapPin, UserIcon, SquarePen } from "lucide-react";
 import type { Icons } from "@/components/icons";
 
 export interface NavItem {
@@ -26,6 +26,7 @@ export interface NavConfig {
   mainNav: MainNavItem[];
   sidebarNav: SidebarNavItem[];
   chartsNav: SidebarNavItem[];
+  adminNav: MainNavItem[];
 }
 
 export const navConfig: NavConfig = {
@@ -34,8 +35,17 @@ export const navConfig: NavConfig = {
     // { name: "Environment & Ethics", href: "/environment-ethics", icon: Info },
     // { name: "Accommodation", href: "/accommodation", icon: Home },
     // { name: "Activities", href: "/activities", icon: Compass },
-    { name: "Users", href: "/users", icon: UserIcon, admin: true },
+    { name: "Admin", href: "/admin/users", icon: UserIcon, admin: true },
     { name: "Routes", href: "/sectors", icon: MapPin, admin: false },
+  ],
+  adminNav: [
+    { name: "Users", href: "/admin/users", icon: UserIcon, admin: true },
+    {
+      name: "New Route",
+      href: "/admin/new-route",
+      icon: SquarePen,
+      admin: true,
+    },
   ],
   sidebarNav: [],
   chartsNav: [],

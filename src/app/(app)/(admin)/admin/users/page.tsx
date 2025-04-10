@@ -114,7 +114,7 @@ export default function UsersPage() {
   }
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto max-w-md py-10">
       <Card>
         <CardHeader>
           <CardTitle>User Management</CardTitle>
@@ -146,7 +146,7 @@ export default function UsersPage() {
                       <SelectContent>
                         <SelectItem value="user">User</SelectItem>
                         <SelectItem value="manager">Manager</SelectItem>
-                        <SelectItem value="admin">Admin</SelectItem>
+                        <SelectItem value="admin">{currentUserRole}</SelectItem>
                       </SelectContent>
                     </Select>
                   </TableCell>
