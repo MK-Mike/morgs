@@ -197,13 +197,27 @@ export async function getSectorsAndIds() {
       .select({
         id: sectors.id,
         name: sectors.name,
+        routeNumbers: sql<number[]>`array_agg(${routes.routeNumber})`.as(
+          "route_numbers",
+        ),
       })
-      .from(sectors);
-    console.log("Server Action: Fetched sectors and ids.");
-    return result;
+      .from(sectors)
+      .leftJoin(routes, eq(routes.sectorId, sectors.id))
+      .groupBy(sectors.id, sectors.name);
+
+    // Clean up the route numbers array (remove nulls, etc.)
+    const cleanedResult = result.map((sector) => ({
+      id: sector.id,
+      name: sector.name,
+      routeNumbers: Array.isArray(sector.routeNumbers)
+        ? sector.routeNumbers.filter((num) => num !== null)
+        : [],
+    }));
+
+    console.log("Server Action: Fetched sectors and ids with route numbers.");
+    return cleanedResult;
   } catch (error) {
     console.error("Server Action Error:", error);
-    // Re-throw or return an error object/message
     throw new Error("Failed to fetch sectors and ids.");
   }
 }

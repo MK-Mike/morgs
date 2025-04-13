@@ -4,7 +4,7 @@ import * as React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -26,35 +26,105 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
+import { info } from "console";
 // Define the shape of the data passed to the component
-import type { NewRouteData } from "@/server/models/routes";
 
 type SectorAndId = {
   id: number;
   name: string;
+  routeNumbers: number[];
 };
 
 // Define the Zod schema for form validation
 // We only validate fields that are editable in the form
-const routeFormSchema = z.object({
-  slug: z.string().min(2).min(2, {
-    message: "Slug must be at least 2 characters.",
-  }),
-  name: z.string().min(2),
-  routeNumber: z.number(),
-  grade: z.number(),
-  stars: z.number().nullable(),
-  firstAscent: z.string(),
-  date: z.string(),
-  info: z.string(),
-  routeStyle: z.string(),
-  sectorId: z.coerce.number().positive({ message: "Please select a sector." }), // Coerce string from select to number
-  description: z.string(),
-});
 
-// Define the type for the validated form data
-type FormValues = z.infer<typeof routeFormSchema>;
+// Create a schema factory function that takes sectors data
+const createRouteFormSchema = (sectors: SectorAndId[]) =>
+  z
+    .object({
+      slug: z.string().min(2, {
+        message:
+          "Slug too short. Like a crimp hold, we need at least 2 fingers... er, characters.",
+      }),
+      routeNumber: z.number({
+        invalid_type_error:
+          "Must be a number. Routes aren't graded with letters, mate.",
+      }),
+      name: z.string().min(2, {
+        message: "Route name too short. Even 'V0' has two characters.",
+      }),
+      firstAscent: z.string({
+        invalid_type_error:
+          "We need a name. 'Some bloke' doesn't count as a first ascent.",
+      }),
+      date: z.string({
+        invalid_type_error:
+          "Need a proper date. 'When dinosaurs roamed' isn't specific enough.",
+      }),
+      info: z.string().optional(),
+      sectorId: z.coerce.number().positive({
+        message: "Please select a sector. Routes don't just float in mid-air.",
+      }),
+      grade: z
+        .number({
+          invalid_type_error:
+            "Grades are numbers. 'Scary' is not a valid grade.",
+        })
+        .min(8, {
+          message: "Grade too low. Even a boulderer could warm up on this.",
+        })
+        .max(40, {
+          message: "Grade too high....",
+        }),
+      routeStyle: z.enum(["trad", "sport", "solo"], {
+        errorMap: () => ({
+          message:
+            "Invalid style. Pick trad, sport, or solo. No 'freefall' option here.",
+        }),
+      }),
+      stars: z.number().min(0).max(5, {
+        message: "Max 5 stars. This isn't a Michelin restaurant on a cliff.",
+      }),
+      description: z.string().refine((val) => val.split(/\s+/).length > 3, {
+        message:
+          "Description too short. Give us more than 'it was hard'—at least 3 words.",
+      }),
+    })
+    .superRefine((data, ctx) => {
+      console.log("Running superRefine validation", {
+        sectorId: data.sectorId,
+        routeNumber: data.routeNumber,
+      });
 
+      // Skip validation if no sector selected or no route number
+      if (!data.sectorId || data.routeNumber === undefined) {
+        console.log("Skipping validation - missing data");
+        return;
+      }
+
+      const selectedSector = sectors.find((s) => s.id === data.sectorId);
+      console.log("Selected sector:", selectedSector);
+
+      if (!selectedSector) {
+        console.log("Sector not found");
+        return;
+      }
+
+      console.log("Checking route numbers:", {
+        routeNumbers: selectedSector.routeNumbers,
+        currentNumber: data.routeNumber,
+        exists: selectedSector.routeNumbers.includes(data.routeNumber),
+      });
+
+      if (selectedSector.routeNumbers.includes(data.routeNumber)) {
+        console.log("Route number already exists - adding issue");
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: `Route number ${data.routeNumber} already exists in ${selectedSector.name}. Try another number.`,
+          path: ["routeNumber"],
+        });
+      }
+    });
 // Define the props for the dialog component
 interface EditHeadlandDialogProps {
   sectors: SectorAndId[];
@@ -63,9 +133,9 @@ interface EditHeadlandDialogProps {
   onSaveAction: (data: {
     slug: string;
     name: string;
-    routeNumber: number;
-    grade: number;
-    stars: number | null;
+    routeNumber: number | null;
+    grade: number | null;
+    stars: number;
     description: string;
     firstAscent: string;
     date: string;
@@ -95,47 +165,51 @@ export function NewRouteForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
+  // Define the type for the validated form data
+  const routeFormSchema = createRouteFormSchema(sectors);
+  type FormValues = z.infer<typeof routeFormSchema>;
   const { toast } = useToast();
-  // Initialize react-hook-form
-  const form = useForm<FormValues>({
-    resolver: zodResolver(routeFormSchema),
-    // Use defaultValues to pre-populate the form
-    defaultValues: {
+  const defaultFormValues = useMemo(
+    () => ({
       name: "",
       slug: "",
-      routeNumber: 0,
-      grade: 8,
-      stars: null,
+      // Use undefined for empty number fields if schema requires numbers
+      routeNumber: undefined,
+      grade: undefined,
+      stars: undefined,
       firstAscent: "",
       date: "",
       info: "",
-      routeStyle: "",
+      // Use 'as const' or explicitly type the union for routeStyle
+      routeStyle: "trad" as "trad" | "sport" | "solo",
       sectorId: 0,
       description: "",
-    },
+    }),
+    [],
+  );
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(routeFormSchema),
+    mode: "onChange",
+    // Use defaultValues to pre-populate the form
+    defaultValues: defaultFormValues,
   });
 
   // Reset form when route prop changes (if dialog is reused)
-  // or when dialog opens to ensure fresh default values
+  // or when dialog opens to ensure fresh default values if form being used inside a dialog
   useEffect(() => {
     if (isOpen) {
-      form.reset({
-        name: "",
-        slug: "",
-        routeNumber: 0,
-        grade: 0,
-        stars: null,
-        firstAscent: "",
-        date: "",
-        info: "",
-        routeStyle: "",
-        sectorId: 0,
-        description: "",
-      });
+      form.reset(defaultFormValues);
       setServerError(null); // Clear previous errors when opening
     }
-  }, [isOpen, form]);
+  }, [defaultFormValues, isOpen, form]);
 
+  useEffect(() => {
+    if (!isSubmitting) {
+      form.reset(defaultFormValues);
+      setServerError(null); // Clear previous errors when opening
+    }
+  }, [defaultFormValues, isSubmitting, form]);
   // Handle form submission
   const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
@@ -163,7 +237,7 @@ export function NewRouteForm({
         // Optional: Show toast notification for server error
         toast({
           title: "Save Failed",
-          description: result.error || "Unknown error",
+          description: result.message.toString() || "Unknown error",
           open: true,
         });
       }
@@ -208,14 +282,33 @@ export function NewRouteForm({
                 <FormItem>
                   <FormLabel>Sector</FormLabel>
                   <Select
-                    // Pass the string ID from the SelectItem to RHF
-                    onValueChange={field.onChange}
                     // Ensure the controlled value is a string for the Select
                     value={
                       field.value !== undefined && field.value !== null
                         ? String(field.value)
                         : ""
                     }
+                    onValueChange={(value) => {
+                      // Pass the string ID from the SelectItem to RHF
+                      field.onChange(value);
+
+                      // Find the selected sector
+                      const selectedSector = sectors.find(
+                        (s) => s.id === parseInt(value),
+                      );
+
+                      // If sector found, set routeNumber to the next available number
+                      if (selectedSector) {
+                        const existingNumbers = selectedSector.routeNumbers;
+                        // Find the next available number or use length + 1
+                        const nextNumber =
+                          existingNumbers.length > 0
+                            ? Math.max(...existingNumbers) + 1
+                            : 1;
+
+                        form.setValue("routeNumber", nextNumber);
+                      }
+                    }}
                   >
                     <FormControl>
                       <SelectTrigger id="sectorId" className="w-[180px]">
@@ -291,15 +384,18 @@ export function NewRouteForm({
                   <FormControl>
                     <Input
                       placeholder="e.g., 1"
-                      {...field}
                       type="number"
                       onChange={(e) => {
                         const value = e.target.value;
-                        // Convert to number, default to 0 or null if empty/invalid
-                        field.onChange(value === "" ? 0 : parseInt(value, 10));
+                        // If empty, set to undefined or null instead of 0
+                        field.onChange(
+                          value === "" ? undefined : parseInt(value, 10),
+                        );
                       }}
-                      // Ensure the value passed *to* the input is also a number
-                      value={field.value ?? ""}
+                      // Format the value to avoid leading zeros
+                      value={field.value === 0 ? "" : (field.value ?? "")}
+                      // Add min attribute to prevent negative numbers if needed
+                      min="1"
                     />
                   </FormControl>
                   <FormMessage />
@@ -315,16 +411,18 @@ export function NewRouteForm({
                   <FormLabel>Grade</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="e.g., 1"
-                      {...field}
+                      placeholder="e.g., 18"
                       type="number"
                       onChange={(e) => {
                         const value = e.target.value;
                         // Convert to number, default to 0 or null if empty/invalid
-                        field.onChange(value === "" ? 0 : parseInt(value, 10));
+                        field.onChange(
+                          value === "" ? undefined : parseInt(value, 10),
+                        );
                       }}
                       // Ensure the value passed *to* the input is also a number
                       value={field.value ?? ""}
+                      min="8"
                     />
                   </FormControl>
                   <FormMessage />
@@ -342,15 +440,17 @@ export function NewRouteForm({
                   <FormControl>
                     <Input
                       placeholder="e.g., 4"
-                      {...field}
                       type="number"
                       onChange={(e) => {
                         const value = e.target.value;
                         // Convert to number, default to 0 or null if empty/invalid
-                        field.onChange(value === "" ? 0 : parseInt(value, 10));
+                        field.onChange(
+                          value === "" ? undefined : parseInt(value, 10),
+                        );
                       }}
                       // Ensure the value passed *to* the input is also a number
                       value={field.value ?? ""}
+                      min="-1"
                     />
                   </FormControl>
                   <FormMessage />

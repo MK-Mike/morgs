@@ -16,19 +16,6 @@ export interface DBRouteData {
   routeStyle: string;
   sectorId: number;
 }
-export interface DBRouteData {
-  slug: string;
-  name: string;
-  routeNumber: number;
-  grade: number;
-  stars: number | null;
-  description: string;
-  firstAscent: string;
-  date: Date | string;
-  info: string;
-  routeStyle: string;
-  sectorId: number;
-}
 export interface Route {
   id: number;
   slug: string;
