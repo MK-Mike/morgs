@@ -57,7 +57,7 @@ type FormValues = z.infer<typeof routeFormSchema>;
 
 // Define the props for the dialog component
 interface EditHeadlandDialogProps {
-  sectorAndId: SectorAndId[];
+  sectors: SectorAndId[];
   // The server action to call on save
   // It receives the original ID and the updated form data
   onSaveAction: (data: {
@@ -88,7 +88,7 @@ const generateSlug = (name: string): string => {
 };
 export function NewRouteForm({
   onSaveAction,
-  sectorAndId,
+  sectors,
   onFinishedAction,
 }: EditHeadlandDialogProps) {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -226,7 +226,7 @@ export function NewRouteForm({
                       <SelectItem value="select" disabled>
                         Select a sector
                       </SelectItem>
-                      {sectorAndId.map((sector) => (
+                      {sectors.map((sector) => (
                         <SelectItem key={sector.id} value={String(sector.id)}>
                           {sector.name}
                         </SelectItem>

@@ -15,7 +15,7 @@ export default function NewRoutePage() {
       <h1 className="mb-6 pt-6 text-3xl font-bold">Add New Route</h1>
       <div className="mb-4 text-2xl">
         <NewRouteForm
-          sectorAndId={sectors}
+          sectors={sectors}
           onSaveAction={createRoute}
         ></NewRouteForm>
       </div>

@@ -4,9 +4,9 @@
 
 - [x] Recreate the routes.json more accuratly
 - [x] Create and Seed postgress db with data from routes.json
-- [] Rewrite pages to use db data not routes.json
-- [] Create auth protected routes for admin
-- [] Validate and correct db entries
+- [x] Rewrite pages to use db data not routes.json
+- [x] Create auth protected routes for admin
+- [x] Validate and correct db entries
 - [] rewrite components with user data to use the db
 - [] Add support for route / sector images
 - [] Add support for offline accress (service workers)
@@ -15,17 +15,24 @@
 
 ## Next up
 
-- [] refactor to use bd as source of data instead of routes.json
-  - [] sectors page
-  - [] routes page
+- [x] refactor to use bd as source of data instead of routes.json
+  - [x] sectors page
+  - [x] routes page
   - [x] route page
   - [x] sector page
-  - [] sidebar
-- []
+  - [x] sidebar
+- [] for new route page, add in check for route numbers
+- [] add error messages for
+
+  - [] new route
+  - [] edit route dialog
+
+- [] refactor data fetching strategy to better utilise next js server side rendering
 
 ## UI Fixes and Features
 
 [] add filters to seach page
+[] tanstack ranger for sectors
 [] add an all routes page with filtering
 [] add sector access comments
 [] create non sidebar layout for non routes pages
